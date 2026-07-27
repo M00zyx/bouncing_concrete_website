@@ -1,0 +1,6 @@
+.wordmark {
+  display: block;
+  width: 100%;
+  margin: clamp(35px, 6vh, 70px) 0 28px;
+  mix-blend-mode: screen;
+}
