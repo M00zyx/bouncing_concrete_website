@@ -140,7 +140,7 @@ footer{text-transform:uppercase;align-items:center}
 
   .about{min-height:clamp(500px,52vh,650px);padding:clamp(100px,8vw,145px) 8vw;gap:5vw}
   .about-label>img{width:min(500px,100%)}
-  .about>p{font-size:clamp(36px,2.3vw,48px);line-height:.91;max-width:650px}
+  .about>p{font-size:clamp(42px,2.8vw,60px);line-height:.91;max-width:650px}
   .about-signal{height:clamp(190px,17vw,260px)}
 
   .shows{min-height:clamp(610px,60vh,760px);padding:clamp(95px,7.5vw,135px) 8vw;gap:5vw}
