@@ -152,3 +152,13 @@ footer{text-transform:uppercase;align-items:center}
   .next-event{padding:36px}.next-event h3{font-size:58px}.next-event>p{font-size:16px}.next-event>div.event-signal{height:190px}.event-links{font-size:15px}
   footer{padding:52px 8vw;font-size:15px}
 }
+
+/* V2 player: a horizontal aperture turns the concrete object into a watchful
+   presence. The controls below become the point that draws its gaze. */
+.release{display:flex;flex-direction:column;align-items:center;gap:0;padding:clamp(74px,8vw,148px) 5vw;background-position:center}
+.eye-slit-stage{order:0;width:100vw;height:clamp(170px,18vw,310px);margin:0 calc(50% - 50vw) clamp(56px,6vw,110px);cursor:none;overflow:hidden;background:transparent;isolation:isolate}
+.eye-slit-stage::before,.eye-slit-stage::after{content:'';position:absolute;z-index:2;left:0;right:0;pointer-events:none}.eye-slit-stage::before{top:0;height:100%;background:#111 url('/assets/dark-grit.png') center/680px 680px;mask-image:linear-gradient(to bottom,#000 0 28%,rgba(0,0,0,.72) 35%,transparent 42% 58%,rgba(0,0,0,.72) 65%,#000 72% 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0 28%,rgba(0,0,0,.72) 35%,transparent 42% 58%,rgba(0,0,0,.72) 65%,#000 72% 100%)}.eye-slit-stage::after{top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(215,215,208,.22),transparent);opacity:.75}
+.eye-slit-stage canvas{position:relative;z-index:1;display:block;width:100%!important;height:100%!important}
+.release-player{order:1;width:min(100%,1240px);text-align:center;display:flex;flex-direction:column;align-items:center}.release-player .eyebrow{margin:0 0 18px}.release-player h2{margin:0;max-width:100%}.release-player .track-description{max-width:680px;margin:24px auto 10px}.release-player .player{width:min(100%,1120px);margin:0 auto 42px}.release-player .player-links{align-self:flex-start;margin:13px 0 0}.release-player .soundcloud-engine{width:min(100%,1120px)}
+@media (min-width:700px){.release{min-height:clamp(760px,82vh,1050px)}.eye-slit-stage{height:clamp(230px,22vw,380px);margin-bottom:clamp(65px,7vw,130px)}.release-player h2{font-size:clamp(92px,8.2vw,166px)}.release-player .track-description{font-size:16px}.release-player .player{gap:20px}.release-player .wave-hitbox{height:74px}}
+@media (max-width:700px){.eye-slit-stage{height:130px;margin-bottom:48px}.release-player .player{width:100%}.release-player .player-links{align-self:flex-start}.release-player h2{font-size:clamp(56px,16vw,92px)}}
