@@ -171,3 +171,209 @@ footer{text-transform:uppercase;align-items:center}
 .release-player .track-copy h2{max-inline-size:100%;overflow-wrap:anywhere;text-wrap:balance}
 .release-player .track-copy .track-description{margin-bottom:10px}
 @media (max-width:700px){.release-player .transport .player-links{margin-top:13px}}
+
+/* Player refinement: keep the GLB prison fixed, but make the surrounding
+   composition denser. These shutters are intentionally independent so the
+   lower edge can be manually tuned without touching the model or camera. */
+.release{padding:clamp(36px,4.5vw,72px) 5vw clamp(74px,8vw,148px)}
+.eye-slit-stage{--slit-top-shutter:18%;--slit-bottom-shutter:0%;margin-bottom:clamp(28px,3vw,54px)}
+.eye-slit-stage::before{mask-image:linear-gradient(to bottom,#000 0 var(--slit-top-shutter),transparent var(--slit-top-shutter) calc(100% - var(--slit-bottom-shutter)),#000 calc(100% - var(--slit-bottom-shutter)) 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0 var(--slit-top-shutter),transparent var(--slit-top-shutter) calc(100% - var(--slit-bottom-shutter)),#000 calc(100% - var(--slit-bottom-shutter)) 100%)}
+.release-player .transport{margin-bottom:clamp(24px,2.6vw,42px)}
+.release-player .player{display:grid;grid-template-columns:64px 1fr auto;grid-template-areas:"wave wave wave" "play . skip";gap:16px 20px;align-items:center}
+.release-player .wave-hitbox{grid-area:wave;height:84px}
+.release-player .play-button{grid-area:play}
+.release-player .track-skip{grid-area:skip}
+.release-player .player .play-button,.release-player .track-skip button{width:64px;height:64px;min-width:64px;flex-basis:64px;font-size:20px}
+.release-player .player-links{margin-top:12px;margin-bottom:0}
+.release-player .track-copy .eyebrow{min-height:1.1em;margin:0 0 12px}
+
+/* The player’s mouth is a barbed seismograph, not a flat equalizer. */
+.wave{background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px);clip-path:polygon(0 48%,3% 42%,6% 68%,9% 31%,12% 54%,15% 17%,18% 74%,22% 40%,25% 58%,29% 9%,33% 79%,37% 36%,41% 63%,45% 23%,49% 88%,53% 39%,57% 69%,61% 12%,65% 82%,69% 31%,73% 61%,77% 19%,81% 85%,85% 37%,89% 71%,93% 25%,97% 64%,100% 47%)}
+.wave::after{width:var(--track-progress,0%);background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px)}
+.wave.on{animation:seismic-jolt .58s steps(1,end) infinite}
+@keyframes seismic-jolt{
+  0%,6%,100%{transform:translate(0,0) scaleY(1);background-position:0 0}
+  10%{transform:translate(-2px,2px) scaleY(.52) skewX(-5deg);background-position:13px 0}
+  14%{transform:translate(3px,-8px) scaleY(2.05) skewX(6deg);background-position:-21px 0}
+  19%,29%{transform:translate(0,0) scaleY(.84);background-position:4px 0}
+  34%{transform:translate(-4px,5px) scaleY(.42) skewX(-7deg);background-position:23px 0}
+  39%{transform:translate(4px,-10px) scaleY(2.35) skewX(8deg);background-position:-32px 0}
+  45%{transform:translate(-2px,3px) scaleY(.68);background-position:12px 0}
+  55%,63%{transform:translate(0,0) scaleY(1.08);background-position:0 0}
+  69%{transform:translate(2px,-5px) scaleY(1.58) skewX(-4deg);background-position:-14px 0}
+  74%{transform:translate(-5px,7px) scaleY(.34) skewX(7deg);background-position:29px 0}
+  80%{transform:translate(5px,-11px) scaleY(2.55) skewX(-8deg);background-position:-38px 0}
+  87%{transform:translate(-1px,2px) scaleY(.76);background-position:8px 0}
+}
+@media (min-width:700px){.eye-slit-stage{margin-bottom:clamp(32px,3.4vw,58px)}.release-player .wave-hitbox{height:96px}}
+@media (max-width:700px){.release{padding-top:34px}.release-player .player{grid-template-columns:52px 1fr auto;gap:12px}.release-player .wave-hitbox{height:66px}.release-player .player .play-button,.release-player .track-skip button{width:52px;height:52px;min-width:52px;flex-basis:52px;font-size:17px}}
+
+/* Music section controls. These are deliberately local custom properties: they
+   alter only the section's breathing room, never the GLB camera or its slit pose. */
+.release{
+  --music-section-min-height:clamp(760px,82svh,1050px);
+  --music-top-padding:clamp(36px,4.5vw,72px);
+  --music-bottom-padding:clamp(74px,8vw,148px);
+  --music-slit-height:clamp(360px,38vw,660px);
+  --music-slit-to-player-gap:clamp(32px,3.4vw,58px);
+  --slit-top-shutter:18%;
+  --slit-bottom-shutter:0%;
+  min-height:var(--music-section-min-height);
+  padding:var(--music-top-padding) 5vw var(--music-bottom-padding);
+}
+.eye-slit-stage{height:var(--music-slit-height);margin-bottom:var(--music-slit-to-player-gap)}
+
+/* The mouth stays first; the remaining information shares one compact rail so
+   a long title grows safely within the section instead of falling below it. */
+.release-player{width:min(100%,1240px)}
+.release-player .player{width:100%;margin:0;display:flex;flex-direction:column;gap:clamp(16px,2vw,30px)}
+.release-player .wave-hitbox{width:100%;height:clamp(76px,6vw,102px);min-height:clamp(76px,6vw,102px);flex:0 0 clamp(76px,6vw,102px);grid-area:auto}
+.release-player .player-rail{width:100%;display:grid;grid-template-columns:minmax(128px,.58fr) minmax(0,1.7fr) minmax(128px,.58fr);align-items:center;gap:clamp(16px,2.3vw,38px)}
+.release-player .player-actions{display:flex;flex-direction:column;align-items:flex-start;gap:13px;min-width:0}
+.release-player .play-button{grid-area:auto;width:64px;height:64px;min-width:64px;flex-basis:64px;font-size:20px}
+.release-player .player-links{margin:0;display:flex;gap:20px;white-space:nowrap}
+.release-player .track-copy{display:flex;align-items:center;width:100%;min-width:0}
+.release-player .track-copy .eyebrow{min-height:1.1em;margin:0 0 8px}
+.release-player .track-copy h2{font-size:clamp(52px,5.8vw,116px);line-height:.82;max-inline-size:100%;overflow-wrap:anywhere;text-wrap:balance}
+.release-player .track-copy .meta{margin:10px 0 0}
+.release-player .track-copy .track-description{max-width:56ch;margin:11px auto 0;line-height:1.35}
+.release-player .track-skip{grid-area:auto;justify-self:end;display:flex;gap:9px;align-items:center}
+.release-player .track-skip button{width:64px;height:64px;min-width:64px;flex-basis:64px;font-size:20px}
+
+/* Every mark is a triangle now, rather than a clipped collection of vertical bars. */
+.wave{position:relative;display:flex;align-items:center;justify-content:space-between;gap:2px;background:none!important;clip-path:none!important;overflow:visible;isolation:isolate}
+.wave i{display:block;flex:0 1 9px;width:clamp(4px,.48vw,8px);height:var(--spike-height);min-height:9px;background:rgba(230,230,223,.94);transform-origin:center;will-change:transform}
+.wave i.is-up{clip-path:polygon(50% 0,100% 100%,0 100%)}
+.wave i.is-down{clip-path:polygon(0 0,100% 0,50% 100%)}
+.wave::after{content:'';position:absolute;z-index:2;left:var(--track-progress,0%);top:3%;bottom:3%;width:2px!important;height:auto!important;background:var(--yellow)!important;transform:translateX(-1px);transition:left .12s linear;clip-path:none!important}
+.wave.on{animation:none!important;transform:none!important}
+.wave.on i{animation:spike-jolt .72s steps(1,end) infinite;animation-delay:var(--spike-delay)}
+@keyframes spike-jolt{0%,100%{transform:scaleY(1)}14%{transform:translateY(-2px) scaleY(.54)}28%{transform:translateY(3px) scaleY(1.72)}47%{transform:translateY(-4px) scaleY(2.15)}66%{transform:translateY(1px) scaleY(.68)}81%{transform:translateY(-3px) scaleY(1.42)}}
+@media (max-width:700px){
+  .release{--music-section-min-height:auto;--music-slit-height:130px;--music-slit-to-player-gap:36px}
+  .release-player .wave-hitbox{height:70px;min-height:70px;flex-basis:70px}
+  .release-player .player-rail{grid-template-columns:1fr auto;grid-template-areas:"copy copy" "actions skip";gap:20px 14px}
+  .release-player .track-copy{grid-area:copy}
+  .release-player .player-actions{grid-area:actions}
+  .release-player .track-skip{grid-area:skip}
+  .release-player .track-copy h2{font-size:clamp(48px,14vw,80px)}
+  .release-player .play-button,.release-player .track-skip button{width:52px;height:52px;min-width:52px;flex-basis:52px;font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){.wave.on i{animation:none}}
+
+/* Restore the established seismograph: a continuous, angular trace made from
+   narrow spikes. The stronger contour keeps its character without inventing a
+   separate triangle pattern. */
+.wave{display:block;background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px)!important;clip-path:polygon(0 48%,3% 42%,6% 68%,9% 31%,12% 54%,15% 17%,18% 74%,22% 40%,25% 58%,29% 9%,33% 79%,37% 36%,41% 63%,45% 23%,49% 88%,53% 39%,57% 69%,61% 12%,65% 82%,69% 31%,73% 61%,77% 19%,81% 85%,85% 37%,89% 71%,93% 25%,97% 64%,100% 47%)!important;overflow:visible}
+.wave::after{content:'';position:absolute;inset:0 auto 0 0;z-index:2;width:var(--track-progress,0%)!important;height:100%!important;background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px)!important;transform:none;transition:width .12s linear;clip-path:inherit!important}
+.wave.on{animation:seismic-jolt .58s steps(1,end) infinite!important;transform-origin:center!important}
+.wave i{display:none!important}
+
+/* Both control groups occupy matching fixed rails. Their button boxes share
+   the same baseline; links live beneath the play button without moving it. */
+.release-player .player-rail{grid-template-columns:164px minmax(0,1fr) 164px;align-items:start}
+.release-player .player-actions{display:grid;grid-template-rows:64px auto;align-items:start;justify-items:start;gap:12px}
+.release-player .track-skip{min-height:64px;justify-self:end;align-self:start}
+.release-player .track-copy{padding-top:0;min-height:142px}
+.release-player .track-copy .eyebrow{min-height:1.1em}
+@media (max-width:700px){.release-player .player-rail{grid-template-columns:1fr auto;grid-template-areas:"copy copy" "actions skip"}.release-player .player-actions{grid-template-rows:52px auto}.release-player .track-skip{min-height:52px}}
+
+/* Player V2 — one source of truth for the mouth/transport. The waveform is a
+   continuous, angular seismograph rather than a row of independent symbols. */
+.release{
+  --music-section-min-height:clamp(760px,82svh,1050px);
+  --music-top-padding:clamp(36px,4.5vw,72px);
+  --music-bottom-padding:clamp(74px,8vw,148px);
+  --music-slit-height:clamp(360px,38vw,660px);
+  --music-slit-to-player-gap:clamp(32px,3.4vw,58px);
+  --slit-top-shutter:18%;
+  --slit-bottom-shutter:0%;
+  --music-control-size:64px;
+  --music-side-rail:164px;
+  --music-rail-gap:clamp(16px,2.3vw,38px);
+  --wave-spike-min-height:.42;
+  --wave-spike-max-height:2.35;
+  --wave-shock-min-scale:.58;
+  --wave-shock-max-scale:2.3;
+  --wave-major-shock-scale:2.7;
+}
+.release-player .player{width:100%;margin:0;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
+.release-player .wave-hitbox{width:calc(100% - (var(--music-side-rail) * 2) - (var(--music-rail-gap) * 2));height:clamp(76px,6vw,96px);min-height:clamp(76px,6vw,96px);flex:0 0 clamp(76px,6vw,96px);margin:0 auto;position:relative}
+.release-player .player-rail{width:100%;display:grid;grid-template-columns:var(--music-side-rail) minmax(0,1fr) var(--music-side-rail);gap:var(--music-rail-gap);align-items:start}
+.release-player .player-actions{display:grid;grid-template-rows:var(--music-control-size) auto;gap:12px;align-items:start;justify-items:start}
+.release-player .player .play-button,.release-player .track-skip button{width:var(--music-control-size);height:var(--music-control-size);min-width:var(--music-control-size);flex-basis:var(--music-control-size);padding:0;display:grid;place-items:center;line-height:1;font-size:20px}
+.release-player .track-skip{min-height:var(--music-control-size);display:flex;align-items:start;justify-self:end;gap:9px}
+.release-player .track-copy{min-height:154px;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.release-player .track-copy .eyebrow{min-height:1.1em;margin:0 0 10px}
+.release-player .track-copy h2{font-size:clamp(52px,5.8vw,116px);line-height:.82;max-inline-size:100%;overflow-wrap:anywhere;text-wrap:balance}
+.release-player .player-links{margin:0;display:flex;gap:20px;white-space:nowrap}
+.wave{display:block!important;position:relative;width:100%;height:100%;overflow:visible;background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px)!important;clip-path:polygon(0 50%,2% 42%,4% 66%,6% 32%,8% 55%,10% 16%,12% 76%,14% 40%,16% 62%,18% 9%,20% 82%,23% 38%,26% 66%,29% 18%,32% 88%,35% 42%,38% 72%,41% 24%,44% 91%,47% 36%,50% 65%,53% 12%,56% 84%,59% 31%,62% 73%,65% 18%,68% 89%,71% 40%,74% 64%,77% 9%,80% 84%,83% 34%,86% 71%,89% 22%,92% 88%,95% 39%,98% 65%,100% 48%)!important;transform-origin:center}
+.wave::after{content:''!important;position:absolute!important;inset:0 auto 0 0!important;width:var(--track-progress,0%)!important;height:100%!important;background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px)!important;clip-path:inherit!important;transform:none;transition:width .12s linear!important}
+.wave.on{animation:seismic-mouth .72s steps(1,end) infinite!important}
+@keyframes seismic-mouth{0%,8%,100%{transform:translate(0,0) scaleY(1);background-position:0 0}13%{transform:translate(-1px,2px) scaleY(var(--wave-shock-min-scale)) skewX(-3deg);background-position:9px 0}18%{transform:translate(2px,-5px) scaleY(var(--wave-spike-max-height)) skewX(4deg);background-position:-15px 0}29%{transform:translate(0,0) scaleY(.88);background-position:3px 0}38%{transform:translate(-3px,4px) scaleY(var(--wave-spike-min-height)) skewX(-5deg);background-position:18px 0}44%{transform:translate(3px,-7px) scaleY(var(--wave-shock-max-scale)) skewX(6deg);background-position:-24px 0}56%{transform:translate(0,0) scaleY(1.04)}69%{transform:translate(1px,-3px) scaleY(1.45) skewX(-2deg);background-position:-8px 0}76%{transform:translate(-4px,5px) scaleY(.52) skewX(5deg);background-position:22px 0}82%{transform:translate(4px,-8px) scaleY(var(--wave-major-shock-scale)) skewX(-7deg);background-position:-30px 0}90%{transform:translate(-1px,1px) scaleY(.86)}}
+@media (max-width:700px){.release{--music-section-min-height:auto;--music-slit-height:130px;--music-slit-to-player-gap:36px;--music-control-size:52px;--music-side-rail:118px;--music-rail-gap:14px}.release-player .wave-hitbox{width:100%;height:70px;min-height:70px;flex-basis:70px}.release-player .player-rail{grid-template-columns:1fr auto;grid-template-areas:"copy copy" "actions skip"}.release-player .track-copy{grid-area:copy;min-height:0}.release-player .player-actions{grid-area:actions}.release-player .track-skip{grid-area:skip}.release-player .track-copy h2{font-size:clamp(48px,14vw,80px)}}
+@media (prefers-reduced-motion:reduce){.wave.on{animation:none!important}}
+
+/* Original seismograph playback restored. This deliberately supersedes the
+   later whole-strip "jolt" experiments: the moving yellow scan is the approved
+   player motion, while the clipped white trace remains visually unchanged. */
+.release{
+  --wave-scan-duration:7.2s;
+  --wave-scan-start:-115%;
+  --wave-scan-end:115%;
+  --wave-scan-color:var(--yellow);
+  --wave-scan-solid-stop:18%;
+  --wave-scan-fade-stop:38%;
+}
+.wave{animation:none!important;transform:none!important}
+.wave.on{animation:none!important;transform:none!important}
+.wave::after{
+  inset:0!important;
+  width:auto!important;
+  height:auto!important;
+  background:linear-gradient(90deg,var(--wave-scan-color) 0 var(--wave-scan-solid-stop),transparent var(--wave-scan-fade-stop) 100%)!important;
+  clip-path:inherit!important;
+  transform:translateX(var(--wave-scan-start));
+  transition:none!important;
+  animation:none!important;
+}
+.wave.on::after{animation:seismograph-scan-restore var(--wave-scan-duration) linear infinite!important}
+@keyframes seismograph-scan-restore{to{transform:translateX(var(--wave-scan-end))}}
+@media (prefers-reduced-motion:reduce){.wave.on::after{animation:none!important;transform:translateX(0)!important}}
+
+/* White seismic trace: a separate layer so its shocks never alter the yellow
+   playback scan or the invisible range input used for precise seeking. */
+.release{
+  --wave-shock-duration:.68s;
+  --wave-shock-min-scale:.72;
+  --wave-shock-max-scale:2.5;
+  --wave-shock-min-shift:-3px;
+  --wave-shock-max-shift:6px;
+  --wave-shock-skew:10deg;
+  --wave-trace-path:polygon(0 50%,2% 42%,4% 66%,6% 32%,8% 55%,10% 16%,12% 76%,14% 40%,16% 62%,18% 9%,20% 82%,23% 38%,26% 66%,29% 18%,32% 88%,35% 42%,38% 72%,41% 24%,44% 91%,47% 36%,50% 65%,53% 12%,56% 84%,59% 31%,62% 73%,65% 18%,68% 89%,71% 40%,74% 64%,77% 9%,80% 84%,83% 34%,86% 71%,89% 22%,92% 88%,95% 39%,98% 65%,100% 48%);
+}
+.release-player .wave-hitbox{overflow:hidden}
+.wave{background:none!important;clip-path:none!important;isolation:isolate}
+.wave::before{
+  content:'';
+  position:absolute;
+  z-index:1;
+  inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px);
+  clip-path:var(--wave-trace-path);
+  transform-origin:center;
+  will-change:transform,background-position;
+}
+.wave::after{z-index:2!important;clip-path:var(--wave-trace-path)!important}
+.wave.on::before{animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite}
+@keyframes seismograph-shock{
+  0%,8%,100%{transform:translate(0,0) scaleY(1) skewX(0);background-position:0 0}
+  15%{transform:translateX(var(--wave-shock-min-shift)) scaleY(var(--wave-shock-min-scale)) skewX(calc(var(--wave-shock-skew) * -1));background-position:8px 0}
+  23%{transform:translateY(calc(var(--wave-shock-max-shift) * -1)) scaleY(var(--wave-shock-max-scale)) skewX(var(--wave-shock-skew));background-position:-16px 0}
+  38%{transform:translateY(2px) scaleY(.84) skewX(calc(var(--wave-shock-skew) * -.5));background-position:5px 0}
+  49%{transform:translateY(var(--wave-shock-max-shift)) scaleY(1.62) skewX(var(--wave-shock-skew));background-position:19px 0}
+  63%{transform:translateX(2px) scaleY(.66) skewX(calc(var(--wave-shock-skew) * -1));background-position:-9px 0}
+  76%{transform:translateY(calc(var(--wave-shock-max-shift) * -1)) scaleY(2.02) skewX(var(--wave-shock-skew));background-position:27px 0}
+  88%{transform:translateX(var(--wave-shock-min-shift)) scaleY(.9) skewX(0);background-position:-4px 0}
+}
+@media (prefers-reduced-motion:reduce){.wave.on::before{animation:none}}
