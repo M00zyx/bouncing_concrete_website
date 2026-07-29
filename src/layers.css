@@ -371,3 +371,9 @@ footer{text-transform:uppercase;align-items:center}
   88%{transform:translate(calc(var(--wave-shock-x-offset) + var(--wave-shock-min-shift)),0) scaleY(.9) skewX(0);background-position:-4px 0}
 }
 @media (prefers-reduced-motion:reduce){.wave.on .wave-shock{animation:none!important}}
+
+/* Retire pre-layered waveform effects. The active visuals are now the explicit
+   .wave-shock and .wave-dilation children above; keeping this override here
+   avoids reviving legacy scans or parent transforms through the CSS cascade. */
+.wave::after{content:none!important;display:none!important;animation:none!important}
+.wave.on{animation:none!important;transform:none!important}
