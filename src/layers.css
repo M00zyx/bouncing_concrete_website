@@ -314,35 +314,9 @@ footer{text-transform:uppercase;align-items:center}
 @media (max-width:700px){.release{--music-section-min-height:auto;--music-slit-height:130px;--music-slit-to-player-gap:36px;--music-control-size:52px;--music-side-rail:118px;--music-rail-gap:14px}.release-player .wave-hitbox{width:100%;height:70px;min-height:70px;flex-basis:70px}.release-player .player-rail{grid-template-columns:1fr auto;grid-template-areas:"copy copy" "actions skip"}.release-player .track-copy{grid-area:copy;min-height:0}.release-player .player-actions{grid-area:actions}.release-player .track-skip{grid-area:skip}.release-player .track-copy h2{font-size:clamp(48px,14vw,80px)}}
 @media (prefers-reduced-motion:reduce){.wave.on{animation:none!important}}
 
-/* Original seismograph playback restored. This deliberately supersedes the
-   later whole-strip "jolt" experiments: the moving yellow scan is the approved
-   player motion, while the clipped white trace remains visually unchanged. */
-.release{
-  --wave-scan-duration:7.2s;
-  --wave-scan-start:-115%;
-  --wave-scan-end:115%;
-  --wave-scan-color:var(--yellow);
-  --wave-scan-solid-stop:18%;
-  --wave-scan-fade-stop:38%;
-}
-.wave{animation:none!important;transform:none!important}
-.wave.on{animation:none!important;transform:none!important}
-.wave::after{
-  inset:0!important;
-  width:auto!important;
-  height:auto!important;
-  background:linear-gradient(90deg,var(--wave-scan-color) 0 var(--wave-scan-solid-stop),transparent var(--wave-scan-fade-stop) 100%)!important;
-  clip-path:inherit!important;
-  transform:translateX(var(--wave-scan-start));
-  transition:none!important;
-  animation:none!important;
-}
-.wave.on::after{animation:seismograph-scan-restore var(--wave-scan-duration) linear infinite!important}
-@keyframes seismograph-scan-restore{to{transform:translateX(var(--wave-scan-end))}}
-@media (prefers-reduced-motion:reduce){.wave.on::after{animation:none!important;transform:translateX(0)!important}}
-
-/* White seismic trace: a separate layer so its shocks never alter the yellow
-   playback scan or the invisible range input used for precise seeking. */
+/* White seismic trace: the static baseline is deliberately separate from its
+   pointer-led pressure field, so visual experiments never alter the range
+   input or SoundCloud seek path. */
 .release{
   --wave-shock-duration:.68s;
   --wave-shock-min-scale:.72;
@@ -350,22 +324,46 @@ footer{text-transform:uppercase;align-items:center}
   --wave-shock-min-shift:-3px;
   --wave-shock-max-shift:6px;
   --wave-shock-skew:10deg;
+  --wave-dilation-width:18%;
+  --wave-dilation-scale:1.62;
+  --wave-dilation-shift:-4px;
+  --wave-dilation-duration:.34s;
   --wave-trace-path:polygon(0 50%,2% 42%,4% 66%,6% 32%,8% 55%,10% 16%,12% 76%,14% 40%,16% 62%,18% 9%,20% 82%,23% 38%,26% 66%,29% 18%,32% 88%,35% 42%,38% 72%,41% 24%,44% 91%,47% 36%,50% 65%,53% 12%,56% 84%,59% 31%,62% 73%,65% 18%,68% 89%,71% 40%,74% 64%,77% 9%,80% 84%,83% 34%,86% 71%,89% 22%,92% 88%,95% 39%,98% 65%,100% 48%);
 }
 .release-player .wave-hitbox{overflow:hidden}
-.wave{background:none!important;clip-path:none!important;isolation:isolate}
+.wave{background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px)!important;clip-path:var(--wave-trace-path)!important;isolation:isolate}
 .wave::before{
   content:'';
   position:absolute;
   z-index:1;
   inset:0;
-  background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px);
+  background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px);
   clip-path:var(--wave-trace-path);
-  transform-origin:center;
-  will-change:transform,background-position;
+  transform:translateY(var(--wave-dilation-shift)) scaleY(var(--wave-dilation-scale));
+  transform-origin:50% 50%;
+  mask-image:radial-gradient(ellipse var(--wave-dilation-width) 95% at var(--wave-focus-x,50%) 50%,#000 0 34%,rgba(0,0,0,.82) 52%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse var(--wave-dilation-width) 95% at var(--wave-focus-x,50%) 50%,#000 0 34%,rgba(0,0,0,.82) 52%,transparent 100%);
+  opacity:0;
+  transition:opacity var(--wave-dilation-duration) ease,transform var(--wave-dilation-duration) cubic-bezier(.22,.8,.22,1);
+  will-change:transform,background-position,opacity;
 }
-.wave::after{z-index:2!important;clip-path:var(--wave-trace-path)!important}
-.wave.on::before{animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite}
+.wave::after{
+  content:''!important;
+  position:absolute!important;
+  z-index:0!important;
+  inset:0!important;
+  width:auto!important;
+  height:auto!important;
+  display:block!important;
+  background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(255,255,250,.68) 4px 6px,transparent 6px 11px)!important;
+  clip-path:var(--wave-trace-path)!important;
+  transform-origin:center!important;
+  opacity:0!important;
+  transition:none!important;
+}
+.wave.is-focused::before{opacity:1}
+.wave.on::after{opacity:1!important;animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite!important}
+.wave.on.is-focused::before{animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite}
 @keyframes seismograph-shock{
   0%,8%,100%{transform:translate(0,0) scaleY(1) skewX(0);background-position:0 0}
   15%{transform:translateX(var(--wave-shock-min-shift)) scaleY(var(--wave-shock-min-scale)) skewX(calc(var(--wave-shock-skew) * -1));background-position:8px 0}
@@ -376,4 +374,4 @@ footer{text-transform:uppercase;align-items:center}
   76%{transform:translateY(calc(var(--wave-shock-max-shift) * -1)) scaleY(2.02) skewX(var(--wave-shock-skew));background-position:27px 0}
   88%{transform:translateX(var(--wave-shock-min-shift)) scaleY(.9) skewX(0);background-position:-4px 0}
 }
-@media (prefers-reduced-motion:reduce){.wave.on::before{animation:none}}
+@media (prefers-reduced-motion:reduce){.wave.on::before,.wave.on::after{animation:none!important}}
