@@ -1,309 +1,49 @@
-.poster{--px:0;--py:0;width:min(75vw,780px);height:min(90vh,760px);background:#1736df url('/assets/poster-grit.png') center/cover;isolation:isolate}.poster-wordmark{position:absolute;top:7%;left:5%;width:90%;z-index:1;filter:drop-shadow(0 6px 0 rgba(0,0,0,.18))}.poster-ornament{position:absolute;z-index:2;pointer-events:none;filter:drop-shadow(7px 9px 6px rgba(0,0,0,.5));transition:transform .16s ease-out}.poster-ornament.face{width:18%;top:8%;left:16%;transform:translate(calc(var(--px)*-22px),calc(var(--py)*-22px)) rotate(-10deg)}.poster-ornament.flower{width:11%;top:39%;left:44%;transform:translate(calc(var(--px)*-15px),calc(var(--py)*-15px)) rotate(4deg)}.poster-ornament.checker{width:13%;right:20%;top:51%;transform:translate(calc(var(--px)*-12px),calc(var(--py)*-12px)) rotate(9deg)}.poster-ornament.cross{width:13%;right:18%;bottom:17%;transform:translate(calc(var(--px)*-25px),calc(var(--py)*-25px)) rotate(13deg)}.poster-symbol{position:absolute;z-index:3;width:5%;top:6%;pointer-events:none;filter:drop-shadow(3px 4px 3px rgba(0,0,0,.38));transition:transform .16s ease-out}.poster-symbol.globe{right:10%;transform:translate(calc(var(--px)*-27px),calc(var(--py)*-27px))}.poster-symbol.grid{right:4%;transform:translate(calc(var(--px)*-18px),calc(var(--py)*-18px))}.poster>p{position:absolute;z-index:3;left:4.5vw;top:5%;margin:0;font-size:10px;letter-spacing:.08em;max-width:180px;line-height:1.45}.construction-mark-raster{position:absolute;z-index:3;bottom:9%;left:4.5vw;width:176px;height:auto;filter:drop-shadow(2px 3px 2px rgba(0,0,0,.45))}.poster-bits{display:none}.poster .poster-arrow{position:absolute;z-index:3;bottom:4%;top:auto;left:50%;margin:0;transform:translateX(-50%);font-size:24px;color:#d7d7d0}.video-ornaments b{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.09em;line-height:1.45;color:var(--yellow)}.object-stage{position:relative;background:radial-gradient(ellipse at 50% 58%,rgba(255,217,0,.22),rgba(19,19,18,.06) 44%,transparent 72%);cursor:crosshair}.object-stage::after{content:'SIGNAL OBJECT — MOVE POINTER';position:absolute;left:18px;bottom:18px;font-size:9px;letter-spacing:.11em;color:#ffd900;pointer-events:none}.player button{width:43px;height:43px;font-size:14px}.player button:nth-last-child(1){background:transparent;border:1px solid #777;color:var(--paper)}
-.about{display:grid;grid-template-columns:1.25fr 1fr 1.05fr auto;align-items:center;gap:28px;padding-block:70px;border-bottom:1px solid #383838}.about .eyebrow{color:var(--yellow);margin:0 0 14px}.about h2{font-size:clamp(36px,5vw,80px);margin:0;line-height:.82}.about>p{font-size:13px;line-height:1.65;margin:0;max-width:260px}.about-signal{height:126px;overflow:hidden;background:linear-gradient(90deg,#cfcfc8 0 34%,var(--blue) 34% 66%,#141414 66%);display:flex;align-items:center;justify-content:center}.about-signal img{width:210px;max-width:92%;filter:drop-shadow(2px 3px 2px #0008)}.shows{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:70px;padding-top:55px;padding-bottom:60px}.show-list .eyebrow{color:var(--yellow)}.view-shows{display:inline-block;margin-top:20px;font-size:11px;color:var(--paper)}.next-event{border:1px solid #525252;padding:17px;align-self:start}.next-event .eyebrow{color:var(--yellow);margin:0 0 8px}.next-event h3{font-family:Anton,sans-serif;font-size:27px;line-height:.85;margin:0 0 8px}.next-event>p{font-size:10px;margin:0 0 12px}.next-event>div{height:105px;background:var(--blue);position:relative;overflow:hidden}.next-event>div img:first-child{position:absolute;width:75px;left:12px;bottom:4px;filter:drop-shadow(3px 4px 2px #0008)}.next-event>div img:last-child{position:absolute;width:68px;right:8px;top:12px}.next-event small{display:block;margin-top:15px;font-size:10px}.shows+footer{border-top:1px solid #383838;border-bottom:25px repeating-linear-gradient(135deg,var(--yellow) 0 18px,#151515 18px 36px)}@media(max-width:700px){.poster{width:91vw;height:74vh}.poster-wordmark{left:8%;width:84%;top:16%}.poster-symbol{width:9%}.construction-mark-raster{width:130px}.about,.shows{display:block}.about>p{margin:22px 0}.about-signal{margin:18px 0}.next-event{margin-top:35px}}
+/* BOUNCING CONCRETE — final visual layers
+   This file deliberately contains one source of truth per component. Base
+   primitives remain in styles.css; all site-specific composition is here. */
 
-/* Reference-tight material pass */
-.poster-wordmark{left:.5%;top:5%;width:99%;filter:drop-shadow(0 5px 0 rgba(0,0,0,.16))}.poster-symbol{width:7%;top:5%;transition:none}.poster-symbol.globe{right:10%;transform:none}.poster-symbol.grid{right:3%;transform:none}.release,.about,.shows{background-color:#121313;background-image:linear-gradient(rgba(16,17,17,.88),rgba(16,17,17,.88)),url('/assets/dark-grit.png');background-size:auto,680px 680px;background-position:center}.about-label>img{display:block;width:min(290px,100%);height:auto;filter:drop-shadow(0 3px 0 rgba(0,0,0,.22))}.about h2{display:none}.about-signal{background:linear-gradient(90deg,#bebeba 0 34%,#1939d7 34% 66%,#171717 66%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}.next-event>div{background:#1939d7 url('/assets/poster-grit.png') center/cover}.shows+footer{background:#121313 url('/assets/dark-grit.png') center/680px 680px}
-.soundcloud-engine.is-hidden{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;clip-path:inset(50%)}.soundcloud-engine.is-visible{display:block;width:100%;height:86px;border:0;margin-top:13px;filter:grayscale(1) contrast(1.12)}
-.poster{width:min(72vw,760px);height:min(78vh,640px);top:54%}.poster-wordmark{top:10%;left:3%;width:94%}.poster>p{top:7%;left:5%;font-size:9px}.poster-symbol{top:7%;width:5.8%;filter:none;transition:none}.poster-symbol.globe{right:11%;transform:none}.poster-symbol.grid{right:4%;transform:none}.poster-index{position:absolute;z-index:3;left:5%;bottom:10%;width:210px;height:54px;opacity:.85;display:flex;align-items:center}.poster-index img{width:100%;height:100%;object-fit:fill;filter:drop-shadow(1px 2px 1px rgba(0,0,0,.3))}.poster-index b{position:absolute;right:17px;font-size:31px;font-weight:400;color:#d7d7d0;line-height:1}.poster-coordinates{position:absolute!important;z-index:3;right:5%;left:auto;bottom:11%;font-size:10px!important;letter-spacing:.12em;line-height:1.45;text-align:right;color:#d7d7d0;opacity:.85}.poster .poster-arrow{bottom:4%;font-size:22px}.object-stage::after{content:none}.about{grid-template-columns:1.2fr 1fr 1.05fr;min-height:255px}.about>p{opacity:.7;text-transform:capitalize}.eyebrow,.about .eyebrow,.show-list .eyebrow{font-size:11px;letter-spacing:.11em}.track-description{font-size:12px;line-height:1.55;max-width:400px;margin:20px 0 7px;color:rgba(215,215,208,.78)}.track-facts{font-size:10px;letter-spacing:.08em;color:rgba(215,215,208,.54);margin:0 0 22px;text-transform:uppercase}.player{gap:14px}.player .play-button{background:var(--yellow);border:0;color:#111}.track-skip{display:flex;gap:7px}.track-skip button{width:35px;height:35px;background:transparent;border:1px solid #777;color:var(--paper);font-size:11px}
-.release{background-color:#171715;background-image:linear-gradient(90deg,rgba(15,16,15,.5),rgba(15,16,15,.05) 60%),url('/assets/concrete-stage.png');background-size:cover;background-position:center}.object-stage{background:transparent}
-.wave{position:relative;overflow:hidden;background:repeating-linear-gradient(90deg,transparent 0 5px,#d7d7d0 5px 7px,transparent 7px 12px);mask-image:none;clip-path:polygon(0 47%,4% 43%,8% 63%,12% 34%,16% 51%,21% 18%,26% 64%,31% 40%,36% 55%,41% 26%,46% 73%,51% 44%,56% 59%,61% 17%,66% 64%,71% 36%,76% 55%,81% 27%,86% 68%,91% 40%,96% 56%,100% 48%)}.wave::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--yellow) 0 18%,transparent 38% 100%);transform:translateX(-115%)}.wave.on::after{animation:seismograph-scan 1.2s linear infinite}.wave.on{animation:none}@keyframes seismograph-scan{to{transform:translateX(115%)}}.play-button{transition:transform .13s ease,box-shadow .13s ease}.play-button:active{transform:scale(.84) rotate(-7deg);box-shadow:0 0 0 7px rgba(255,217,0,.18)}.play-button.is-playing{animation:play-thump .75s ease-in-out infinite alternate}@keyframes play-thump{to{transform:scale(1.08);box-shadow:0 0 0 5px rgba(255,217,0,.12)}}
-.release h2{text-transform:uppercase;opacity:.84}.eyebrow{color:var(--yellow);opacity:.8}.meta,.track-description,.track-facts,.release small,.about>p,.show span,.next-event>p,.next-event small,footer{opacity:.72}.show b{color:var(--yellow);opacity:.88}.show button i,.view-shows i,.next-event small i{color:var(--yellow);font-style:normal;opacity:.95}.show button{opacity:.78}.show button:hover{opacity:1}.about-label>img{opacity:.88}.poster-coordinates,.poster-index{opacity:.78}
-.poster-index{width:224px;height:51px}.poster-index b{right:22px;font-size:29px}.about{grid-template-columns:minmax(230px,.95fr) minmax(280px,1.25fr) minmax(190px,.8fr);gap:40px}.about>p{font-family:Anton,Impact,sans-serif;font-size:clamp(31px,3.15vw,54px);line-height:.93;letter-spacing:.01em;max-width:430px;text-transform:uppercase;opacity:.72}.about-label>img{width:min(330px,100%)}
-.poster-index{width:235px;height:67px;display:grid;grid-template-columns:1.28fr .88fr .58fr;gap:0;border:1px solid rgba(215,215,208,.68);padding:4px;opacity:.8}.poster-index .mark-glyph,.poster-index .mark-hatch{display:block;position:static;width:100%;height:100%;object-fit:cover;filter:contrast(.96) saturate(.9);border-right:1px solid rgba(215,215,208,.6)}.poster-index .mark-glyph{object-position:center}.poster-index .mark-hatch{object-position:center}.poster-index b{position:static;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:400;color:#d7d7d0;line-height:1;opacity:.82}.about{align-items:center}.about-label{align-self:center}.about-label>img{transform:translateY(7px)}
-.poster-index{width:242px;height:62px;grid-template-columns:1.18fr .82fr .52fr;padding:5px}.poster-index .mark-glyph,.poster-index .mark-hatch{object-fit:contain;filter:contrast(.92) saturate(.82);border-right:0}.poster-index .mark-glyph{padding:2px 6px}.poster-index .mark-hatch{padding:2px}.poster-index b{border-left:1px solid rgba(215,215,208,.6);font-size:30px}.about-label{position:relative;align-self:center}.about-label .eyebrow{position:absolute;left:0;top:-42px;margin:0}.about-label>img{transform:none}
-.poster-index{grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr) minmax(0,.52fr);overflow:hidden}.poster-index .mark-glyph,.poster-index .mark-hatch{min-width:0;min-height:0;max-width:100%;max-height:100%;overflow:hidden}.poster-index b{min-width:0}
-.poster-index{width:238px;height:58px;grid-template-columns:minmax(0,1.12fr) minmax(0,.82fr) minmax(0,.54fr);padding:0;gap:0;border-color:rgba(215,215,208,.58);background:rgba(14,33,133,.16)}.poster-index .mark-glyph,.poster-index .mark-hatch{width:100%;height:100%;max-width:none;max-height:none;padding:0;object-fit:cover;filter:contrast(.9) saturate(.8);border-right:1px solid rgba(215,215,208,.58)}.poster-index .mark-glyph{object-position:center}.poster-index .mark-hatch{object-position:center}.poster-index b{font-size:29px;border-left:0;justify-content:center;letter-spacing:-.05em}
-.poster-index{background:transparent}.poster-index .mark-glyph{object-fit:contain;object-position:center;filter:contrast(.96) brightness(.98);padding:2px 4px}.poster-index .mark-hatch{object-fit:cover;clip-path:inset(9%);transform:scale(1.22);filter:contrast(.92) brightness(.96);border-right:0}.poster-coordinates{bottom:calc(10% + 24px)}
-.poster-index .mark-glyph{transform:scaleY(-1)}
-.poster-symbol.globe{width:7.5%;right:10%;top:6%}.poster-checker{position:absolute;z-index:3;right:4.3%;top:6.5%;width:4.4%;aspect-ratio:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);background:linear-gradient(#d7d7d0 0 0) 0 0/31% 31% no-repeat,linear-gradient(#d7d7d0 0 0) 100% 0/31% 31% no-repeat,linear-gradient(#d7d7d0 0 0) 50% 50%/31% 31% no-repeat,linear-gradient(#d7d7d0 0 0) 0 100%/31% 31% no-repeat,linear-gradient(#d7d7d0 0 0) 100% 100%/31% 31% no-repeat;opacity:.88}.poster-ornament.cross{right:28%;bottom:23%}.poster-coordinates{bottom:calc(10% + 15px)}.poster .poster-arrow{bottom:5.5%}
-.poster-index{left:3%;bottom:15%}.poster-coordinates{right:3%;bottom:calc(15% + 12px)}.poster-symbol.globe{top:12%;right:10%}.poster-checker{top:12.5%;right:3%;width:4.8%}.poster-ornament.cross{bottom:26%}.poster .poster-arrow{bottom:6%}
-.poster-index{left:7%}.poster-coordinates{right:6.5%}.poster-checker{right:6.5%}.poster-symbol.globe{right:13.5%}
-.poster-index{border-width:1.5px}.poster-coordinates{bottom:calc(15% + 29px)}.poster-symbol.globe{top:8.5%}.poster-checker{top:9%}
-.poster-ornament.face{width:23%;top:7%;left:14%}.poster-ornament.flower{width:20%;top:36%;left:41.5%}.poster-ornament.checker{width:23%;right:13.5%;top:36%}.poster-ornament.cross{width:22%;right:13%;bottom:18%}
-.poster>p{top:auto;bottom:22%}
-.poster-ornament.face{transform:translate(calc(var(--px)*-22px),calc(var(--py)*-22px + var(--drop,0px))) rotate(-10deg)}.poster-ornament.flower{transform:translate(calc(var(--px)*-15px),calc(var(--py)*-15px + var(--drop,0px))) rotate(4deg)}.poster-ornament.checker{transform:translate(calc(var(--px)*-12px),calc(var(--py)*-12px + var(--drop,0px))) rotate(9deg)}.poster-ornament.cross{transform:translate(calc(var(--px)*-25px),calc(var(--py)*-25px + var(--drop,0px))) rotate(13deg)}
-.poster-index b{font-size:46px;line-height:.9}
-.poster-index{padding:0;grid-template-columns:minmax(0,1.12fr) minmax(0,.82fr) minmax(0,.54fr)}
-.poster-index .mark-glyph{padding:0}
-.poster-index b{font-family:Arial,Helvetica,sans-serif;font-weight:400;font-size:40px;letter-spacing:-.08em;padding:0;justify-content:center}
-.poster-ornament.flower{width:20%;top:36%;left:41.5%}
-.about-signal{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#ffd900 0 13px,#171717 13px 26px) right/34% 100% no-repeat,linear-gradient(90deg,#c7c7c0 0 33%,#1939d7 33% 66%,#171717 66% 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
-.signal-eye{position:absolute;width:31px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 34% 31%,#222 0 8%,#090909 44%,#000 73%);box-shadow:inset 5px 5px 7px rgba(255,255,255,.12),inset -5px -4px 8px #000,4px 6px 7px rgba(0,0,0,.42)}
-.about-signal .signal-eye{left:15%;top:50%;transform:translate(-50%,-50%)}
-.next-event>div.event-signal{height:105px;position:relative;overflow:hidden;background:linear-gradient(90deg,#c7c7c0 0 50%,#1939d7 50% 100%)}
-.event-signal .signal-eye{width:29px;left:25%;top:50%;transform:translate(-50%,-50%)}
-.next-event>div.event-signal img{position:absolute;width:74px;max-width:none;left:75%;right:auto;top:50%;bottom:auto;transform:translate(-50%,-50%);filter:drop-shadow(4px 5px 3px #0009)}
-.about-signal::after,.event-signal::after{content:'';position:absolute;inset:0;background:url('/assets/poster-grit.png') center/cover;mix-blend-mode:multiply;opacity:.42;pointer-events:none}
-.signal-eye{z-index:2;background:#101110;box-shadow:inset 1px 1px 0 rgba(255,255,255,.08),2px 3px 3px rgba(0,0,0,.45)}
-.next-event>div.event-signal img{z-index:2}
-.event-signal .signal-eye{width:18px}
-.about-signal{background-image:url('/assets/poster-grit.png'),repeating-linear-gradient(135deg,#ffd900 0 13px,#171717 13px 26px),linear-gradient(90deg,#c7c7c0 0 33%,#1939d7 33% 66%,#171717 66% 100%);background-size:cover,34% 100%,100% 100%;background-position:center,right,center;background-repeat:no-repeat;background-blend-mode:soft-light,normal,normal}
-.next-event>div.event-signal{background-image:url('/assets/poster-grit.png'),linear-gradient(90deg,#c7c7c0 0 50%,#1939d7 50% 100%);background-size:cover,100% 100%;background-position:center;background-blend-mode:soft-light,normal}
-.about-signal::after,.event-signal::after{background:url('/assets/dark-grit.png') center/360px 360px;mix-blend-mode:overlay;opacity:.8}
-.signal-eye{background:#0d0e0d url('/assets/dark-grit.png') center/70px 70px;background-blend-mode:screen;box-shadow:inset 1px 1px 0 rgba(255,255,255,.05),2px 3px 3px rgba(0,0,0,.45)}
-.about-signal{background-image:repeating-linear-gradient(135deg,#ffd900 0 13px,#171717 13px 26px),url('/assets/concrete-grit-panel.png');background-size:34% 100%,cover;background-position:right,center;background-repeat:no-repeat;background-blend-mode:normal,normal}
-.next-event>div.event-signal{background:url('/assets/concrete-grit-panel.png') center/cover}
-.about-signal::after,.event-signal::after{background:url('/assets/poster-grit.png') center/cover;mix-blend-mode:multiply;opacity:.22}
-.about-signal{background-color:#1736df;background-image:repeating-linear-gradient(135deg,#ffd900 0 13px,#171717 13px 26px),url('/assets/concrete-grit-panel.png'),url('/assets/poster-grit.png');background-size:34% 100%,33% 100%,cover;background-position:right,left,center;background-repeat:no-repeat}
-.next-event>div.event-signal{background-color:#1736df;background-image:url('/assets/concrete-grit-panel.png'),url('/assets/poster-grit.png');background-size:50% 100%,cover;background-position:left,center;background-repeat:no-repeat}
-.about-signal::after,.event-signal::after{opacity:.4}
-.next-event>div.event-signal{background-blend-mode:normal,normal}
-.about-signal::after{left:33%;right:0}
-.event-signal::after{left:50%;right:0}
-.signal-eye{background:none!important;box-shadow:none!important;filter:none;clip-path:circle(30% at 50% 50%)}
-.about-signal img.signal-eye{width:48px;height:48px}
-.next-event>div.event-signal img.signal-eye{width:40px;height:40px;left:25%;top:50%;transform:translate(-50%,-50%);filter:none}
-.event-links{position:static;z-index:auto;width:auto;padding:0;display:flex;justify-content:flex-start;gap:16px;margin-top:12px;font-size:10px;letter-spacing:.08em}.event-links a{color:var(--paper);opacity:.72;text-decoration:none}.event-links a:hover{opacity:1}.event-links i{color:var(--yellow);font-style:normal;opacity:.95}
-footer{text-transform:uppercase;align-items:center}
-.footer-location{position:relative;display:inline-block;white-space:nowrap;line-height:1;flex-shrink:0;padding-right:61px}.footer-location img{position:absolute;right:0;top:50%;width:48px;height:48px;object-fit:contain;opacity:.8;transform:translateY(-50%)}
-
-/* Keep the transport buttons optically identical, including their flex footprint. */
-.track-skip{align-items:center}.player .play-button,.track-skip button{width:52px;height:52px;min-width:52px;flex:0 0 52px;padding:0;display:grid;place-items:center;line-height:1;font-size:16px}
-.release>div>small{display:none}
-.wave{cursor:ew-resize;touch-action:none}.wave::after{inset:0 auto 0 0;width:var(--track-progress,0%);transform:none;transition:width .12s linear}.wave.on::after{animation:none}
-.wave-hitbox{height:55px;flex:1;min-width:0;position:relative;cursor:ew-resize;touch-action:none;display:flex;align-items:stretch}.wave-hitbox .wave{width:100%;height:100%;flex:none;pointer-events:none}.wave-scrubber{appearance:none;position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
-
-/* Construction mark shares the chequer's 36px visual stamp height at the poster's desktop scale. */
-.poster-index{width:148px;height:36px}
-.poster-index b{font-size:19px;transform:translateY(-1px)}
-.poster-index{bottom:7%}
-.player-links{margin-top:-2px;margin-bottom:20px}
-
-/* Uneven seismic shocks rather than a smooth equalizer pulse. */
-.wave.on{animation:seismic-jolt .74s steps(1,end) infinite;transform-origin:center}
-@keyframes seismic-jolt{
-  0%,8%,100%{transform:translate(0,0) scaleY(1);background-position:0 0}
-  12%{transform:translate(-1px,1px) scaleY(.78) skewX(-2deg);background-position:7px 0}
-  16%{transform:translate(2px,-4px) scaleY(1.46) skewX(3deg);background-position:-13px 0}
-  21%,31%{transform:translate(0,0) scaleY(.92);background-position:3px 0}
-  36%{transform:translate(-3px,3px) scaleY(.62) skewX(-4deg);background-position:16px 0}
-  40%{transform:translate(2px,-6px) scaleY(1.72) skewX(5deg);background-position:-21px 0}
-  44%{transform:translate(-1px,2px) scaleY(.84);background-position:9px 0}
-  52%,67%{transform:translate(0,0) scaleY(1.02);background-position:0 0}
-  70%{transform:translate(1px,-2px) scaleY(1.24) skewX(-2deg);background-position:-8px 0}
-  74%{transform:translate(-4px,5px) scaleY(.54) skewX(4deg);background-position:19px 0}
-  78%{transform:translate(3px,-7px) scaleY(1.88) skewX(-5deg);background-position:-27px 0}
-  84%{transform:translate(-1px,1px) scaleY(.9);background-position:5px 0}
+/* Poster */
+.poster{
+  --px:0;
+  --py:0;
+  width:min(72vw,760px);
+  height:min(78vh,640px);
+  top:54%;
+  padding:0;
+  background:#1736df url('/assets/poster-grit.png') center/cover;
+  isolation:isolate;
 }
-@media (prefers-reduced-motion:reduce){.wave.on{animation:none}}
+.poster-wordmark{position:absolute;z-index:1;top:10%;left:3%;width:94%;filter:drop-shadow(0 5px 0 rgba(0,0,0,.16))}
+.poster-ornament{position:absolute;z-index:2;pointer-events:none;filter:drop-shadow(7px 9px 6px rgba(0,0,0,.5));transition:transform .16s ease-out}
+.poster-ornament.face{width:23%;top:7%;left:14%;transform:translate(calc(var(--px) * -22px),calc(var(--py) * -22px + var(--drop,0px))) rotate(-10deg)}
+.poster-ornament.flower{width:20%;top:36%;left:41.5%;transform:translate(calc(var(--px) * -15px),calc(var(--py) * -15px + var(--drop,0px))) rotate(4deg)}
+.poster-ornament.checker{width:23%;right:13.5%;top:36%;transform:translate(calc(var(--px) * -12px),calc(var(--py) * -12px + var(--drop,0px))) rotate(9deg)}
+.poster-ornament.cross{width:22%;right:13%;bottom:18%;transform:translate(calc(var(--px) * -25px),calc(var(--py) * -25px + var(--drop,0px))) rotate(13deg)}
+.poster-symbol{position:absolute;z-index:3;pointer-events:none}
+.poster-symbol.globe{top:8.5%;right:13.5%;width:7.5%}
+.poster-checker{position:absolute;z-index:3;top:9%;right:6.5%;width:4.8%;aspect-ratio:1;background:linear-gradient(#d7d7d0 0 0) 0 0/31% 31% no-repeat,linear-gradient(#d7d7d0 0 0) 100% 0/31% 31% no-repeat,linear-gradient(#d7d7d0 0 0) 50% 50%/31% 31% no-repeat,linear-gradient(#d7d7d0 0 0) 0 100%/31% 31% no-repeat,linear-gradient(#d7d7d0 0 0) 100% 100%/31% 31% no-repeat;opacity:.88}
+.poster>p{position:absolute;z-index:3;left:4.5vw;bottom:22%;margin:0;font-size:9px;line-height:1.45;letter-spacing:.08em}
+.poster-index{position:absolute;z-index:3;left:7%;bottom:15%;display:grid;width:238px;height:58px;grid-template-columns:minmax(0,1.12fr) minmax(0,.82fr) minmax(0,.54fr);gap:0;overflow:hidden;border:1.5px solid rgba(215,215,208,.58);background:transparent;opacity:.8}
+.poster-index .mark-glyph,.poster-index .mark-hatch{display:block;width:100%;height:100%;min-width:0;min-height:0;object-position:center;filter:contrast(.96) brightness(.98)}
+.poster-index .mark-glyph{object-fit:contain;padding:0;transform:scaleY(-1)}
+.poster-index .mark-hatch{object-fit:cover;clip-path:inset(9%);transform:scale(1.22);filter:contrast(.92) brightness(.96)}
+.poster-index b{display:flex;align-items:center;justify-content:center;min-width:0;font-family:Arial,Helvetica,sans-serif;font-size:40px;font-weight:400;line-height:.9;letter-spacing:-.08em;color:#d7d7d0;opacity:.82}
+.poster-coordinates{position:absolute!important;z-index:3;right:6.5%;bottom:calc(15% + 29px);left:auto;font-size:10px!important;line-height:1.45;letter-spacing:.12em;text-align:right;color:#d7d7d0;opacity:.85}
+.poster .poster-arrow{position:absolute;z-index:3;bottom:6%;left:50%;margin:0;transform:translateX(-50%);font-size:22px;color:#d7d7d0}
+.video-ornaments b{font-family:'DM Mono',monospace;font-size:10px;line-height:1.45;letter-spacing:.09em;color:var(--yellow)}
 
-/* A genuine wide-screen composition: the original caps were designed for a
-   compact preview and left the live desktop view visually under-scaled. */
-@media (min-width:700px){
-  nav{padding:36px 6vw;font-size:13px}nav div{gap:38px}.brand{font-size:27px}
-  .poster{width:min(84vw,1280px);height:min(86vh,960px);top:52%}
-  .poster-wordmark{top:8%;left:3%;width:94%}
-  .poster-symbol.globe{width:6.8%}.poster-checker{width:4.2%}
-  .poster-index{width:clamp(150px,16vw,220px);height:auto;aspect-ratio:4.15/1;left:7%;bottom:8%;opacity:.88}.poster-index b{font-size:clamp(21px,2.5vw,30px)}
-  .poster-coordinates{right:7%;bottom:calc(8% + 10px);font-size:12px!important;opacity:.9}.poster .poster-arrow{bottom:3.4%;font-size:27px}
-  .poster-ornament.face{width:20%;top:7%;left:14%}.poster-ornament.flower{width:14%;top:40%;left:43%}.poster-ornament.checker{width:17%;right:15%;top:42%}.poster-ornament.cross{width:18%;right:13%;bottom:11%}
-
-  .release{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:4vw;min-height:820px;padding:clamp(115px,10vw,190px) 7vw}
-  .release h2{font-size:clamp(78px,7vw,148px)}.track-description{max-width:560px;font-size:15px;margin-top:28px}.meta{font-size:14px}
-  .player{gap:18px;margin-top:38px}.wave-hitbox{height:68px}.player .play-button,.track-skip button{width:64px;height:64px;min-width:64px;flex-basis:64px}.track-skip{gap:9px}.player-links{font-size:12px;margin-top:6px}
-  .object-stage{height:min(48vw,720px)}
-
-  .about{grid-template-columns:minmax(0,.95fr) minmax(0,1.35fr) minmax(0,.9fr);gap:4vw;min-height:470px;padding:clamp(110px,9vw,165px) 7vw}.about-label>img{width:min(440px,100%)}.about>p{max-width:590px;font-size:clamp(42px,3.5vw,68px)}.about-signal{height:180px}
-
-  .shows{grid-template-columns:minmax(0,1fr) minmax(260px,.72fr);gap:4vw;min-height:570px;padding:clamp(100px,8vw,150px) 7vw}.show{grid-template-columns:82px minmax(0,.9fr) minmax(0,1fr) 95px;column-gap:14px;padding:22px 0;font-size:13px}.show span{min-width:0}.show span:first-of-type{padding-right:9px}.show button{padding:14px 9px}.show-list .eyebrow,.next-event .eyebrow{font-size:14px}.view-shows{font-size:13px;margin-top:28px}.next-event{padding:28px}.next-event h3{font-size:42px}.next-event>p{font-size:13px}.next-event>div.event-signal{height:158px}.event-links{font-size:13px;gap:24px;margin-top:18px}
-
-  footer{padding:40px 7vw;font-size:12px;gap:40px}.footer-location{padding-right:76px}.footer-location img{width:61px;height:61px}
-}
-
-/* Wide-screen correction: keep the whole poster inside the film frame, then
-   give the release, band statement and show information equal visual weight. */
-@media (min-width:700px){
-  .video-ornaments b{font-size:clamp(16px,1.4vw,24px)}
-  .poster{
-    width:min(72vw,760px);
-    height:min(68vh,620px);
-    max-width:none;
-    aspect-ratio:auto;
-    top:50%;
-  }
-  .poster-wordmark{top:11%;left:5%;width:90%}
-  .poster-index{--corner-inset:clamp(26px,3vw,48px);left:var(--corner-inset);bottom:var(--corner-inset);width:auto;height:min(3vw,32px);aspect-ratio:4.15 / 1;align-items:center}
-  .poster-index .mark-glyph,.poster-index .mark-hatch{align-self:center}
-  .poster-index b{align-self:center;transform:none}
-  .poster-coordinates{right:8.5%;bottom:calc(8% + 18px)}
-  .poster .poster-arrow{bottom:3.2%}
-  .poster-symbol.globe,.poster-checker{top:8.5%}
-  .poster-ornament.face{width:21%;top:7%;left:14%}
-  .poster-ornament.flower{width:16%;top:40%;left:42%}
-  .poster-ornament.checker{width:19%;right:14%;top:42%}
-  .poster-ornament.cross{width:19%;right:13%;bottom:13%}
-
-  .release{min-height:clamp(760px,78vh,980px);padding:clamp(100px,8vw,155px) 8vw;gap:5vw}
-  .release .eyebrow{font-size:18px}
-  .release h2{font-size:clamp(92px,8.2vw,166px)}
-  .object-stage{height:min(51vw,760px)}
-
-  .about{min-height:clamp(500px,52vh,650px);padding:clamp(100px,8vw,145px) 8vw;gap:5vw}
-  .about-label>img{width:min(500px,100%)}
-  .about>p{font-size:clamp(56px,3.5vw,72px);line-height:.89;max-width:720px}
-  .about-signal{height:clamp(190px,17vw,260px)}
-
-  .shows{min-height:clamp(610px,60vh,760px);padding:clamp(95px,7.5vw,135px) 8vw;gap:5vw}
-  .show{grid-template-columns:98px minmax(145px,.9fr) minmax(0,1fr) 124px;align-items:center;font-size:17px;padding:28px 0}
-  .show b,.show span{line-height:1}
-  .show button{display:inline-flex;align-items:center;justify-content:center;gap:.45em;line-height:1}
-  .about .eyebrow,.show-list .eyebrow,.next-event .eyebrow{font-size:18px}
-  .view-shows{font-size:16px;margin-top:34px}
-  .next-event{padding:36px}.next-event h3{font-size:58px}.next-event>p{font-size:16px}.next-event>div.event-signal{height:190px}.event-links{font-size:15px}
-  footer{padding:52px 8vw;font-size:15px}
-}
-
-/* V2 player: a horizontal aperture turns the concrete object into a watchful
-   presence. The controls below become the point that draws its gaze. */
-.release{display:flex;flex-direction:column;align-items:center;gap:0;padding:clamp(74px,8vw,148px) 5vw;background:#111 url('/assets/dark-grit.png') center/680px 680px}
-.eye-slit-stage{order:0;width:100vw;height:clamp(170px,18vw,310px);margin:0 calc(50% - 50vw) clamp(56px,6vw,110px);cursor:none;overflow:hidden;background:url('/assets/concrete-stage.png') center/cover;isolation:isolate}
-.eye-slit-stage::before{content:'';position:absolute;z-index:2;inset:0;pointer-events:none;background:#111 url('/assets/dark-grit.png') center/680px 680px;mask-image:linear-gradient(to bottom,#000 0 18%,transparent 18% 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0 18%,transparent 18% 100%)}
-.eye-slit-stage canvas{position:relative;z-index:1;display:block;width:100%!important;height:100%!important}
-.release-player{order:1;width:min(100%,1240px);text-align:center;display:flex;flex-direction:column;align-items:center}.release-player .eyebrow{margin:0 0 18px}.release-player h2{margin:0;max-width:100%}.release-player .track-description{max-width:680px;margin:24px auto 10px}.release-player .player{width:min(100%,1120px);margin:0 auto 42px}.release-player .player-links{align-self:flex-start;margin:13px 0 0}.release-player .soundcloud-engine{width:min(100%,1120px)}
-@media (min-width:700px){.release{min-height:clamp(760px,82vh,1050px)}.eye-slit-stage{height:clamp(360px,38vw,660px);margin-bottom:clamp(65px,7vw,130px)}.release-player h2{font-size:clamp(92px,8.2vw,166px)}.release-player .track-description{font-size:16px}.release-player .player{gap:20px}.release-player .wave-hitbox{height:74px}}
-@media (max-width:700px){.eye-slit-stage{height:130px;margin-bottom:48px}.release-player .player{width:100%}.release-player .player-links{align-self:flex-start}.release-player h2{font-size:clamp(56px,16vw,92px)}}
-
-/* Reserve a complete transport row: title length must never reflow into controls. */
-.release-player .transport{width:min(100%,1120px);display:flex;flex-direction:column;align-items:stretch;flex:none;margin:0 0 clamp(38px,4vw,66px)}
-.release-player .transport .player{width:100%;margin:0}
-.release-player .transport .player-links{position:relative;z-index:3;align-self:flex-start;margin:15px 0 0;min-height:1em;display:flex;gap:22px}
-.release-player .track-copy{width:100%;min-width:0;display:flex;flex-direction:column;align-items:center;flex:none}
-.release-player .track-copy h2{max-inline-size:100%;overflow-wrap:anywhere;text-wrap:balance}
-.release-player .track-copy .track-description{margin-bottom:10px}
-@media (max-width:700px){.release-player .transport .player-links{margin-top:13px}}
-
-/* Player refinement: keep the GLB prison fixed, but make the surrounding
-   composition denser. These shutters are intentionally independent so the
-   lower edge can be manually tuned without touching the model or camera. */
-.release{padding:clamp(36px,4.5vw,72px) 5vw clamp(74px,8vw,148px)}
-.eye-slit-stage{--slit-top-shutter:18%;--slit-bottom-shutter:0%;margin-bottom:clamp(28px,3vw,54px)}
-.eye-slit-stage::before{mask-image:linear-gradient(to bottom,#000 0 var(--slit-top-shutter),transparent var(--slit-top-shutter) calc(100% - var(--slit-bottom-shutter)),#000 calc(100% - var(--slit-bottom-shutter)) 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0 var(--slit-top-shutter),transparent var(--slit-top-shutter) calc(100% - var(--slit-bottom-shutter)),#000 calc(100% - var(--slit-bottom-shutter)) 100%)}
-.release-player .transport{margin-bottom:clamp(24px,2.6vw,42px)}
-.release-player .player{display:grid;grid-template-columns:64px 1fr auto;grid-template-areas:"wave wave wave" "play . skip";gap:16px 20px;align-items:center}
-.release-player .wave-hitbox{grid-area:wave;height:84px}
-.release-player .play-button{grid-area:play}
-.release-player .track-skip{grid-area:skip}
-.release-player .player .play-button,.release-player .track-skip button{width:64px;height:64px;min-width:64px;flex-basis:64px;font-size:20px}
-.release-player .player-links{margin-top:12px;margin-bottom:0}
-.release-player .track-copy .eyebrow{min-height:1.1em;margin:0 0 12px}
-
-/* The player’s mouth is a barbed seismograph, not a flat equalizer. */
-.wave{background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px);clip-path:polygon(0 48%,3% 42%,6% 68%,9% 31%,12% 54%,15% 17%,18% 74%,22% 40%,25% 58%,29% 9%,33% 79%,37% 36%,41% 63%,45% 23%,49% 88%,53% 39%,57% 69%,61% 12%,65% 82%,69% 31%,73% 61%,77% 19%,81% 85%,85% 37%,89% 71%,93% 25%,97% 64%,100% 47%)}
-.wave::after{width:var(--track-progress,0%);background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px)}
-.wave.on{animation:seismic-jolt .58s steps(1,end) infinite}
-@keyframes seismic-jolt{
-  0%,6%,100%{transform:translate(0,0) scaleY(1);background-position:0 0}
-  10%{transform:translate(-2px,2px) scaleY(.52) skewX(-5deg);background-position:13px 0}
-  14%{transform:translate(3px,-8px) scaleY(2.05) skewX(6deg);background-position:-21px 0}
-  19%,29%{transform:translate(0,0) scaleY(.84);background-position:4px 0}
-  34%{transform:translate(-4px,5px) scaleY(.42) skewX(-7deg);background-position:23px 0}
-  39%{transform:translate(4px,-10px) scaleY(2.35) skewX(8deg);background-position:-32px 0}
-  45%{transform:translate(-2px,3px) scaleY(.68);background-position:12px 0}
-  55%,63%{transform:translate(0,0) scaleY(1.08);background-position:0 0}
-  69%{transform:translate(2px,-5px) scaleY(1.58) skewX(-4deg);background-position:-14px 0}
-  74%{transform:translate(-5px,7px) scaleY(.34) skewX(7deg);background-position:29px 0}
-  80%{transform:translate(5px,-11px) scaleY(2.55) skewX(-8deg);background-position:-38px 0}
-  87%{transform:translate(-1px,2px) scaleY(.76);background-position:8px 0}
-}
-@media (min-width:700px){.eye-slit-stage{margin-bottom:clamp(32px,3.4vw,58px)}.release-player .wave-hitbox{height:96px}}
-@media (max-width:700px){.release{padding-top:34px}.release-player .player{grid-template-columns:52px 1fr auto;gap:12px}.release-player .wave-hitbox{height:66px}.release-player .player .play-button,.release-player .track-skip button{width:52px;height:52px;min-width:52px;flex-basis:52px;font-size:17px}}
-
-/* Music section controls. These are deliberately local custom properties: they
-   alter only the section's breathing room, never the GLB camera or its slit pose. */
+/* Music section and GLB aperture */
 .release{
-  min-height:var(--music-section-min-height);
-  padding:var(--music-top-padding) 5vw var(--music-bottom-padding);
-}
-.eye-slit-stage{height:var(--music-slit-height);margin-bottom:var(--music-slit-to-player-gap)}
-
-/* The mouth stays first; the remaining information shares one compact rail so
-   a long title grows safely within the section instead of falling below it. */
-.release-player{width:min(100%,1240px)}
-.release-player .player{width:100%;margin:0;display:flex;flex-direction:column;gap:clamp(16px,2vw,30px)}
-.release-player .wave-hitbox{width:100%;height:clamp(76px,6vw,102px);min-height:clamp(76px,6vw,102px);flex:0 0 clamp(76px,6vw,102px);grid-area:auto}
-.release-player .player-rail{width:100%;display:grid;grid-template-columns:minmax(128px,.58fr) minmax(0,1.7fr) minmax(128px,.58fr);align-items:center;gap:clamp(16px,2.3vw,38px)}
-.release-player .player-actions{display:flex;flex-direction:column;align-items:flex-start;gap:13px;min-width:0}
-.release-player .play-button{grid-area:auto;width:64px;height:64px;min-width:64px;flex-basis:64px;font-size:20px}
-.release-player .player-links{margin:0;display:flex;gap:20px;white-space:nowrap}
-.release-player .track-copy{display:flex;align-items:center;width:100%;min-width:0}
-.release-player .track-copy .eyebrow{min-height:1.1em;margin:0 0 8px}
-.release-player .track-copy h2{font-size:clamp(52px,5.8vw,116px);line-height:.82;max-inline-size:100%;overflow-wrap:anywhere;text-wrap:balance}
-.release-player .track-copy .meta{margin:10px 0 0}
-.release-player .track-copy .track-description{max-width:56ch;margin:11px auto 0;line-height:1.35}
-.release-player .track-skip{grid-area:auto;justify-self:end;display:flex;gap:9px;align-items:center}
-.release-player .track-skip button{width:64px;height:64px;min-width:64px;flex-basis:64px;font-size:20px}
-
-/* Every mark is a triangle now, rather than a clipped collection of vertical bars. */
-.wave{position:relative;display:flex;align-items:center;justify-content:space-between;gap:2px;background:none!important;clip-path:none!important;overflow:visible;isolation:isolate}
-.wave i{display:block;flex:0 1 9px;width:clamp(4px,.48vw,8px);height:var(--spike-height);min-height:9px;background:rgba(230,230,223,.94);transform-origin:center;will-change:transform}
-.wave i.is-up{clip-path:polygon(50% 0,100% 100%,0 100%)}
-.wave i.is-down{clip-path:polygon(0 0,100% 0,50% 100%)}
-.wave::after{content:'';position:absolute;z-index:2;left:var(--track-progress,0%);top:3%;bottom:3%;width:2px!important;height:auto!important;background:var(--yellow)!important;transform:translateX(-1px);transition:left .12s linear;clip-path:none!important}
-.wave.on{animation:none!important;transform:none!important}
-.wave.on i{animation:spike-jolt .72s steps(1,end) infinite;animation-delay:var(--spike-delay)}
-@keyframes spike-jolt{0%,100%{transform:scaleY(1)}14%{transform:translateY(-2px) scaleY(.54)}28%{transform:translateY(3px) scaleY(1.72)}47%{transform:translateY(-4px) scaleY(2.15)}66%{transform:translateY(1px) scaleY(.68)}81%{transform:translateY(-3px) scaleY(1.42)}}
-@media (max-width:700px){
-  .release{--music-section-min-height:auto;--music-slit-height:130px;--music-slit-to-player-gap:36px}
-  .release-player .wave-hitbox{height:70px;min-height:70px;flex-basis:70px}
-  .release-player .player-rail{grid-template-columns:1fr auto;grid-template-areas:"copy copy" "actions skip";gap:20px 14px}
-  .release-player .track-copy{grid-area:copy}
-  .release-player .player-actions{grid-area:actions}
-  .release-player .track-skip{grid-area:skip}
-  .release-player .track-copy h2{font-size:clamp(48px,14vw,80px)}
-  .release-player .play-button,.release-player .track-skip button{width:52px;height:52px;min-width:52px;flex-basis:52px;font-size:17px}
-}
-@media (prefers-reduced-motion:reduce){.wave.on i{animation:none}}
-
-/* Restore the established seismograph: a continuous, angular trace made from
-   narrow spikes. The stronger contour keeps its character without inventing a
-   separate triangle pattern. */
-.wave{display:block;background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px)!important;clip-path:polygon(0 48%,3% 42%,6% 68%,9% 31%,12% 54%,15% 17%,18% 74%,22% 40%,25% 58%,29% 9%,33% 79%,37% 36%,41% 63%,45% 23%,49% 88%,53% 39%,57% 69%,61% 12%,65% 82%,69% 31%,73% 61%,77% 19%,81% 85%,85% 37%,89% 71%,93% 25%,97% 64%,100% 47%)!important;overflow:visible}
-.wave::after{content:'';position:absolute;inset:0 auto 0 0;z-index:2;width:var(--track-progress,0%)!important;height:100%!important;background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px)!important;transform:none;transition:width .12s linear;clip-path:inherit!important}
-.wave.on{animation:seismic-jolt .58s steps(1,end) infinite!important;transform-origin:center!important}
-.wave i{display:none!important}
-
-/* Both control groups occupy matching fixed rails. Their button boxes share
-   the same baseline; links live beneath the play button without moving it. */
-.release-player .player-rail{grid-template-columns:164px minmax(0,1fr) 164px;align-items:start}
-.release-player .player-actions{display:grid;grid-template-rows:64px auto;align-items:start;justify-items:start;gap:12px}
-.release-player .track-skip{min-height:64px;justify-self:end;align-self:start}
-.release-player .track-copy{padding-top:0;min-height:142px}
-.release-player .track-copy .eyebrow{min-height:1.1em}
-@media (max-width:700px){.release-player .player-rail{grid-template-columns:1fr auto;grid-template-areas:"copy copy" "actions skip"}.release-player .player-actions{grid-template-rows:52px auto}.release-player .track-skip{min-height:52px}}
-
-/* Player V2 — one source of truth for the mouth/transport. The waveform is a
-   continuous, angular seismograph rather than a row of independent symbols. */
-.release{
+  --music-section-min-height:clamp(760px,82svh,1050px);
+  --music-top-padding:clamp(36px,4.5vw,72px);
+  --music-bottom-padding:clamp(74px,8vw,148px);
+  --music-slit-height:clamp(360px,38vw,660px);
+  --music-slit-to-player-gap:clamp(32px,3.4vw,58px);
+  --slit-top-shutter:18%;
+  --slit-bottom-shutter:0%;
   --music-control-size:64px;
   --music-side-rail:164px;
   --music-rail-gap:clamp(16px,2.3vw,38px);
-  --wave-spike-min-height:.42;
-  --wave-spike-max-height:2.35;
-  --wave-shock-min-scale:.58;
-  --wave-shock-max-scale:2.3;
-  --wave-major-shock-scale:2.7;
-}
-.release-player .player{width:100%;margin:0;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
-.release-player .wave-hitbox{width:calc(100% - (var(--music-side-rail) * 2) - (var(--music-rail-gap) * 2));height:clamp(76px,6vw,96px);min-height:clamp(76px,6vw,96px);flex:0 0 clamp(76px,6vw,96px);margin:0 auto;position:relative}
-.release-player .player-rail{width:100%;display:grid;grid-template-columns:var(--music-side-rail) minmax(0,1fr) var(--music-side-rail);gap:var(--music-rail-gap);align-items:start}
-.release-player .player-actions{display:grid;grid-template-rows:var(--music-control-size) auto;gap:12px;align-items:start;justify-items:start}
-.release-player .player .play-button,.release-player .track-skip button{width:var(--music-control-size);height:var(--music-control-size);min-width:var(--music-control-size);flex-basis:var(--music-control-size);padding:0;display:grid;place-items:center;line-height:1;font-size:20px}
-.release-player .track-skip{min-height:var(--music-control-size);display:flex;align-items:start;justify-self:end;gap:9px}
-.release-player .track-copy{min-height:154px;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
-.release-player .track-copy .eyebrow{min-height:1.1em;margin:0 0 10px}
-.release-player .track-copy h2{font-size:clamp(52px,5.8vw,116px);line-height:.82;max-inline-size:100%;overflow-wrap:anywhere;text-wrap:balance}
-.release-player .player-links{margin:0;display:flex;gap:20px;white-space:nowrap}
-.wave{display:block!important;position:relative;width:100%;height:100%;overflow:visible;background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px)!important;clip-path:polygon(0 50%,2% 42%,4% 66%,6% 32%,8% 55%,10% 16%,12% 76%,14% 40%,16% 62%,18% 9%,20% 82%,23% 38%,26% 66%,29% 18%,32% 88%,35% 42%,38% 72%,41% 24%,44% 91%,47% 36%,50% 65%,53% 12%,56% 84%,59% 31%,62% 73%,65% 18%,68% 89%,71% 40%,74% 64%,77% 9%,80% 84%,83% 34%,86% 71%,89% 22%,92% 88%,95% 39%,98% 65%,100% 48%)!important;transform-origin:center}
-.wave::after{content:''!important;position:absolute!important;inset:0 auto 0 0!important;width:var(--track-progress,0%)!important;height:100%!important;background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px)!important;clip-path:inherit!important;transform:none;transition:width .12s linear!important}
-.wave.on{animation:seismic-mouth .72s steps(1,end) infinite!important}
-@keyframes seismic-mouth{0%,8%,100%{transform:translate(0,0) scaleY(1);background-position:0 0}13%{transform:translate(-1px,2px) scaleY(var(--wave-shock-min-scale)) skewX(-3deg);background-position:9px 0}18%{transform:translate(2px,-5px) scaleY(var(--wave-spike-max-height)) skewX(4deg);background-position:-15px 0}29%{transform:translate(0,0) scaleY(.88);background-position:3px 0}38%{transform:translate(-3px,4px) scaleY(var(--wave-spike-min-height)) skewX(-5deg);background-position:18px 0}44%{transform:translate(3px,-7px) scaleY(var(--wave-shock-max-scale)) skewX(6deg);background-position:-24px 0}56%{transform:translate(0,0) scaleY(1.04)}69%{transform:translate(1px,-3px) scaleY(1.45) skewX(-2deg);background-position:-8px 0}76%{transform:translate(-4px,5px) scaleY(.52) skewX(5deg);background-position:22px 0}82%{transform:translate(4px,-8px) scaleY(var(--wave-major-shock-scale)) skewX(-7deg);background-position:-30px 0}90%{transform:translate(-1px,1px) scaleY(.86)}}
-@media (max-width:700px){.release{--music-section-min-height:auto;--music-slit-height:130px;--music-slit-to-player-gap:36px;--music-control-size:52px;--music-side-rail:118px;--music-rail-gap:14px}.release-player .wave-hitbox{width:100%;height:70px;min-height:70px;flex-basis:70px}.release-player .player-rail{grid-template-columns:1fr auto;grid-template-areas:"copy copy" "actions skip"}.release-player .track-copy{grid-area:copy;min-height:0}.release-player .player-actions{grid-area:actions}.release-player .track-skip{grid-area:skip}.release-player .track-copy h2{font-size:clamp(48px,14vw,80px)}}
-@media (prefers-reduced-motion:reduce){.wave.on{animation:none!important}}
-
-/* White seismic trace: the static baseline is deliberately separate from its
-   pointer-led pressure field, so visual experiments never alter the range
-   input or SoundCloud seek path. */
-.release{
   --wave-shock-duration:.68s;
   --wave-shock-min-scale:.32;
   --wave-shock-max-scale:2.5;
@@ -317,77 +57,82 @@ footer{text-transform:uppercase;align-items:center}
   --wave-dilation-duration:.34s;
   --wave-dilation-x-offset:0px;
   --wave-trace-path:polygon(0 50%,2% 42%,4% 66%,6% 32%,8% 55%,10% 16%,12% 76%,14% 40%,16% 62%,18% 9%,20% 82%,23% 38%,26% 66%,29% 18%,32% 88%,35% 42%,38% 72%,41% 24%,44% 91%,47% 36%,50% 65%,53% 12%,56% 84%,59% 31%,62% 73%,65% 18%,68% 89%,71% 40%,74% 64%,77% 9%,80% 84%,83% 34%,86% 71%,89% 22%,92% 88%,95% 39%,98% 65%,100% 48%);
-}
-.release-player .wave-hitbox{overflow:hidden}
-.wave{background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px)!important;clip-path:var(--wave-trace-path)!important;isolation:isolate}
-.wave-shock,.wave-dilation{
-  position:absolute;
-  inset:0;
-  clip-path:var(--wave-trace-path);
-  pointer-events:none;
-}
-.wave-dilation{
-  z-index:2;
-  background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px);
-  transform:translate(var(--wave-dilation-x-offset),var(--wave-dilation-shift)) scaleY(var(--wave-dilation-scale));
-  transform-origin:50% 50%;
-  mask-image:radial-gradient(ellipse var(--wave-dilation-width) 95% at var(--wave-focus-x,50%) 50%,#000 0 34%,rgba(0,0,0,.82) 52%,transparent 100%);
-  -webkit-mask-image:radial-gradient(ellipse var(--wave-dilation-width) 95% at var(--wave-focus-x,50%) 50%,#000 0 34%,rgba(0,0,0,.82) 52%,transparent 100%);
-  opacity:0;
-  transition:opacity var(--wave-dilation-duration) ease,transform var(--wave-dilation-duration) cubic-bezier(.22,.8,.22,1);
-  will-change:transform,background-position,opacity;
-}
-.wave-shock{
-  z-index:1;
-  background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(255,255,250,.68) 4px 6px,transparent 6px 11px)!important;
-  transform-origin:center;
-  opacity:0;
-  will-change:transform,background-position;
-}
-.wave.is-focused .wave-dilation{opacity:1}
-.wave.on .wave-shock{opacity:1;animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite}
-@keyframes seismograph-shock{
-  0%,8%,100%{transform:translate(var(--wave-shock-x-offset),0) scaleY(1) skewX(0);background-position:0 0}
-  15%{transform:translate(calc(var(--wave-shock-x-offset) + var(--wave-shock-min-shift)),0) scaleY(var(--wave-shock-min-scale)) skewX(calc(var(--wave-shock-skew) * -1));background-position:8px 0}
-  23%{transform:translate(var(--wave-shock-x-offset),calc(var(--wave-shock-max-shift) * -1)) scaleY(var(--wave-shock-max-scale)) skewX(var(--wave-shock-skew));background-position:-16px 0}
-  38%{transform:translate(var(--wave-shock-x-offset),2px) scaleY(.84) skewX(calc(var(--wave-shock-skew) * -.5));background-position:5px 0}
-  49%{transform:translate(var(--wave-shock-x-offset),var(--wave-shock-max-shift)) scaleY(1.62) skewX(var(--wave-shock-skew));background-position:19px 0}
-  63%{transform:translate(calc(var(--wave-shock-x-offset) + 2px),0) scaleY(.66) skewX(calc(var(--wave-shock-skew) * -1));background-position:-9px 0}
-  76%{transform:translate(var(--wave-shock-x-offset),calc(var(--wave-shock-max-shift) * -1)) scaleY(2.02) skewX(var(--wave-shock-skew));background-position:27px 0}
-  88%{transform:translate(calc(var(--wave-shock-x-offset) + var(--wave-shock-min-shift)),0) scaleY(.9) skewX(0);background-position:-4px 0}
-}
-@media (prefers-reduced-motion:reduce){.wave.on .wave-shock{animation:none!important}}
-
-/* Retire pre-layered waveform effects. The active visuals are now the explicit
-   .wave-shock and .wave-dilation children above; keeping this override here
-   avoids reviving legacy scans or parent transforms through the CSS cascade. */
-.wave::after{content:none!important;display:none!important;animation:none!important}
-.wave.on{animation:none!important;transform:none!important}
-
-/* MUSIC SECTION — MANUAL LAYOUT CONTROLS
-   This is the only place to tune the section's vertical geometry. The final
-   rules live at the end of the cascade so each value has an immediate visual
-   result, rather than being shadowed by an earlier experiment. */
-.release{
-  --music-section-min-height:clamp(760px,82svh,1050px);
-  --music-top-padding:clamp(36px,4.5vw,72px);
-  --music-bottom-padding:clamp(74px,8vw,148px);
-  --music-slit-height:clamp(360px,38vw,660px);
-  --music-slit-to-player-gap:clamp(32px,3.4vw,58px);
-  --slit-top-shutter:18%;
-  --slit-bottom-shutter:0%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
   min-height:var(--music-section-min-height);
-  padding-top:var(--music-top-padding);
-  padding-bottom:var(--music-bottom-padding);
+  padding:var(--music-top-padding) 5vw var(--music-bottom-padding);
+  background:#111 url('/assets/dark-grit.png') center/680px 680px;
 }
-.eye-slit-stage{
-  height:var(--music-slit-height);
-  margin-bottom:var(--music-slit-to-player-gap);
+.eye-slit-stage{order:0;width:100vw;height:var(--music-slit-height);margin:0 calc(50% - 50vw) var(--music-slit-to-player-gap);overflow:hidden;isolation:isolate;cursor:none;background:url('/assets/concrete-stage.png') center/cover}
+.eye-slit-stage::before{content:'';position:absolute;z-index:2;inset:0;pointer-events:none;background:#111 url('/assets/dark-grit.png') center/680px 680px;mask-image:linear-gradient(to bottom,#000 0 var(--slit-top-shutter),transparent var(--slit-top-shutter) calc(100% - var(--slit-bottom-shutter)),#000 calc(100% - var(--slit-bottom-shutter)) 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0 var(--slit-top-shutter),transparent var(--slit-top-shutter) calc(100% - var(--slit-bottom-shutter)),#000 calc(100% - var(--slit-bottom-shutter)) 100%)}
+.eye-slit-stage canvas{position:relative;z-index:1;display:block;width:100%!important;height:100%!important}
+.object-stage::after{content:none}
+
+/* Player */
+.release-player{order:1;width:min(100%,1240px);text-align:center;display:flex;flex-direction:column;align-items:center}
+.release-player .player{width:100%;margin:0;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
+.release-player .wave-hitbox{position:relative;width:calc(100% - (var(--music-side-rail) * 2) - (var(--music-rail-gap) * 2));height:clamp(76px,6vw,96px);min-height:clamp(76px,6vw,96px);flex:0 0 clamp(76px,6vw,96px);margin:0 auto;overflow:hidden;cursor:ew-resize;touch-action:none}
+.wave-hitbox .wave{width:100%;height:100%;pointer-events:none}
+.wave-scrubber{appearance:none;position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.release-player .player-rail{display:grid;width:100%;grid-template-columns:var(--music-side-rail) minmax(0,1fr) var(--music-side-rail);align-items:start;gap:var(--music-rail-gap)}
+.release-player .player-actions{display:grid;grid-template-rows:var(--music-control-size) auto;align-items:start;justify-items:start;gap:12px}
+.release-player .player .play-button,.release-player .track-skip button{display:grid;width:var(--music-control-size);height:var(--music-control-size);min-width:var(--music-control-size);padding:0;place-items:center;line-height:1;font-size:20px}
+.release-player .play-button{border:0;background:var(--yellow);color:#111;transition:transform .13s ease,box-shadow .13s ease}
+.release-player .play-button:active{transform:scale(.84) rotate(-7deg);box-shadow:0 0 0 7px rgba(255,217,0,.18)}
+.release-player .play-button.is-playing{animation:play-thump .75s ease-in-out infinite alternate}
+@keyframes play-thump{to{transform:scale(1.08);box-shadow:0 0 0 5px rgba(255,217,0,.12)}}
+.release-player .track-skip{display:flex;min-height:var(--music-control-size);align-items:start;justify-self:end;gap:9px}
+.release-player .track-skip button{border:1px solid #777;background:transparent;color:var(--paper)}
+.release-player .player-links{display:flex;gap:20px;margin:0;white-space:nowrap}
+.event-links{font-size:10px;letter-spacing:.08em}.event-links a{color:var(--paper);text-decoration:none;opacity:.72}.event-links a:hover{opacity:1}.event-links i{font-style:normal;color:var(--yellow);opacity:.95}
+.release-player .track-copy{display:flex;width:100%;min-width:0;min-height:154px;flex-direction:column;align-items:center;justify-content:flex-start;padding:0}
+.release-player .track-copy .eyebrow{min-height:1.1em;margin:0 0 10px}
+.release-player .track-copy h2{max-inline-size:100%;margin:0;font-family:Anton,Impact,sans-serif;font-size:clamp(52px,5.8vw,116px);font-weight:400;line-height:.82;overflow-wrap:anywhere;text-wrap:balance;text-transform:uppercase;opacity:.84}
+.release-player .track-copy .meta{margin:10px 0 0;font-size:11px}.release-player .track-copy .meta b{color:var(--blue)}
+.release-player .track-description{max-width:56ch;margin:11px auto 0;font-size:12px;line-height:1.35;color:rgba(215,215,208,.78)}
+.soundcloud-engine.is-hidden{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;clip-path:inset(50%)}
+.soundcloud-engine.is-visible{display:block;width:100%;height:86px;margin-top:13px;border:0;filter:grayscale(1) contrast(1.12)}
+
+/* Independent waveform layers. Neither layer touches SoundCloud seeking. */
+.wave{position:relative;isolation:isolate;overflow:visible;background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px);clip-path:var(--wave-trace-path)}
+.wave-shock,.wave-dilation{position:absolute;inset:0;pointer-events:none;clip-path:var(--wave-trace-path)}
+.wave-shock{z-index:1;background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(255,255,250,.68) 4px 6px,transparent 6px 11px);opacity:0;transform-origin:center;will-change:transform,background-position}
+.wave-dilation{z-index:2;background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px);opacity:0;transform:translate(var(--wave-dilation-x-offset),var(--wave-dilation-shift)) scaleY(var(--wave-dilation-scale));transform-origin:50% 50%;mask-image:radial-gradient(ellipse var(--wave-dilation-width) 95% at var(--wave-focus-x,50%) 50%,#000 0 34%,rgba(0,0,0,.82) 52%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse var(--wave-dilation-width) 95% at var(--wave-focus-x,50%) 50%,#000 0 34%,rgba(0,0,0,.82) 52%,transparent 100%);transition:opacity var(--wave-dilation-duration) ease,transform var(--wave-dilation-duration) cubic-bezier(.22,.8,.22,1);will-change:transform,background-position,opacity}
+.wave.is-focused .wave-dilation{opacity:1}.wave.on .wave-shock{opacity:1;animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite}
+@keyframes seismograph-shock{0%,8%,100%{transform:translate(var(--wave-shock-x-offset),0) scaleY(1) skewX(0);background-position:0 0}15%{transform:translate(calc(var(--wave-shock-x-offset) + var(--wave-shock-min-shift)),0) scaleY(var(--wave-shock-min-scale)) skewX(calc(var(--wave-shock-skew) * -1));background-position:8px 0}23%{transform:translate(var(--wave-shock-x-offset),calc(var(--wave-shock-max-shift) * -1)) scaleY(var(--wave-shock-max-scale)) skewX(var(--wave-shock-skew));background-position:-16px 0}38%{transform:translate(var(--wave-shock-x-offset),2px) scaleY(.84) skewX(calc(var(--wave-shock-skew) * -.5));background-position:5px 0}49%{transform:translate(var(--wave-shock-x-offset),var(--wave-shock-max-shift)) scaleY(1.62) skewX(var(--wave-shock-skew));background-position:19px 0}63%{transform:translate(calc(var(--wave-shock-x-offset) + 2px),0) scaleY(.66) skewX(calc(var(--wave-shock-skew) * -1));background-position:-9px 0}76%{transform:translate(var(--wave-shock-x-offset),calc(var(--wave-shock-max-shift) * -1)) scaleY(2.02) skewX(var(--wave-shock-skew));background-position:27px 0}88%{transform:translate(calc(var(--wave-shock-x-offset) + var(--wave-shock-min-shift)),0) scaleY(.9) skewX(0);background-position:-4px 0}}
+
+/* About and shows */
+.release,.about,.shows{border-top:1px solid #383838}
+.about,.shows{background-color:#121313;background-image:linear-gradient(rgba(16,17,17,.88),rgba(16,17,17,.88)),url('/assets/dark-grit.png');background-size:auto,680px 680px;background-position:center}
+.about{display:grid;min-height:255px;grid-template-columns:minmax(230px,.95fr) minmax(280px,1.25fr) minmax(190px,.8fr);align-items:center;gap:40px;padding-block:70px;border-bottom:1px solid #383838}
+.about-label{position:relative;align-self:center}.about-label .eyebrow{position:absolute;top:-42px;left:0;margin:0}.about-label>img{display:block;width:min(330px,100%);height:auto;opacity:.88;filter:drop-shadow(0 3px 0 rgba(0,0,0,.22))}
+.about h2{display:none}.about>p{max-width:430px;margin:0;font-family:Anton,Impact,sans-serif;font-size:clamp(31px,3.15vw,54px);line-height:.93;letter-spacing:.01em;text-transform:uppercase;opacity:.72}
+.about-signal{position:relative;display:flex;height:126px;align-items:center;justify-content:center;overflow:hidden;background-color:#1736df;background-image:repeating-linear-gradient(135deg,#ffd900 0 13px,#171717 13px 26px),url('/assets/concrete-grit-panel.png'),url('/assets/poster-grit.png');background-size:34% 100%,33% 100%,cover;background-position:right,left,center;background-repeat:no-repeat;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.about-signal::after,.event-signal::after{content:'';position:absolute;top:0;right:0;bottom:0;background:url('/assets/poster-grit.png') center/cover;mix-blend-mode:multiply;opacity:.4;pointer-events:none}.about-signal::after{left:33%}
+.signal-eye{position:absolute;z-index:2;display:block;background:none!important;box-shadow:none!important;filter:none;clip-path:circle(30% at 50% 50%)}
+.about-signal .signal-eye{top:50%;left:15%;width:48px;height:48px;transform:translate(-50%,-50%)}
+.shows{display:grid;min-height:0;grid-template-columns:minmax(0,1fr) 250px;gap:70px;padding-top:55px;padding-bottom:60px}
+.eyebrow,.about .eyebrow,.show-list .eyebrow{font-size:11px;letter-spacing:.11em;color:var(--yellow);opacity:.8}.show-list .eyebrow{margin:0 0 14px}
+.show{display:grid;grid-template-columns:80px 1fr 1fr auto;align-items:center;border-bottom:1px solid #383838;padding:16px 0;font-size:12px}.show b{color:var(--yellow);opacity:.88}.show span{opacity:.72}.show button{border:1px solid #777;background:transparent;color:var(--paper);padding:10px;opacity:.78}.show button:hover{opacity:1}.show button i,.view-shows i{font-style:normal;color:var(--yellow)}
+.view-shows{display:inline-block;margin-top:20px;font-size:11px;color:var(--paper)}
+.next-event{align-self:start;border:1px solid #525252;padding:17px}.next-event .eyebrow{margin:0 0 8px;color:var(--yellow)}.next-event h3{margin:0 0 8px;font-family:Anton,sans-serif;font-size:27px;font-weight:400;line-height:.85}.next-event>p{margin:0 0 12px;font-size:10px;opacity:.72}
+.next-event>div.event-signal{position:relative;height:105px;overflow:hidden;background-color:#1736df;background-image:url('/assets/concrete-grit-panel.png'),url('/assets/poster-grit.png');background-size:50% 100%,cover;background-position:left,center;background-repeat:no-repeat}.event-signal::after{left:50%}.next-event>div.event-signal img{position:absolute;z-index:2;width:74px;max-width:none;left:75%;top:50%;transform:translate(-50%,-50%);filter:drop-shadow(4px 5px 3px #0009)}.next-event>div.event-signal img.signal-eye{width:40px;height:40px;left:25%;filter:none}.event-links{display:flex;gap:16px;margin-top:12px}
+
+/* Footer */
+.shows+footer{border-top:1px solid #383838;border-bottom:25px repeating-linear-gradient(135deg,var(--yellow) 0 18px,#151515 18px 36px);background:#121313 url('/assets/dark-grit.png') center/680px 680px}
+footer{align-items:center;text-transform:uppercase}.footer-location{position:relative;display:inline-block;padding-right:61px;line-height:1;white-space:nowrap;flex-shrink:0}.footer-location img{position:absolute;top:50%;right:0;width:48px;height:48px;object-fit:contain;opacity:.8;transform:translateY(-50%)}
+
+@media (min-width:700px){
+  nav{padding:36px 6vw;font-size:13px}nav div{gap:38px}.brand{font-size:27px}
+  .poster{width:min(72vw,760px);height:min(68vh,620px);top:50%}.poster-wordmark{top:11%;left:5%;width:90%}.poster-index{--corner-inset:clamp(26px,3vw,48px);left:var(--corner-inset);bottom:var(--corner-inset);width:auto;height:min(3vw,32px);aspect-ratio:4.15 / 1}.poster-index b{font-size:clamp(21px,2.5vw,30px)}.poster-coordinates{right:8.5%;bottom:calc(8% + 18px);font-size:12px!important;opacity:.9}.poster .poster-arrow{bottom:3.2%;font-size:27px}.poster-symbol.globe,.poster-checker{top:8.5%}.poster-ornament.face{width:21%;top:7%;left:14%}.poster-ornament.flower{width:16%;top:40%;left:42%}.poster-ornament.checker{width:19%;right:14%;top:42%}.poster-ornament.cross{width:19%;right:13%;bottom:13%}
+  .about{min-height:clamp(500px,52vh,650px);gap:5vw;padding:clamp(100px,8vw,145px) 8vw}.about-label>img{width:min(500px,100%)}.about>p{max-width:720px;font-size:clamp(56px,3.5vw,72px);line-height:.89}.about-signal{height:clamp(190px,17vw,260px)}
+  .shows{min-height:clamp(610px,60vh,760px);gap:5vw;padding:clamp(95px,7.5vw,135px) 8vw}.show{grid-template-columns:98px minmax(145px,.9fr) minmax(0,1fr) 124px;padding:28px 0;font-size:17px}.show b,.show span{line-height:1}.show button{display:inline-flex;align-items:center;justify-content:center;gap:.45em;line-height:1}.about .eyebrow,.show-list .eyebrow,.next-event .eyebrow{font-size:18px}.view-shows{margin-top:34px;font-size:16px}.next-event{padding:36px}.next-event h3{font-size:58px}.next-event>p{font-size:16px}.next-event>div.event-signal{height:190px}.event-links{gap:24px;margin-top:18px;font-size:15px}footer{padding:52px 8vw;font-size:15px}.footer-location{padding-right:76px}.footer-location img{width:61px;height:61px}
 }
 @media (max-width:700px){
-  .release{
-    --music-section-min-height:auto;
-    --music-slit-height:130px;
-    --music-slit-to-player-gap:36px;
-  }
+  .poster{width:91vw;height:74vh}.poster-wordmark{top:16%;left:8%;width:84%}.poster-symbol{width:9%}.poster-index{width:130px;height:auto}.construction-mark-raster{width:130px}
+  .release{--music-section-min-height:auto;--music-slit-height:130px;--music-slit-to-player-gap:36px;--music-control-size:52px;--music-side-rail:118px;--music-rail-gap:14px;padding-top:34px}.release-player .wave-hitbox{width:100%;height:70px;min-height:70px;flex-basis:70px}.release-player .player-rail{grid-template-columns:1fr auto;grid-template-areas:"copy copy" "actions skip";gap:20px 14px}.release-player .track-copy{grid-area:copy;min-height:0}.release-player .player-actions{grid-area:actions}.release-player .track-skip{grid-area:skip}.release-player .track-copy h2{font-size:clamp(48px,14vw,80px)}
+  .about,.shows{display:block}.about>p{margin:22px 0}.about-signal{margin:18px 0}.next-event{margin-top:35px}.show{grid-template-columns:55px 1fr auto}.show span:nth-of-type(2){display:none}footer{flex-direction:column}
 }
+@media (prefers-reduced-motion:reduce){.wave.on .wave-shock,.release-player .play-button.is-playing{animation:none}}
