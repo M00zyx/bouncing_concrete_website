@@ -211,13 +211,6 @@ footer{text-transform:uppercase;align-items:center}
 /* Music section controls. These are deliberately local custom properties: they
    alter only the section's breathing room, never the GLB camera or its slit pose. */
 .release{
-  --music-section-min-height:clamp(760px,82svh,1050px);
-  --music-top-padding:clamp(36px,4.5vw,72px);
-  --music-bottom-padding:clamp(74px,8vw,148px);
-  --music-slit-height:clamp(360px,38vw,660px);
-  --music-slit-to-player-gap:clamp(32px,3.4vw,58px);
-  --slit-top-shutter:18%;
-  --slit-bottom-shutter:0%;
   min-height:var(--music-section-min-height);
   padding:var(--music-top-padding) 5vw var(--music-bottom-padding);
 }
@@ -281,13 +274,6 @@ footer{text-transform:uppercase;align-items:center}
 /* Player V2 — one source of truth for the mouth/transport. The waveform is a
    continuous, angular seismograph rather than a row of independent symbols. */
 .release{
-  --music-section-min-height:clamp(760px,82svh,1050px);
-  --music-top-padding:clamp(36px,4.5vw,72px);
-  --music-bottom-padding:clamp(74px,8vw,148px);
-  --music-slit-height:clamp(360px,38vw,660px);
-  --music-slit-to-player-gap:clamp(32px,3.4vw,58px);
-  --slit-top-shutter:18%;
-  --slit-bottom-shutter:0%;
   --music-control-size:64px;
   --music-side-rail:164px;
   --music-rail-gap:clamp(16px,2.3vw,38px);
@@ -324,7 +310,7 @@ footer{text-transform:uppercase;align-items:center}
   --wave-shock-min-shift:-3px;
   --wave-shock-max-shift:6px;
   --wave-shock-skew:10deg;
-  --wave-shock-x-offset:0px;
+  --wave-shock-x-offset:2px;
   --wave-dilation-width:18%;
   --wave-dilation-scale:1.62;
   --wave-dilation-shift:-4px;
@@ -377,3 +363,31 @@ footer{text-transform:uppercase;align-items:center}
    avoids reviving legacy scans or parent transforms through the CSS cascade. */
 .wave::after{content:none!important;display:none!important;animation:none!important}
 .wave.on{animation:none!important;transform:none!important}
+
+/* MUSIC SECTION — MANUAL LAYOUT CONTROLS
+   This is the only place to tune the section's vertical geometry. The final
+   rules live at the end of the cascade so each value has an immediate visual
+   result, rather than being shadowed by an earlier experiment. */
+.release{
+  --music-section-min-height:clamp(760px,82svh,1050px);
+  --music-top-padding:clamp(36px,4.5vw,72px);
+  --music-bottom-padding:clamp(74px,8vw,148px);
+  --music-slit-height:clamp(360px,38vw,660px);
+  --music-slit-to-player-gap:clamp(32px,3.4vw,58px);
+  --slit-top-shutter:18%;
+  --slit-bottom-shutter:0%;
+  min-height:var(--music-section-min-height);
+  padding-top:var(--music-top-padding);
+  padding-bottom:var(--music-bottom-padding);
+}
+.eye-slit-stage{
+  height:var(--music-slit-height);
+  margin-bottom:var(--music-slit-to-player-gap);
+}
+@media (max-width:700px){
+  .release{
+    --music-section-min-height:auto;
+    --music-slit-height:130px;
+    --music-slit-to-player-gap:36px;
+  }
+}
