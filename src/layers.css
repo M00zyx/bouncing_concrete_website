@@ -319,7 +319,7 @@ footer{text-transform:uppercase;align-items:center}
    input or SoundCloud seek path. */
 .release{
   --wave-shock-duration:.68s;
-  --wave-shock-min-scale:.72;
+  --wave-shock-min-scale:.32;
   --wave-shock-max-scale:2.5;
   --wave-shock-min-shift:-3px;
   --wave-shock-max-shift:6px;
@@ -332,13 +332,15 @@ footer{text-transform:uppercase;align-items:center}
 }
 .release-player .wave-hitbox{overflow:hidden}
 .wave{background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(230,230,223,.94) 4px 6px,transparent 6px 11px)!important;clip-path:var(--wave-trace-path)!important;isolation:isolate}
-.wave::before{
-  content:'';
+.wave-shock,.wave-dilation{
   position:absolute;
-  z-index:1;
   inset:0;
-  background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px);
   clip-path:var(--wave-trace-path);
+  pointer-events:none;
+}
+.wave-dilation{
+  z-index:2;
+  background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px);
   transform:translateY(var(--wave-dilation-shift)) scaleY(var(--wave-dilation-scale));
   transform-origin:50% 50%;
   mask-image:radial-gradient(ellipse var(--wave-dilation-width) 95% at var(--wave-focus-x,50%) 50%,#000 0 34%,rgba(0,0,0,.82) 52%,transparent 100%);
@@ -347,23 +349,15 @@ footer{text-transform:uppercase;align-items:center}
   transition:opacity var(--wave-dilation-duration) ease,transform var(--wave-dilation-duration) cubic-bezier(.22,.8,.22,1);
   will-change:transform,background-position,opacity;
 }
-.wave::after{
-  content:''!important;
-  position:absolute!important;
-  z-index:0!important;
-  inset:0!important;
-  width:auto!important;
-  height:auto!important;
-  display:block!important;
+.wave-shock{
+  z-index:1;
   background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(255,255,250,.68) 4px 6px,transparent 6px 11px)!important;
-  clip-path:var(--wave-trace-path)!important;
-  transform-origin:center!important;
-  opacity:0!important;
-  transition:none!important;
+  transform-origin:center;
+  opacity:0;
+  will-change:transform,background-position;
 }
-.wave.is-focused::before{opacity:1}
-.wave.on::after{opacity:1!important;animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite!important}
-.wave.on.is-focused::before{animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite}
+.wave.is-focused .wave-dilation{opacity:1}
+.wave.on .wave-shock{opacity:1;animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite}
 @keyframes seismograph-shock{
   0%,8%,100%{transform:translate(0,0) scaleY(1) skewX(0);background-position:0 0}
   15%{transform:translateX(var(--wave-shock-min-shift)) scaleY(var(--wave-shock-min-scale)) skewX(calc(var(--wave-shock-skew) * -1));background-position:8px 0}
@@ -374,4 +368,4 @@ footer{text-transform:uppercase;align-items:center}
   76%{transform:translateY(calc(var(--wave-shock-max-shift) * -1)) scaleY(2.02) skewX(var(--wave-shock-skew));background-position:27px 0}
   88%{transform:translateX(var(--wave-shock-min-shift)) scaleY(.9) skewX(0);background-position:-4px 0}
 }
-@media (prefers-reduced-motion:reduce){.wave.on::before,.wave.on::after{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.wave.on .wave-shock{animation:none!important}}
