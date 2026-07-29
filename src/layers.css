@@ -324,10 +324,12 @@ footer{text-transform:uppercase;align-items:center}
   --wave-shock-min-shift:-3px;
   --wave-shock-max-shift:6px;
   --wave-shock-skew:10deg;
+  --wave-shock-x-offset:0px;
   --wave-dilation-width:18%;
   --wave-dilation-scale:1.62;
   --wave-dilation-shift:-4px;
   --wave-dilation-duration:.34s;
+  --wave-dilation-x-offset:0px;
   --wave-trace-path:polygon(0 50%,2% 42%,4% 66%,6% 32%,8% 55%,10% 16%,12% 76%,14% 40%,16% 62%,18% 9%,20% 82%,23% 38%,26% 66%,29% 18%,32% 88%,35% 42%,38% 72%,41% 24%,44% 91%,47% 36%,50% 65%,53% 12%,56% 84%,59% 31%,62% 73%,65% 18%,68% 89%,71% 40%,74% 64%,77% 9%,80% 84%,83% 34%,86% 71%,89% 22%,92% 88%,95% 39%,98% 65%,100% 48%);
 }
 .release-player .wave-hitbox{overflow:hidden}
@@ -341,7 +343,7 @@ footer{text-transform:uppercase;align-items:center}
 .wave-dilation{
   z-index:2;
   background:repeating-linear-gradient(90deg,transparent 0 4px,var(--yellow) 4px 6px,transparent 6px 11px);
-  transform:translateY(var(--wave-dilation-shift)) scaleY(var(--wave-dilation-scale));
+  transform:translate(var(--wave-dilation-x-offset),var(--wave-dilation-shift)) scaleY(var(--wave-dilation-scale));
   transform-origin:50% 50%;
   mask-image:radial-gradient(ellipse var(--wave-dilation-width) 95% at var(--wave-focus-x,50%) 50%,#000 0 34%,rgba(0,0,0,.82) 52%,transparent 100%);
   -webkit-mask-image:radial-gradient(ellipse var(--wave-dilation-width) 95% at var(--wave-focus-x,50%) 50%,#000 0 34%,rgba(0,0,0,.82) 52%,transparent 100%);
@@ -359,13 +361,13 @@ footer{text-transform:uppercase;align-items:center}
 .wave.is-focused .wave-dilation{opacity:1}
 .wave.on .wave-shock{opacity:1;animation:seismograph-shock var(--wave-shock-duration) steps(1,end) infinite}
 @keyframes seismograph-shock{
-  0%,8%,100%{transform:translate(0,0) scaleY(1) skewX(0);background-position:0 0}
-  15%{transform:translateX(var(--wave-shock-min-shift)) scaleY(var(--wave-shock-min-scale)) skewX(calc(var(--wave-shock-skew) * -1));background-position:8px 0}
-  23%{transform:translateY(calc(var(--wave-shock-max-shift) * -1)) scaleY(var(--wave-shock-max-scale)) skewX(var(--wave-shock-skew));background-position:-16px 0}
-  38%{transform:translateY(2px) scaleY(.84) skewX(calc(var(--wave-shock-skew) * -.5));background-position:5px 0}
-  49%{transform:translateY(var(--wave-shock-max-shift)) scaleY(1.62) skewX(var(--wave-shock-skew));background-position:19px 0}
-  63%{transform:translateX(2px) scaleY(.66) skewX(calc(var(--wave-shock-skew) * -1));background-position:-9px 0}
-  76%{transform:translateY(calc(var(--wave-shock-max-shift) * -1)) scaleY(2.02) skewX(var(--wave-shock-skew));background-position:27px 0}
-  88%{transform:translateX(var(--wave-shock-min-shift)) scaleY(.9) skewX(0);background-position:-4px 0}
+  0%,8%,100%{transform:translate(var(--wave-shock-x-offset),0) scaleY(1) skewX(0);background-position:0 0}
+  15%{transform:translate(calc(var(--wave-shock-x-offset) + var(--wave-shock-min-shift)),0) scaleY(var(--wave-shock-min-scale)) skewX(calc(var(--wave-shock-skew) * -1));background-position:8px 0}
+  23%{transform:translate(var(--wave-shock-x-offset),calc(var(--wave-shock-max-shift) * -1)) scaleY(var(--wave-shock-max-scale)) skewX(var(--wave-shock-skew));background-position:-16px 0}
+  38%{transform:translate(var(--wave-shock-x-offset),2px) scaleY(.84) skewX(calc(var(--wave-shock-skew) * -.5));background-position:5px 0}
+  49%{transform:translate(var(--wave-shock-x-offset),var(--wave-shock-max-shift)) scaleY(1.62) skewX(var(--wave-shock-skew));background-position:19px 0}
+  63%{transform:translate(calc(var(--wave-shock-x-offset) + 2px),0) scaleY(.66) skewX(calc(var(--wave-shock-skew) * -1));background-position:-9px 0}
+  76%{transform:translate(var(--wave-shock-x-offset),calc(var(--wave-shock-max-shift) * -1)) scaleY(2.02) skewX(var(--wave-shock-skew));background-position:27px 0}
+  88%{transform:translate(calc(var(--wave-shock-x-offset) + var(--wave-shock-min-shift)),0) scaleY(.9) skewX(0);background-position:-4px 0}
 }
 @media (prefers-reduced-motion:reduce){.wave.on .wave-shock{animation:none!important}}
