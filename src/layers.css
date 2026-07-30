@@ -73,7 +73,7 @@ nav.event-links{justify-content:flex-start}
   padding:var(--music-top-padding) 5vw var(--music-bottom-padding);
   background:#111 url('/assets/dark-grit.png') center/680px 680px;
 }
-.eye-slit-stage{order:0;width:100vw;height:var(--music-slit-height);margin:0 calc(50% - 50vw) var(--music-slit-to-player-gap);overflow:hidden;isolation:isolate;cursor:none;background:url('/assets/concrete-stage.png') center/cover}
+.eye-slit-stage{position:relative;order:0;width:100vw;height:var(--music-slit-height);margin:0 calc(50% - 50vw) var(--music-slit-to-player-gap);overflow:hidden;isolation:isolate;cursor:none;background:url('/assets/concrete-stage.png') center/cover}
 .eye-slit-stage::before{content:'';position:absolute;z-index:2;inset:0;pointer-events:none;background:#111 url('/assets/dark-grit.png') center/680px 680px;mask-image:linear-gradient(to bottom,#000 0 var(--slit-top-shutter),transparent var(--slit-top-shutter) calc(100% - var(--slit-bottom-shutter)),#000 calc(100% - var(--slit-bottom-shutter)) 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0 var(--slit-top-shutter),transparent var(--slit-top-shutter) calc(100% - var(--slit-bottom-shutter)),#000 calc(100% - var(--slit-bottom-shutter)) 100%)}
 .eye-slit-stage canvas{position:relative;z-index:1;display:block;width:100%!important;height:100%!important}
 .object-stage::after{content:none}
