@@ -3,8 +3,12 @@
    primitives remain in styles.css; all site-specific composition is here. */
 
 /* The hero nav alone belongs to the viewport. Release and event link groups
-   are normal-flow navigation, never an overlay. */
-nav.event-links{position:static;z-index:auto;top:auto;left:auto;width:auto;padding:0;justify-content:flex-start;background:none}
+   are normal-flow navigation, never an overlay. This reset also prevents the
+   old base nav primitive from leaking player or card links into the hero. */
+main nav{position:static;z-index:auto;top:auto;right:auto;bottom:auto;left:auto;width:auto;padding:0;background:none}
+.film-sticky>nav{position:absolute;z-index:5;top:0;left:0;width:100%;display:flex;justify-content:space-between;padding:30px 5vw;font-size:11px;background:none}
+.film-sticky>nav div{display:flex;gap:30px}
+nav.event-links{justify-content:flex-start}
 
 /* Poster */
 .poster{
