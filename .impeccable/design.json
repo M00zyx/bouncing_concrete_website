@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T12:25:12Z",
+  "title": "Design System: Bouncing Concrete",
+  "extensions": {
+    "colorMeta": {
+      "cobalt": {
+        "role": "primary",
+        "displayName": "Cobalt Poster",
+        "canonical": "#1736df",
+        "tonalRamp": [
+          "oklch(15% 0.10 264)",
+          "oklch(25% 0.16 264)",
+          "oklch(35% 0.22 264)",
+          "oklch(45% 0.27 264)",
+          "oklch(58% 0.24 264)",
+          "oklch(70% 0.19 264)",
+          "oklch(82% 0.12 264)",
+          "oklch(95% 0.04 264)"
+        ],
+        "rampNote": "Synthesized display-only tonal ramp; canonical is the implemented color."
+      },
+      "yellow": {
+        "role": "primary",
+        "displayName": "Signal Yellow",
+        "canonical": "#ffd900",
+        "tonalRamp": [
+          "oklch(22% 0.06 96)",
+          "oklch(34% 0.10 96)",
+          "oklch(46% 0.14 96)",
+          "oklch(58% 0.17 96)",
+          "oklch(70% 0.18 96)",
+          "oklch(80% 0.18 96)",
+          "oklch(88% 0.14 96)",
+          "oklch(96% 0.06 96)"
+        ],
+        "rampNote": "Synthesized display-only tonal ramp; canonical is the implemented color."
+      },
+      "yellow-hover": {
+        "role": "primary",
+        "displayName": "Signal Yellow Hover",
+        "canonical": "#ffea57",
+        "tonalRamp": [
+          "oklch(28% 0.06 96)",
+          "oklch(40% 0.10 96)",
+          "oklch(52% 0.14 96)",
+          "oklch(64% 0.17 96)",
+          "oklch(75% 0.18 96)",
+          "oklch(84% 0.16 96)",
+          "oklch(91% 0.12 96)",
+          "oklch(98% 0.05 96)"
+        ],
+        "rampNote": "Synthesized display-only tonal ramp; canonical is the implemented color."
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#151a17",
+        "tonalRamp": [
+          "oklch(8% 0.02 150)",
+          "oklch(16% 0.025 150)",
+          "oklch(25% 0.03 150)",
+          "oklch(35% 0.035 150)",
+          "oklch(48% 0.035 150)",
+          "oklch(62% 0.03 150)",
+          "oklch(78% 0.02 150)",
+          "oklch(94% 0.01 150)"
+        ],
+        "rampNote": "Synthesized display-only tonal ramp; canonical is the implemented color."
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Concrete Paper",
+        "canonical": "#e6e5dc",
+        "tonalRamp": [
+          "oklch(18% 0.02 95)",
+          "oklch(30% 0.025 95)",
+          "oklch(42% 0.025 95)",
+          "oklch(55% 0.025 95)",
+          "oklch(68% 0.025 95)",
+          "oklch(79% 0.023 95)",
+          "oklch(88% 0.02 95)",
+          "oklch(95% 0.015 95)"
+        ],
+        "rampNote": "Synthesized display-only tonal ramp; canonical is the implemented color."
+      },
+      "film-deep": {
+        "role": "neutral",
+        "displayName": "Film Deep",
+        "canonical": "#05070d",
+        "tonalRamp": [
+          "oklch(5% 0.03 260)",
+          "oklch(12% 0.04 260)",
+          "oklch(21% 0.05 260)",
+          "oklch(32% 0.06 260)",
+          "oklch(45% 0.06 260)",
+          "oklch(59% 0.05 260)",
+          "oklch(76% 0.04 260)",
+          "oklch(93% 0.02 260)"
+        ],
+        "rampNote": "Synthesized display-only tonal ramp; canonical is the implemented color."
+      },
+      "muted-copy": {
+        "role": "neutral",
+        "displayName": "Muted Copy",
+        "canonical": "#b8c0ae",
+        "tonalRamp": [
+          "oklch(16% 0.03 130)",
+          "oklch(27% 0.04 130)",
+          "oklch(39% 0.05 130)",
+          "oklch(51% 0.05 130)",
+          "oklch(63% 0.05 130)",
+          "oklch(74% 0.045 130)",
+          "oklch(84% 0.035 130)",
+          "oklch(94% 0.02 130)"
+        ],
+        "rampNote": "Synthesized display-only tonal ramp; canonical is the implemented color."
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "Dark Line",
+        "canonical": "#3a4334",
+        "tonalRamp": [
+          "oklch(10% 0.03 130)",
+          "oklch(18% 0.04 130)",
+          "oklch(28% 0.045 130)",
+          "oklch(39% 0.05 130)",
+          "oklch(51% 0.045 130)",
+          "oklch(63% 0.04 130)",
+          "oklch(77% 0.03 130)",
+          "oklch(92% 0.02 130)"
+        ],
+        "rampNote": "Synthesized display-only tonal ramp; canonical is the implemented color."
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Anton Display",
+        "purpose": "Major section titles and the large print-world hierarchy."
+      },
+      "headline": {
+        "displayName": "Anton Headline",
+        "purpose": "Active release titles in the listening console."
+      },
+      "title": {
+        "displayName": "Anton Title",
+        "purpose": "Release names below the individual record sleeves."
+      },
+      "body": {
+        "displayName": "DM Sans Body",
+        "purpose": "Liner notes, explanatory copy, and readable navigation text."
+      },
+      "label": {
+        "displayName": "DM Mono Label",
+        "purpose": "Durations and compact time-based playback metadata."
+      },
+      "ui": {
+        "displayName": "DM Sans UI",
+        "purpose": "Featured actions and high-salience interface labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "poster-lift",
+        "value": "18px 24px 44px #0008",
+        "purpose": "Physical separation between the cobalt poster and film."
+      },
+      {
+        "name": "character-lift",
+        "value": "12px 16px 9px #0008",
+        "purpose": "Keeps the yellow face in front of the poster and wall."
+      },
+      {
+        "name": "record-sleeve",
+        "value": "12px 18px 24px #10150e25",
+        "purpose": "Gives each release a physical paper edge on the pale ground."
+      },
+      {
+        "name": "mini-player-float",
+        "value": "0 8px 30px #0005",
+        "purpose": "Lifts the persistent player above the page."
+      },
+      {
+        "name": "aperture-recess",
+        "value": "inset 0 28px 26px -8px #000, inset 24px 0 24px -6px #000c, inset -24px 0 24px -6px #000c, inset 0 -10px 14px #0008",
+        "purpose": "Deepens the cell opening around the real model."
+      }
+    ],
+    "motion": [
+      {
+        "name": "film-scroll-state",
+        "value": "scroll-linked; poster 0.08\u20130.28, film 0.12\u20130.84, closure 0.84\u20131",
+        "purpose": "Moves from identity through the original film before the shutters close."
+      },
+      {
+        "name": "cta-hover",
+        "value": "background 0.2s, transform 0.2s; translateY(-2px)",
+        "purpose": "Small physical lift for the primary listening action."
+      },
+      {
+        "name": "record-hover",
+        "value": "transform 0.25s ease-out; translateY(-7px) rotate(-1deg)",
+        "purpose": "Makes each release sleeve feel handled without a floating-card effect."
+      },
+      {
+        "name": "wave-shock",
+        "value": "0.68s steps(1,end) infinite",
+        "purpose": "White playback shocks run only while a track is playing."
+      },
+      {
+        "name": "wave-dilation",
+        "value": "0.34s cubic-bezier(.22,.8,.22,1)",
+        "purpose": "Yellow pointer dilation follows the waveform focus position."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1700px"
+      },
+      {
+        "name": "compact",
+        "value": "900px"
+      },
+      {
+        "name": "mobile",
+        "value": "600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Listen Action",
+      "kind": "button",
+      "refersTo": "primary-link",
+      "description": "The immediate featured-release action inside the poster scene. Static documentation specimen; implementation behavior lives in src/.",
+      "html": "<a class=\"ds-primary-link\" href=\"#music\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5v14l11-7L8 5Z\"/></svg><span>PLAY FUNKACAINE</span></a>",
+      "css": ".ds-primary-link { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 56px; padding: 16px 22px; background: var(--yellow, #ffd900); color: var(--ink, #151a17); font: 600 15px/1.2 'DM Sans', Arial, sans-serif; text-decoration: none; transition: background .2s, transform .2s; } .ds-primary-link svg { width: 18px; height: 18px; fill: currentColor; } .ds-primary-link:hover { background: var(--yellow-hover, #ffea57); transform: translateY(-2px); } .ds-primary-link:focus-visible { outline: 2px solid var(--yellow, #ffd900); outline-offset: 6px; }"
+    },
+    {
+      "name": "Playback Button",
+      "kind": "button",
+      "refersTo": "play-button",
+      "description": "The square primary control for play and pause in the listening console. Static documentation specimen; implementation behavior lives in src/.",
+      "html": "<button class=\"ds-play-button\" type=\"button\" aria-label=\"Play track\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5v14l11-7L8 5Z\"/></svg></button>",
+      "css": ".ds-play-button { display: grid; place-items: center; width: 72px; height: 72px; padding: 0; background: var(--yellow, #ffd900); color: var(--ink, #151a17); border: 0; transition: background .2s; } .ds-play-button svg { width: 27px; height: 27px; fill: currentColor; } .ds-play-button:hover { background: var(--yellow-hover, #ffea57); } .ds-play-button:focus-visible { outline: 2px solid var(--yellow, #ffd900); outline-offset: 6px; }"
+    },
+    {
+      "name": "Record Sleeve",
+      "kind": "card",
+      "refersTo": "record-sleeve",
+      "description": "A playable, individually composed release artwork block on the pale ground. Static documentation specimen; implementation behavior lives in src/.",
+      "html": "<button class=\"ds-record-sleeve\" type=\"button\"><span class=\"ds-record-art\"><img class=\"ds-record-character\" src=\"/assets/ornament-face.webp\" alt=\"\"/><img class=\"ds-record-flower\" src=\"/assets/ornament-flower.webp\" alt=\"\"/><span class=\"ds-record-artist\">BOUNCING CONCRETE</span><strong>FUNKACAINE</strong><span class=\"ds-record-edge\"></span></span><span class=\"ds-record-play\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M8 5v14l11-7L8 5Z\"/></svg></span></button>",
+      "css": ".ds-record-sleeve { position: relative; display: block; width: 100%; padding: 0; color: var(--ink, #151a17); background: transparent; border: 0; text-align: left; box-shadow: 12px 18px 24px #10150e25; transition: transform .25s ease-out; } .ds-record-sleeve:hover { transform: translateY(-7px) rotate(-1deg); } .ds-record-sleeve:focus-visible { outline: 2px solid var(--cobalt, #1736df); outline-offset: 6px; } .ds-record-art { position: relative; display: block; aspect-ratio: 1; overflow: hidden; color: #eeeee4; background: var(--cobalt, #1736df) url('/assets/poster-grit.webp') center / cover; } .ds-record-artist { position: absolute; z-index: 2; top: 7%; left: 7%; font: 500 11px/1 'DM Sans', Arial, sans-serif; letter-spacing: .04em; } .ds-record-art strong { position: absolute; z-index: 2; top: 15%; left: 7%; right: 7%; font: 400 clamp(32px, 4.8vw, 72px)/.98 Anton, sans-serif; letter-spacing: -.02em; text-transform: uppercase; } .ds-record-edge { position: absolute; z-index: 1; left: -10%; right: -10%; bottom: -9%; height: 25%; background: var(--ink, #151a17) url('/assets/dark-grit.webp') center / 500px; transform: rotate(-12deg); } .ds-record-play { position: absolute; z-index: 3; right: 20px; bottom: 20px; display: grid; place-items: center; width: 52px; height: 52px; background: var(--yellow, #ffd900); color: var(--ink, #151a17); } .ds-record-play svg { width: 20px; height: 20px; fill: currentColor; } .ds-record-character {position:absolute;width:70%;max-width:none;left:23%;top:34%;transform:rotate(13deg);filter:drop-shadow(10px 15px 7px #0005)} .ds-record-flower {position:absolute;z-index:4;left:4%;bottom:8%;width:18%;transform:rotate(-9deg);filter:drop-shadow(3px 5px 4px #0005)} .ds-record-edge {z-index:2} .ds-record-artist,.ds-record-art strong {z-index:3}"
+    },
+    {
+      "name": "Waveform Scrubber",
+      "kind": "input",
+      "refersTo": "waveform-scrubber",
+      "description": "The visible waveform and transparent range input that control actual track seeking. Static documentation specimen; implementation behavior lives in src/.",
+      "html": "<label class=\"ds-wave-hitbox\"><span class=\"ds-wave\"><span class=\"ds-wave-shock\"></span><span class=\"ds-wave-dilation\"></span></span><input type=\"range\" min=\"0\" max=\"100\" value=\"36\" aria-label=\"Track position\" /></label>",
+      "css": ".ds-wave-hitbox { position: relative; display: block; width: 100%; height: 72px; cursor: ew-resize; touch-action: none; } .ds-wave { position: relative; display: block; width: 100%; height: 100%; overflow: visible; background: repeating-linear-gradient(90deg, transparent 0 4px, rgba(230, 230, 223, .94) 4px 6px, transparent 6px 11px); clip-path: polygon(0 50%,2% 42%,4% 66%,6% 32%,8% 55%,10% 16%,12% 76%,14% 40%,16% 62%,18% 9%,20% 82%,23% 38%,26% 66%,29% 18%,32% 88%,35% 42%,38% 72%,41% 24%,44% 91%,47% 36%,50% 65%,53% 12%,56% 84%,59% 31%,62% 73%,65% 18%,68% 89%,71% 40%,74% 64%,77% 9%,80% 84%,83% 34%,86% 71%,89% 22%,92% 88%,95% 39%,98% 65%,100% 48%); } .ds-wave-shock, .ds-wave-dilation { position: absolute; inset: 0; pointer-events: none; clip-path: inherit; } .ds-wave-shock { background: repeating-linear-gradient(90deg, transparent 0 4px, rgba(255, 255, 250, .68) 4px 6px, transparent 6px 11px); opacity: .8; } .ds-wave-dilation { background: repeating-linear-gradient(90deg, transparent 0 4px, var(--yellow, #ffd900) 4px 6px, transparent 6px 11px); opacity: 1; transform: translateY(-4px) scaleY(1.62); mask-image: radial-gradient(ellipse 18% 95% at 50% 50%, #000 0 34%, transparent 100%); } .ds-wave-hitbox input { appearance: none; position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; } .ds-wave-hitbox:focus-within { outline: 2px solid var(--yellow, #ffd900); outline-offset: 5px; }"
+    },
+    {
+      "name": "Persistent Mini Player",
+      "kind": "custom",
+      "refersTo": "mini-player",
+      "description": "A compact continuation of playback shown after listening begins and the full player leaves view. Static documentation specimen; implementation behavior lives in src/.",
+      "html": "<aside class=\"ds-mini-player\" aria-label=\"Persistent music player\"><span class=\"ds-mini-progress\" style=\"width:36%\"></span><button class=\"ds-mini-toggle\" type=\"button\" aria-label=\"Pause music\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 5h4v14H7zM13 5h4v14h-4z\"/></svg></button><a class=\"ds-mini-track\" href=\"#music\"><strong>Funkacaine</strong><span>Bouncing Concrete</span></a><button class=\"ds-mini-next\" type=\"button\" aria-label=\"Next track\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m5 5 8 7-8 7V5Zm9 0h2v14h-2V5Z\"/></svg></button><a class=\"ds-mini-return\" href=\"#music\" aria-label=\"Return to full player\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M5 19 19 5M5 5h14v14\"/></svg></a></aside>",
+      "css": ".ds-mini-player { position: fixed; z-index: 30; right: 20px; bottom: 20px; left: 20px; display: flex; align-items: center; gap: 16px; width: min(640px, calc(100% - 40px)); margin: auto; padding: 12px 18px 12px 12px; background: var(--paper, #e6e5dc); color: var(--ink, #151a17); box-shadow: 0 8px 30px #0005; } .ds-mini-progress { position: absolute; top: 0; left: 0; height: 3px; background: var(--cobalt, #1736df); } .ds-mini-toggle { display: grid; place-items: center; width: 48px; height: 48px; flex: 0 0 auto; padding: 0; border: 0; background: var(--cobalt, #1736df); color: var(--paper, #e6e5dc); } .ds-mini-toggle svg, .ds-mini-next svg { width: 18px; height: 18px; fill: currentColor; } .ds-mini-track { min-width: 0; flex: 1; color: inherit; text-decoration: none; } .ds-mini-track strong { display: block; overflow: hidden; font: 600 15px/1.2 'DM Sans', Arial, sans-serif; white-space: nowrap; text-overflow: ellipsis; } .ds-mini-track span { display: block; margin-top: 3px; font: 400 11px/1.2 'DM Sans', Arial, sans-serif; } .ds-mini-next { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: none; color: inherit; } .ds-mini-return { display: grid; place-items: center; width: 44px; height: 44px; color: inherit; text-decoration: none; } .ds-mini-toggle:focus-visible, .ds-mini-next:focus-visible, .ds-mini-return:focus-visible { outline: 2px solid var(--cobalt, #1736df); outline-offset: 4px; } .ds-mini-return svg {width:17px;height:17px;}"
+    },
+    {
+      "name": "Film Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "The compact header navigation that stays legible over the first-viewport film. Static documentation specimen; implementation behavior lives in src/.",
+      "html": "<nav class=\"ds-film-nav\" aria-label=\"Main navigation\"><a href=\"#music\">Listen</a><a href=\"#records\">Records</a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-film-nav { display: flex; gap: 32px; } .ds-film-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--paper, #e6e5dc); font: 400 14px/1.2 'DM Sans', Arial, sans-serif; text-decoration: none; border-bottom: 1px solid transparent; } .ds-film-nav a:hover { border-color: var(--yellow, #ffd900); } .ds-film-nav a:focus-visible { outline: 2px solid var(--yellow, #ffd900); outline-offset: 6px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The character is confined, but the music keeps getting out.",
+    "overview": "Bouncing Concrete is an Experience surface built as an authored print-to-film encounter. A cobalt physical poster, fractured white wordmark, and yellow concrete face establish the identity; the poster then recedes through the original film into a dark architectural cell and a narrow listening aperture. The visual world is tactile and physical, with visible raster texture, real artwork, and the existing 3D character carrying the atmosphere.\n\nThe page opens into listening rather than a generic catalogue. The dark cell gives way to a pale concrete records and liner-note ground, then returns to a compact dark contact and footer close. Navigation, the featured play action, actual release links, booking contact, and a persistent player remain legible inside the composition.",
+    "keyCharacteristics": [
+      "Poster \u2192 film \u2192 confinement \u2192 listening progression.",
+      "Cobalt/yellow print identity over dark textured architecture.",
+      "Pale concrete release and liner-note ground.",
+      "Squared controls, local depth, and authored responsive stacking."
+    ],
+    "rules": [
+      {
+        "name": "The Three-Ground Rule",
+        "body": "Keep the dark textured world for film, cell, and listening; use pale paper for records and liner notes; return to a compact dark ground for contact and footer. Do not flatten the page into one continuous wash.",
+        "section": "colors"
+      },
+      {
+        "name": "The Display/Instrument Rule",
+        "body": "Keep Anton for the world-facing titles and DM Mono for time-based playback data; use DM Sans for explanatory copy and navigation.",
+        "section": "typography"
+      },
+      {
+        "name": "The Local-Depth Rule",
+        "body": "Use texture, clipping, borders, and nearby shadows to establish physical separation; do not turn the page into a collection of floating rounded cards.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do preserve the cobalt poster, fractured wordmark, yellow face, original video, and 3D character as the identity materials.",
+      "Do keep the `300vh` film, its endpoint-before-closure timing, and the reduced-motion static composition.",
+      "Do keep actual SoundCloud playback, seeking, track switching, release links, and the persistent player as functional controls.",
+      "Do keep the dark \u2192 pale \u2192 dark ground change and the authored mobile composition."
+    ],
+    "donts": [
+      "Don't replace the existing GLB, pose, or aperture occlusion with a CSS illustration or generic hero art.",
+      "Don't turn the waveform into a decorative trace that is disconnected from actual seeking.",
+      "Don't invent show dates, credits, genre labels, biography facts, social profiles, or other unconfirmed artist claims.",
+      "Don't move Kuala Lumpur out of the footer or add a second location claim.",
+      "Don't collapse the world into rounded-card UI or a single undifferentiated background."
+    ]
+  }
+}
