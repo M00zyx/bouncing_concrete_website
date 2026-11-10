@@ -14,6 +14,22 @@ export function App() {
   const featured = siteContent.releases.find(release => release.slug === siteContent.featuredSlug)
   const scene = filmState(progress, reducedMotion)
 
+  // React mounts after the browser's initial fragment lookup. Honor shared
+  // music/records links once their real targets exist, without animating the film.
+  useEffect(() => {
+    const target = document.getElementById(location.hash.slice(1))
+    if (!target) return
+    let frame
+    const arrive = () => {
+      frame = requestAnimationFrame(() => {
+        frame = requestAnimationFrame(() => target.scrollIntoView({ behavior: 'instant' }))
+      })
+    }
+    if (document.readyState === 'complete') arrive()
+    else addEventListener('load', arrive, { once: true })
+    return () => { cancelAnimationFrame(frame); removeEventListener('load', arrive) }
+  }, [])
+
   useEffect(() => {
     const preference = matchMedia('(prefers-reduced-motion: reduce)')
     const change = () => setReducedMotion(preference.matches)
@@ -63,13 +79,13 @@ export function App() {
           <nav aria-label="Main navigation"><a href="#music">Listen</a><a href="#records">Records</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
         </header>
         <div className="identity-scene" style={{ opacity: scene.poster, pointerEvents: scene.poster > .5 ? 'auto' : 'none' }} aria-hidden={scene.poster < .1}>
-          <div className="scene-poster" style={{ transform: `translateY(${-scene.retreat * 14}vh) rotate(${-3 - scene.retreat * 3}deg)` }}>
+          <div className="scene-poster" style={{ transform: `translateY(${-scene.retreat * 14}vh) rotate(${-1.5 - scene.retreat * 3}deg)` }}>
             <img className="scene-wordmark" src="/assets/wordmark-gritty.webp" alt="Bouncing Concrete" fetchPriority="high"/>
             <div className="scene-invitation"><a className="primary-link" href="#music" tabIndex={scene.poster > .5 ? 0 : -1} onClick={() => setPlayRequest(value => value + 1)}><Icon name="play"/> Play {featured.title}</a><p>The music gets out.</p></div>
             <img className="scene-glyph" src="/assets/mark-glyph-06-sideways.webp" alt=""/>
           </div>
-          <img className="hero-character" src="/assets/ornament-face.webp" alt="" style={{ transform: `translateY(${scene.retreat * 18}vh) rotate(11deg)` }}/>
-          <div className="hero-wall" style={{ transform: `translateY(${scene.retreat * 32}vh) rotate(-12deg)` }} aria-hidden="true"><i/></div>
+          <img className="hero-character" src="/assets/ornament-face.webp" alt="" style={{ transform: `translateY(${scene.retreat * 18}vh) rotate(6deg)` }}/>
+          <div className="hero-wall" style={{ transform: `translateY(${scene.retreat * 32}vh) rotate(-3deg)` }} aria-hidden="true"/>
           <span className="scroll-cue">Scroll into the world <Icon name="down"/></span>
         </div>
         <p className="film-caption" style={{ opacity: (1 - scene.poster) * (1 - scene.closure) }}>Build. Bounce. Break.</p>
@@ -80,9 +96,8 @@ export function App() {
     </section>
     <MusicPlayer playRequest={playRequest}>
       <div className="cell-architecture">
-        <span className="cell-seam" aria-hidden="true"/>
-        <Suspense fallback={<div className="object-stage eye-slit-stage" aria-hidden="true"/>}><ConcreteObject/></Suspense>
-        <span className="cell-latch" aria-hidden="true"><i/><i/></span>
+        <div className="cell-live-window"><Suspense fallback={<div className="object-stage eye-slit-stage" aria-hidden="true"/>}><ConcreteObject/></Suspense></div>
+        <div className="cell-facade" aria-hidden="true"/>
       </div>
     </MusicPlayer>
     <section id="about" className="liner-notes" aria-labelledby="about-title">

@@ -118,6 +118,7 @@ export function MusicPlayer({ playRequest, children }) {
 
   useEffect(() => {
     let active = true, player, selectionResolved = false
+    const playerFrame = frame.current
     readyRef.current = false
     setReady(false)
     setFailed(false)
@@ -187,7 +188,11 @@ export function MusicPlayer({ playRequest, children }) {
       active = false
       request.current++
       clearTimeout(timeout)
-      if (player) Object.values(window.SC.Widget.Events).forEach(event => player.unbind(event))
+      // The widget posts to its iframe while unbinding. React may already have
+      // removed it during a refresh or retry; detached callbacks are inert.
+      if (player && playerFrame?.isConnected && playerFrame.contentWindow) {
+        Object.values(window.SC.Widget.Events).forEach(event => player.unbind(event))
+      }
       widget.current = null
       readyRef.current = false
     }
@@ -257,10 +262,10 @@ export function MusicPlayer({ playRequest, children }) {
       </div>
     </section>
     <section id="records" className="records-section" aria-labelledby="records-title">
-      <div className="records-heading"><h2 id="records-title">The records.</h2><p>Press play.<br/>Stay a while.</p></div>
+      <div className="records-heading"><h2 id="records-title">The records.</h2><p>Press play. Stay a while.</p></div>
       <div className="record-grid">{tracks.map(release => <article className="record" key={release.slug}>
         <button className="record-sleeve" disabled={!ready} aria-label={`Play ${release.title}`} aria-current={release.slug === track.slug ? 'true' : undefined} onClick={() => choose(release)}><RecordArt release={release}/><span className="record-play"><Icon name="play"/></span></button>
-        <div className="record-caption"><div><h3>{release.title}</h3><span className="record-duration">{time(release.duration)}{release.slug === track.slug && playing ? ' · Playing' : ''}</span></div><a href={release.soundcloudUrl} target="_blank" rel="noreferrer" aria-label={`${release.title} on SoundCloud`}><Icon name="arrow"/></a></div>
+        <div className="record-caption"><div><h3>{release.title}</h3><span className="record-duration">{release.slug === siteContent.featuredSlug ? 'Featured · ' : ''}{time(release.duration)}{release.slug === track.slug && playing ? ' · Playing' : ''}</span></div><a href={release.soundcloudUrl} target="_blank" rel="noreferrer" aria-label={`${release.title} on SoundCloud`}><span>SoundCloud</span><Icon name="arrow"/></a></div>
       </article>)}</div>
     </section>
     {hasPlayed && !playerInView && <aside className="mini-player" aria-label="Persistent music player">

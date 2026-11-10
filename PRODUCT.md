@@ -14,3 +14,5 @@ A music artist website where visitors encounter the character and visual world, 
 The user approved the proposed direction: the character is confined, but the music keeps getting out. Unify identity, destruction and aftermath; make the cell feel architectural; expose both releases; retain playback while browsing; use pale concrete liner notes; consolidate the empty Live section into contact and follow.
 
 Preserve the full three-viewport scroll film, fractured wordmark, blue/yellow physical identity, model pose and horizontal cursor following, waveform mouth, white playback shocks and independent yellow pointer dilation. Keep the site local during refinement. GitHub backup is authorized; public deployment is not requested.
+
+The user subsequently approved quiet tension in the opening and coordinated refinement of the cell and records. Use one matching concrete material across the closing walls and prison exterior. The selected 12UI direction is integrated selectively: preserve the original identity, film, live model and music controls, and give the releases their own spacious section.

@@ -8,11 +8,11 @@ The character is confined, but the music keeps getting out.
 
 ## First viewport
 
-Lead with one large cobalt physical poster, the fractured white Bouncing Concrete wordmark, and a dominant yellow concrete face. Keep the direct `Play Funkacaine` action and the compact Listen / Records / About / Contact navigation visible. The existing full-film video replaces the poster as the visitor scrolls. Mobile uses the authored tall composition rather than a cropped desktop arrangement.
+Lead with one large cobalt physical poster, the fractured white Bouncing Concrete wordmark, and one still yellow concrete face. Keep the direct `Play Funkacaine` action and the compact Listen / Records / About / Contact navigation visible. The existing full-film video replaces the poster as the visitor scrolls. Mobile uses the authored tall composition rather than a cropped desktop arrangement.
 
 ## Signature sequence
 
-The hero remains a `300vh` scroll film with identity, incident, and aftermath beats. Scroll-linked state retreats the poster, plays the original video, then closes the view with a heavy foreground shutter into a confined slit before the page meets the matching cell wall. Reduced motion holds the graphic composition and does not load the film source. The cell preserves the existing GLB, camera, pose, and horizontal pointer-follow behavior, with controlled occlusion, a deeper recess, a seam, and one metal latch. The authored `cell-still-makeover.jpg` remains the unavailable-model fallback.
+The hero remains a `300vh` scroll film with identity, incident, and aftermath beats. Scroll-linked state retreats the poster, plays the original video, then closes the view with a heavy foreground shutter into a confined slit before the page meets the matching cell wall. Reduced motion holds the graphic composition and does not load the film source. The cell preserves the existing GLB, camera, pose, and horizontal pointer-follow behavior, with controlled occlusion, the selected rough recess, and two photographed fixtures. The authored `cell-still-makeover.jpg` remains the unavailable-model fallback.
 
 ## Rest of page
 
@@ -32,3 +32,7 @@ Use `bouncingconcrete@gmail.com`, the existing SoundCloud and Bandcamp destinati
 ## Evidence boundary
 
 This brief records the approved visual and interaction contract. Durable implementation evidence is in `src/makeover.css`, `src/waveform.css`, `src/film.js`, `src/App.jsx`, `src/MusicPlayer.jsx`, `src/RecordArt.jsx`, `src/fonts.css`, and `PRODUCT.md`. Runtime/build and supplied interaction results remain recorded by the parent’s verification documents; this documentation pass did not independently rerun them.
+
+## Quiet tension implementation
+
+Use `src/quiet-tension.css` for the approved calm opening, shared concrete grain, selected raster cell facade and spacious record hierarchy. Keep the existing film and model modules as the behavioral authority. The material crop and facade both come from the same 12UI cell plate; no unrelated stone texture belongs on the closing walls.

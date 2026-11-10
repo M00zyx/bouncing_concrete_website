@@ -10,10 +10,15 @@ colors:
   film-deep: "#05070d"
   muted-copy: "#b8c0ae"
   dark-line: "#3a4334"
+  concrete-ground: "#20231f"
+  concrete-edge: "#383b36"
+  concrete-shadow: "#252822"
+  concrete-sill: "#41453d"
+  paper-link-rule: "#8d9285"
 typography:
   display:
     fontFamily: "Anton, sans-serif"
-    fontSize: "clamp(56px, 7vw, 96px)"
+    fontSize: "clamp(52px, 6vw, 80px)"
     fontWeight: 400
     lineHeight: 1.02
     letterSpacing: "-0.02em"
@@ -155,9 +160,9 @@ The display face is compressed, physical, and all-caps for the wordmark-adjacent
 
 The first viewport is a full-height sticky scene inside a `300vh` scroll film. Scroll progress drives four states: the poster retreats after the opening beat, the original video runs through the middle of the film, and the top and bottom shutters close only at the end. The film state reaches its endpoint before closure; reduced motion holds the poster composition and omits the video source.
 
-The dark listening section uses a centered aperture with a width of `min(82vw, 1100px)` and a height of `clamp(330px, 38vw, 520px)`; the release player is capped at `850px`. Records and liner notes use an uneven `1.15fr / .85fr` split with an `8vw` gap and a `1320px` records maximum. The second record is intentionally offset by `100px` on wide layouts.
+The live model keeps its `min(82vw, 1100px)` by `clamp(330px, 38vw, 520px)` stage and original camera/pose. A separate foreground facade masks it through a narrower window, 65.2% of the facade width, with the photographed jambs and sill in front. One concrete material at `min(100vw, 1536px)` grain scale connects the opening wall, closing shutters and cell exterior. The player is capped at `850px`. Records use a `1.2fr / .8fr` split, a `9vw` gap and a `1200px` maximum; the second record is offset by `140px` on wide layouts. Liner notes remain a separate section.
 
-At the compact breakpoint, the page narrows its gutters and preserves the poster, wordmark, character, and diagonal wall as an authored tall composition. At `600px` and below, the records stack into one column, liner notes become a vertical reading flow, contact becomes one column, the aperture becomes `90vw × 165px`, transport controls center beneath the title, and mini-player controls remain at least `44px` high.
+At the compact breakpoint, the page narrows its gutters and preserves the poster, wordmark, character, and diagonal wall as an authored tall composition. At `600px` and below, the records stack into one column, liner notes become a vertical reading flow, contact becomes one column, the underlying model stage remains `90vw × 165px` behind the responsive facade, transport controls center beneath the title, and mini-player controls remain at least `44px` high.
 
 ## Elevation & Depth
 
@@ -200,7 +205,7 @@ The first-viewport header sits over the film with the actual wordmark at left an
 
 ### Cell Aperture
 
-The listening scene preserves the existing GLB, camera, pose, and horizontal pointer-follow behavior inside a textured stage. A dark slit overlay, deeper recess, asymmetric hard borders, seam, and one small metal latch control the occlusion. While the model is unavailable, the stage uses the authored `cell-still-makeover.jpg` fallback; it does not become a generic CSS character.
+The listening scene preserves the existing GLB, camera, pose, and horizontal pointer-follow behavior inside a textured stage. The selected 12UI rough aperture plate supplies the recess, sill and two fixtures. A rectangular live window exposes the original GLB; a softly masked facade blends into the shared exterior material without changing grain scale. While the model is unavailable, the stage uses the authored `cell-still-makeover.jpg` fallback; it does not become a generic CSS character.
 
 ## Do's and Don'ts
 
@@ -216,3 +221,13 @@ The listening scene preserves the existing GLB, camera, pose, and horizontal poi
 - **Don't** invent show dates, credits, genre labels, biography facts, social profiles, or other unconfirmed artist claims.
 - **Don't** move Kuala Lumpur out of the footer or add a second location claim.
 - **Don't** collapse the world into rounded-card UI or a single undifferentiated background.
+
+## Quiet tension refinement — 10 November 2026
+
+The opening is still and uncluttered, with one character beside the original blue print. Its foreground wall has no premature prison opening. Destruction remains in the original film, and confinement follows. Short, wide desktop layouts use document flow for the wordmark and invitation to maintain separation. Phone and tablet retain the authored tall composition.
+
+The 12UI cell plate is used as real raster architecture. Its lower material strip is also the exterior wall texture, so shutters and prison share colour and grain. The 3D eyes and live waveform remain original interactive layers. Keep the mouth close beneath the slit. The selected mock's static face/waveform must never replace them.
+
+The record hierarchy gives Funkacaine the larger sleeve and a factual featured marker. Secondary SoundCloud links are visibly named. The new paper-grain plate supports spacious sleeves, then the separate artist story. Do not reintroduce the 12UI proposal's four-column crowding, duplicate character or redundant catalogue link.
+
+Responsive type refinements use 16px supporting copy, 14px phone invitation copy, 13px desktop/12px phone outbound labels, 48px phone section headings, 28px phone release titles and 11px phone duration metadata. These are intentional additions to the earlier ramp. The facade edge colours above are sampled material tones rather than new brand accents.

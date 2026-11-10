@@ -1,0 +1,162 @@
+/* Approved 12UI refinement: quiet arrival, one material, spacious records.
+   Keep film timing, camera/pose and player behavior in their owning modules. */
+:root {
+  --concrete-span: min(100vw, 1536px);
+  --concrete-material: url('/assets/clean-0-d12f3cfbe8a2-material.svg');
+  --cell-facade: url('/assets/clean-0-d12f3cfbe8a2.webp');
+  --concrete-grain-size: var(--concrete-span) auto;
+}
+
+/* A single still character waits beside the print. Confinement follows the film. */
+.scene-poster { left: 13%; top: 3%; width: 51%; height: 101%; }
+.scene-wordmark { left: 7%; top: 19%; width: 86%; }
+.scene-invitation { left: 8%; top: 64%; transform: none; }
+.scene-invitation p { font-size: 16px; margin-top: 18px; }
+.scene-glyph { bottom: 10%; width: 62px; opacity: .6; }
+.hero-character { left: 66%; top: 45%; width: 24%; max-width: 370px; }
+.hero-wall {
+  left: -3%; top: 92%; width: 112%; height: 40%;
+  background-image: var(--concrete-material);
+  background-size: var(--concrete-grain-size);
+  background-position: center top;
+  border-top: 5px solid #383b36;
+  box-shadow: 0 -10px 24px #0006;
+}
+.scroll-cue { bottom: 28px; }
+
+/* Every exterior wall samples the same plate at the same physical scale. */
+.containment > div {
+  background: #20231f var(--concrete-material) center top / var(--concrete-grain-size);
+}
+.containment > div:first-child { border-bottom-color: #252822; }
+.containment > div:last-child { border-top-color: #41453d; }
+.release {
+  padding: 0 0 76px;
+  background-color: #20231f;
+  background-image: var(--concrete-material);
+  background-size: var(--concrete-grain-size);
+  background-position: center top;
+}
+.cell-architecture {
+  width: var(--concrete-span);
+  max-width: 100%;
+  height: calc(var(--concrete-span) * .31);
+  overflow: hidden;
+  isolation: isolate;
+}
+.cell-live-window {
+  position: absolute;
+  left: 17.5%;
+  top: calc(var(--concrete-span) * .16);
+  width: 65.2%;
+  height: calc(var(--concrete-span) * .114584);
+  overflow: hidden;
+  background: #090c09 url('/assets/concrete-stage.webp') center / cover;
+}
+.eye-slit-stage {
+  position: absolute;
+  top: calc(var(--concrete-span) * -.205);
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: none;
+  background-color: transparent;
+  max-width: none;
+  overflow: visible;
+}
+.eye-slit-stage::before, .eye-slit-stage::after { display: none; }
+.cell-facade {
+  position: absolute;
+  z-index: 3;
+  inset: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 1536 / 1024;
+  background: var(--cell-facade) center top / 100% 100%;
+  /* A real plate supplies the broken edge, jambs, sill and hardware.
+     Only its rectangular interior is opened for the original live model. */
+  clip-path: polygon(evenodd, 0 0, 100% 0, 100% 100%, 0 100%, 0 0,
+    17.5% 24%, 17.5% 41.2%, 82.7% 41.2%, 82.7% 24%, 17.5% 24%);
+  mask-image: linear-gradient(transparent 16%, #000 21%, #000 43%, transparent 49%);
+  pointer-events: none;
+}
+.release-player { width: min(66vw, 850px); margin: -12px auto 0; }
+.wave-hitbox { margin-bottom: 14px; }
+.playback-console { padding: 20px 0 28px; }
+.track-copy h2 { font-size: clamp(42px, 5.6vw, 76px); }
+
+/* The sleeves carry the story; supporting copy follows in a separate beat. */
+.records-section, .liner-notes {
+  background: var(--paper) url('/assets/clean-1-4dd75c274972.webp') center top / 1536px auto;
+}
+.records-section { padding: 96px 8vw 112px; }
+.records-heading { max-width: 1200px; margin: auto; padding-bottom: 56px; gap: 32px; }
+.records-heading h2 { font-size: clamp(52px, 6vw, 80px); }
+.records-heading p { max-width: 15ch; font-size: 16px; }
+.record-grid { grid-template-columns: 1.2fr .8fr; gap: 9vw; max-width: 1200px; }
+.record:nth-child(2) { margin-top: 140px; }
+.record-sleeve { box-shadow: 8px 15px 24px #10150e20; }
+.record-sleeve:hover:not(:disabled) { transform: translateY(-4px); }
+.record-caption { align-items: flex-start; padding-top: 24px; gap: 18px; }
+.record-caption h3 { font-size: clamp(26px, 2.6vw, 40px); }
+.record-caption a {
+  display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto;
+  min-height: 44px; height: auto; border: 0; border-bottom: 1px solid #8d9285;
+  font-size: 13px;
+}
+.record-caption a .icon { width: 15px; height: 15px; }
+.record-caption a:hover { background: transparent; color: var(--blue); }
+.record-duration { line-height: 1.6; }
+.liner-notes { padding-top: 80px; padding-bottom: 112px; }
+
+@media (min-width: 901px) {
+  .scene-poster { display: flex; flex-direction: column; justify-content: center; padding: 4vw; }
+  .scene-wordmark { position: static; width: 100%; }
+  .scene-invitation { position: static; margin-top: 8px; }
+}
+@media (min-width: 1700px) {
+  .scene-poster { left: 19%; width: 44%; }
+  .scene-invitation { top: 64%; }
+  .hero-character { left: 65%; top: 44%; width: 22%; }
+}
+@media (max-width: 900px) {
+  .scene-poster { left: 9%; width: 65%; }
+  .scene-wordmark { top: 24%; }
+  .scene-invitation { top: 64%; }
+  .hero-character { left: 69%; top: 48%; width: 28%; }
+  .hero-wall { left: -3%; top: 93%; width: 112%; }
+  .release-player { width: 74vw; }
+  .record-grid { gap: 7vw; }
+  .record:nth-child(2) { margin-top: 100px; }
+  .record-caption { flex-wrap: wrap; gap: 8px; }
+  .records-section { padding: 76px 7vw 84px; }
+}
+@media (max-width: 600px) {
+  .scene-poster { left: 6%; top: 13%; width: 86%; height: 76%; }
+  .scene-wordmark { left: 6%; top: 10%; width: 88%; }
+  .scene-invitation { left: 8%; top: 64%; }
+  .scene-invitation p { font-size: 14px; margin-top: 16px; }
+  .scene-glyph { bottom: 8%; width: 42px; }
+  .hero-character { left: 65%; top: 49%; width: 29%; }
+  .hero-wall { left: -3%; top: 93%; width: 112%; height: 32%; border-top-width: 4px; }
+  .scroll-cue { bottom: 17px; right: 6vw; }
+  .release { padding-bottom: 56px; }
+  .cell-architecture { height: calc(var(--concrete-span) * .37); }
+  .cell-facade { aspect-ratio: 1536 / 1200; }
+  .cell-live-window { top: calc(var(--concrete-span) * .1875); height: calc(var(--concrete-span) * .134375); }
+  .eye-slit-stage { top: calc(var(--concrete-span) * -.1875 - 8px); }
+  .release-player { width: 86vw; margin-top: -8px; }
+  .wave-hitbox { height: 60px; margin-bottom: 8px; }
+  .playback-console { padding: 18px 0 20px; }
+  .records-section { padding: 56px 7vw 72px; }
+  .records-heading { padding-bottom: 36px; gap: 22px; }
+  .records-heading h2 { font-size: 48px; }
+  .records-heading p { font-size: 13px; max-width: 10ch; }
+  .record-grid { grid-template-columns: 1fr; gap: 56px; }
+  .record:nth-child(2) { margin-top: 0; width: 88%; justify-self: end; }
+  .record-caption { flex-wrap: nowrap; padding-top: 20px; gap: 16px; }
+  .record-caption h3 { font-size: 28px; }
+  .record-caption a { font-size: 12px; gap: 6px; }
+  .record-caption a .icon { width: 13px; height: 13px; }
+  .record-duration { font-size: 11px; }
+  .record-art-concrete .record-art-title { font-size: 8.8vw; }
+  .liner-notes { padding-top: 56px; padding-bottom: 64px; }
+}

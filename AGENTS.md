@@ -39,3 +39,10 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Preserve the original wordmark, film, GLB pose, cursor following and waveform behaviour.
 - Expose both releases with distinct sleeve compositions on pale concrete. Keep a compact player available after playback starts when the main player leaves view.
 - Use comfortable reading typography, concise liner notes and a compact booking/follow close instead of a large empty Live section.
+
+## Approved quiet-tension refinement — 10 November 2026
+
+- Refine the opening, cell and records together. Begin with quiet tension, one character and the original identity; reserve destruction and confinement for the existing film sequence.
+- Preserve the full three-viewport film, original 3D pose, cursor-following eyes, real player, waveform mouth and seeking behavior.
+- Use one rough concrete material, matching colour and grain scale, across the closing walls and prison exterior. They are the same architecture.
+- Use the selected 12UI cell architecture, with the live GLB behind its opening. Keep Funkacaine prominent in a spacious records section and the artist story separate below.
