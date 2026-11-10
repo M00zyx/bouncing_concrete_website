@@ -45,4 +45,12 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Refine the opening, cell and records together. Begin with quiet tension, one character and the original identity; reserve destruction and confinement for the existing film sequence.
 - Preserve the full three-viewport film, original 3D pose, cursor-following eyes, real player, waveform mouth and seeking behavior.
 - Use one rough concrete material, matching colour and grain scale, across the closing walls and prison exterior. They are the same architecture.
-- Use the selected 12UI cell architecture, with the live GLB behind its opening. Keep Funkacaine prominent in a spacious records section and the artist story separate below.
+- Use the selected 12UI cell architecture, with the live GLB behind its opening. Keep the live character and working player intact; the lower-page layout follows the later user correction below.
+
+## User reference correction — 10 November 2026
+
+- The user explicitly expects the selected 12UI lower-page image: a compact four-column desktop spread with the records heading, two equal sleeves, and the artist statement. Use that image as the layout authority; do not substitute a staggered oversized featured sleeve or separate the artist story below it.
+- Keep the film still alongside contact in a single dark closing band, followed by the footer. Stack appropriately on phones without changing the content or real actions.
+- Shutters, prison wall and player must read as one continuous concrete surface. Matching a filename is insufficient: pixel scale, texture phase and lighting must also match, with no faded facade overlay or separate player texture.
+- The continuous atlas in `public/assets/concrete-continuous.svg` uses the complete selected cell plate, extended with mirrored edge strips. `scripts/build-concrete-atlas.mjs` reproduces it. Align the closed shutters' bottom edge with source row zero at the music section's top.
+- Preserve the original 300vh film, live GLB camera and pose, cursor-following eyes, waveform mouth and working SoundCloud playback/seek controls.

@@ -97,21 +97,16 @@ export function App() {
     <MusicPlayer playRequest={playRequest}>
       <div className="cell-architecture">
         <div className="cell-live-window"><Suspense fallback={<div className="object-stage eye-slit-stage" aria-hidden="true"/>}><ConcreteObject/></Suspense></div>
-        <div className="cell-facade" aria-hidden="true"/>
       </div>
     </MusicPlayer>
-    <section id="about" className="liner-notes" aria-labelledby="about-title">
-      <figure className="film-print"><img src="/assets/film-still.jpg" alt="The concrete character suspended above the street in the Bouncing Concrete film" loading="lazy" width="1280" height="720"/><figcaption>Build. Bounce. Break.</figcaption></figure>
-      <div className="liner-copy"><h2 id="about-title">Music for a world still under construction.</h2><p>{siteContent.bio}</p>
-        <img className="liner-art" src="/assets/ornament-three-panel-asymmetric-v4.webp" width="1881" height="836" alt="" loading="lazy"/>
-        <a className="text-link" href={`mailto:${siteContent.bookingEmail}?subject=Bouncing%20Concrete%20%E2%80%94%20booking%20or%20press`}>Bookings &amp; press <Icon name="arrow"/></a>
-      </div>
-    </section>
+    <div className="contact-spread">
+      <figure className="film-print"><img src="/assets/crop-31-064e73e487b9.webp" alt="The concrete character suspended above the street in the Bouncing Concrete film" loading="lazy" width="722" height="294"/><figcaption>Build. Bounce. Break.</figcaption></figure>
     <section id="contact" className="contact-section" aria-labelledby="contact-title">
       <div><h2 id="contact-title">Make some noise.</h2><a className="contact-email" href={`mailto:${siteContent.bookingEmail}`}>{siteContent.bookingEmail}<Icon name="arrow"/></a><p>Bookings, press &amp; collaborations.</p></div>
       <nav className="follow-links" aria-label="Follow Bouncing Concrete"><a href={siteContent.soundcloudProfile} target="_blank" rel="noreferrer">Follow on SoundCloud <Icon name="arrow"/></a><a href={siteContent.bandcamp} target="_blank" rel="noreferrer">Find us on Bandcamp <Icon name="arrow"/></a>{siteContent.socialLinks.map(link => <a key={link.url} href={link.url}>{link.label}<Icon name="arrow"/></a>)}{siteContent.shows.length === 0 && <span>No shows announced yet.</span>}</nav>
       {siteContent.shows.length > 0 && <div className="live-dates">{siteContent.shows.map(show => <article key={show.date + show.city}><time dateTime={show.date}>{new Date(`${show.date}T12:00:00`).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}</time><strong>{show.city}</strong><span>{show.venue}</span><a href={show.ticketUrl}>Tickets <Icon name="arrow"/></a></article>)}</div>}
     </section>
+    </div>
     <footer className="site-footer"><span>© {siteContent.footer}</span><a href="#top">Back to top <Icon name="arrow"/></a><span className="footer-location">Built, bounced and broken in Kuala Lumpur <img src="/assets/symbol-globe-tight.webp" alt="" loading="lazy"/></span></footer>
   </main>
 }

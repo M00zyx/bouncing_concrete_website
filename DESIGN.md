@@ -160,9 +160,9 @@ The display face is compressed, physical, and all-caps for the wordmark-adjacent
 
 The first viewport is a full-height sticky scene inside a `300vh` scroll film. Scroll progress drives four states: the poster retreats after the opening beat, the original video runs through the middle of the film, and the top and bottom shutters close only at the end. The film state reaches its endpoint before closure; reduced motion holds the poster composition and omits the video source.
 
-The live model keeps its `min(82vw, 1100px)` by `clamp(330px, 38vw, 520px)` stage and original camera/pose. A separate foreground facade masks it through a narrower window, 65.2% of the facade width, with the photographed jambs and sill in front. One concrete material at `min(100vw, 1536px)` grain scale connects the opening wall, closing shutters and cell exterior. The player is capped at `850px`. Records use a `1.2fr / .8fr` split, a `9vw` gap and a `1200px` maximum; the second record is offset by `140px` on wide layouts. Liner notes remain a separate section.
+The live model keeps its `min(82vw, 1100px)` by `clamp(330px, 38vw, 520px)` stage and original camera/pose. A clipped live window reveals its eyes inside the selected cell plate. One continuous raster atlas, at `100vw` grain scale, supplies the closing shutters, complete prison wall and player ground. Its common origin joins the closed hero to the music section without a separate facade blend. The player remains capped at `850px`. The lower section follows the selected 12UI editorial spread: an introductory heading, two equal sleeves and the artist statement in four desktop columns. The film still and contact share the next dark band.
 
-At the compact breakpoint, the page narrows its gutters and preserves the poster, wordmark, character, and diagonal wall as an authored tall composition. At `600px` and below, the records stack into one column, liner notes become a vertical reading flow, contact becomes one column, the underlying model stage remains `90vw × 165px` behind the responsive facade, transport controls center beneath the title, and mini-player controls remain at least `44px` high.
+At the compact breakpoint, the page narrows its gutters and preserves the poster, wordmark, character, and diagonal wall as an authored tall composition. At `600px` and below, the records stack into one column, the artist statement follows the sleeves, contact becomes one column, the underlying model stage remains `90vw × 165px` inside the responsive clipped window, transport controls center beneath the title, and mini-player controls remain at least `44px` high.
 
 ## Elevation & Depth
 
@@ -192,8 +192,8 @@ The form language is squared and print-like. Controls, sleeves, and player surfa
 - **Focus:** focus-visible uses a `2px` yellow outline on dark surfaces and cobalt on pale surfaces, with a `6px` offset; the waveform hitbox keeps its own visible focus treatment.
 
 ### Cards / Containers
-- **Record sleeves:** transparent, borderless buttons containing square, individually composed artwork. Funkacaine uses the blue poster field, character, and flower ornament; Concreto Incarnat uses the record-aperture material and a cobalt edge. Hover raises and slightly rotates the sleeve.
-- **Internal rhythm:** captions sit `26px` below the artwork on wide layouts and `20px` on mobile; release titles use Anton and durations use DM Mono.
+- **Record sleeves:** transparent, borderless buttons containing square, individually composed artwork. Funkacaine uses the blue poster field, character, and flower ornament; Concreto Incarnat uses the record-aperture material and a cobalt edge. Hover raises the sleeve slightly. The selected 12UI raster sleeves retain their exact artwork, with live play controls overlaid.
+- **Internal rhythm:** captions sit `22px` below the artwork on wide layouts and `20px` on mobile; release titles use Anton and durations use DM Mono.
 
 ### Inputs / Fields
 - **Waveform scrubber:** the visual waveform is an interaction surface with a transparent range input over it. Pointer movement focuses a yellow dilation at the cursor; the white shock layer runs only while playback is active. The input remains the source of seeking and exposes track position to assistive technology.
@@ -205,7 +205,7 @@ The first-viewport header sits over the film with the actual wordmark at left an
 
 ### Cell Aperture
 
-The listening scene preserves the existing GLB, camera, pose, and horizontal pointer-follow behavior inside a textured stage. The selected 12UI rough aperture plate supplies the recess, sill and two fixtures. A rectangular live window exposes the original GLB; a softly masked facade blends into the shared exterior material without changing grain scale. While the model is unavailable, the stage uses the authored `cell-still-makeover.jpg` fallback; it does not become a generic CSS character.
+The listening scene preserves the existing GLB, camera, pose, and horizontal pointer-follow behavior inside a textured stage. The selected 12UI rough aperture plate supplies the recess, sill and two fixtures. A rectangular live window exposes the original GLB over the continuous background plate. There is no faded facade overlay or separate player ground. While the model is unavailable, the stage uses the authored `cell-still-makeover.jpg` fallback; it does not become a generic CSS character.
 
 ## Do's and Don'ts
 
@@ -226,8 +226,8 @@ The listening scene preserves the existing GLB, camera, pose, and horizontal poi
 
 The opening is still and uncluttered, with one character beside the original blue print. Its foreground wall has no premature prison opening. Destruction remains in the original film, and confinement follows. Short, wide desktop layouts use document flow for the wordmark and invitation to maintain separation. Phone and tablet retain the authored tall composition.
 
-The 12UI cell plate is used as real raster architecture. Its lower material strip is also the exterior wall texture, so shutters and prison share colour and grain. The 3D eyes and live waveform remain original interactive layers. Keep the mouth close beneath the slit. The selected mock's static face/waveform must never replace them.
+The 12UI cell plate is used as real raster architecture, extended into a continuous atlas so the shutters, prison and player share the same pixel scale, lighting and texture phase. The 3D eyes and live waveform remain original interactive layers. Keep the mouth close beneath the slit. The selected mock's static face/waveform must never replace them.
 
-The record hierarchy gives Funkacaine the larger sleeve and a factual featured marker. Secondary SoundCloud links are visibly named. The new paper-grain plate supports spacious sleeves, then the separate artist story. Do not reintroduce the 12UI proposal's four-column crowding, duplicate character or redundant catalogue link.
+The user corrected the earlier spacious interpretation to the compact 12UI reference. Both sleeves are equal and aligned, with the records introduction at left and artist statement at right. Use the selected paper-grain, sleeve, material-strip and film-still assets. The catalogue action leads to the real SoundCloud profile. Below, the film still occupies 47% and contact 53% of the desktop closing band. At 1100px and below, the spread becomes two columns; at 600px and below it stacks into one. This supersedes the earlier staggered hierarchy and separate artist-story section.
 
-Responsive type refinements use 16px supporting copy, 14px phone invitation copy, 13px desktop/12px phone outbound labels, 48px phone section headings, 28px phone release titles and 11px phone duration metadata. These are intentional additions to the earlier ramp. The facade edge colours above are sampled material tones rather than new brand accents.
+The current reference layout uses roughly 15px desktop supporting copy, 13px booking labels, 11px durations, 96px desktop records display and 32px release captions at 1536px. Phones use 78px records display, 30px release captions and 15–16px supporting copy. The 14px opening invitation and unchanged 44px phone player title preserve the previous interaction hierarchy.

@@ -35,4 +35,8 @@ This brief records the approved visual and interaction contract. Durable impleme
 
 ## Quiet tension implementation
 
-Use `src/quiet-tension.css` for the approved calm opening, shared concrete grain, selected raster cell facade and spacious record hierarchy. Keep the existing film and model modules as the behavioral authority. The material crop and facade both come from the same 12UI cell plate; no unrelated stone texture belongs on the closing walls.
+Use `src/quiet-tension.css` for the approved calm opening, shared concrete grain, continuous raster cell atlas and compact four-column record spread. Keep the existing film and model modules as the behavioral authority. One extended raster atlas supplies the full exterior, recess and player ground. Shutter and music origins align at the section boundary; no unrelated texture or blended facade belongs there.
+
+## Latest user-selected lower layout
+
+Use the attached 12UI reference as the authority: heading left, equal record sleeves in the middle, artist statement right. The film still sits beside contact below. Preserve this compact density on desktop and stack it clearly on phones. The earlier spacious staggered layout and separate artist story were explicitly corrected by the user.

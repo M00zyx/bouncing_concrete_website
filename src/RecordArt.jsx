@@ -1,10 +1,4 @@
 export function RecordArt({ release }) {
-  const concrete = release.slug === 'concreto-incarnat'
-  return <div className={`record-art ${concrete ? 'record-art-concrete' : 'record-art-funk'}`} aria-hidden="true">
-    {concrete ? <img className="record-material" src="/assets/record-aperture.webp" alt="" loading="lazy"/> : <img className="record-character" src="/assets/ornament-face.webp" alt="" loading="lazy"/>}
-    <span className="record-art-artist">BOUNCING CONCRETE</span>
-    <strong className="record-art-title">{concrete ? <>CONCRETO<br/>INCARNAT</> : release.title}</strong>
-    <div className="record-art-edge"/>
-    {!concrete && <img className="record-art-flower" src="/assets/ornament-flower.webp" alt="" loading="lazy"/>}
-  </div>
+  const sleeve = release.slug === 'concreto-incarnat' ? 'crop-18-bd5de7ab99aa' : 'crop-11-63a82a4545cd'
+  return <div className="record-art" aria-hidden="true"><img className="record-art-image" src={`/assets/${sleeve}.webp`} alt="" loading="lazy" width="345" height="359"/></div>
 }

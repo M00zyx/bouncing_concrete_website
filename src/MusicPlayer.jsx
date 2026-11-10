@@ -262,11 +262,18 @@ export function MusicPlayer({ playRequest, children }) {
       </div>
     </section>
     <section id="records" className="records-section" aria-labelledby="records-title">
-      <div className="records-heading"><h2 id="records-title">The records.</h2><p>Press play. Stay a while.</p></div>
-      <div className="record-grid">{tracks.map(release => <article className="record" key={release.slug}>
-        <button className="record-sleeve" disabled={!ready} aria-label={`Play ${release.title}`} aria-current={release.slug === track.slug ? 'true' : undefined} onClick={() => choose(release)}><RecordArt release={release}/><span className="record-play"><Icon name="play"/></span></button>
-        <div className="record-caption"><div><h3>{release.title}</h3><span className="record-duration">{release.slug === siteContent.featuredSlug ? 'Featured · ' : ''}{time(release.duration)}{release.slug === track.slug && playing ? ' · Playing' : ''}</span></div><a href={release.soundcloudUrl} target="_blank" rel="noreferrer" aria-label={`${release.title} on SoundCloud`}><span>SoundCloud</span><Icon name="arrow"/></a></div>
-      </article>)}</div>
+      <div className="records-masthead"><span>BOUNCING CONCRETE</span><span className="masthead-rule" aria-hidden="true"/><p>Press play.<br/>Stay a while.</p></div>
+      <div className="records-spread">
+        <div className="records-heading"><h2 id="records-title">The<br/>records.</h2><p>Two releases from Bouncing Concrete.<br/>Different textures. Same core.<br/>Concrete, rhythm, vision.</p><a className="catalogue-link" href={siteContent.soundcloudProfile} target="_blank" rel="noreferrer" aria-label="The Bouncing Concrete catalogue on SoundCloud"><span>The Bouncing Concrete<br/>catalogue</span><Icon name="arrow"/></a></div>
+        <div className="record-grid">{tracks.map(release => <article className="record" key={release.slug}>
+          <button className="record-sleeve" disabled={!ready} aria-label={`Play ${release.title}`} aria-current={release.slug === track.slug ? 'true' : undefined} onClick={() => choose(release)}><RecordArt release={release}/><span className="record-play"><Icon name="play"/></span></button>
+          <div className="record-caption"><div><h3>{release.title}</h3><span className="record-duration">{time(release.duration)}{release.slug === track.slug && playing ? ' · Playing' : ''}</span></div><a href={release.soundcloudUrl} target="_blank" rel="noreferrer" aria-label={`${release.title} on SoundCloud`}><Icon name="arrow"/></a></div>
+        </article>)}</div>
+        <section id="about" className="liner-copy" aria-labelledby="about-title"><h2 id="about-title"><span>Music for a </span><span>world still under </span><span>construction.</span></h2><p>{siteContent.bio}</p>
+          <img className="liner-art" src="/assets/upscaled-region-27-0744eb34a68a.webp" width="564" height="220" alt="" loading="lazy"/>
+          <a className="text-link" href={`mailto:${siteContent.bookingEmail}?subject=Bouncing%20Concrete%20%E2%80%94%20booking%20or%20press`}>Bookings &amp; press <Icon name="arrow"/></a>
+        </section>
+      </div>
     </section>
     {hasPlayed && !playerInView && <aside className="mini-player" aria-label="Persistent music player">
       <span className="mini-progress" style={{width:progress}} aria-hidden="true"/>
