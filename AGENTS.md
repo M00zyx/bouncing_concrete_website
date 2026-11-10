@@ -13,7 +13,6 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Preserve the GLB’s established pose and cursor-following motion. Frame its eyes inside a narrower, recessed concrete cell opening.
 - Keep the waveform immediately below the slit so it reads as the object’s mouth.
 - Preserve the established angular seismograph waveform; refine its spike contour without replacing it with a separate triangle pattern.
-- Reserve the LATEST line’s space for non-latest tracks so track copy never shifts vertically.
 - Keep the music sizing controls local CSS custom properties so section-height tuning cannot alter the slit or GLB pose.
 - Waveform seeking must use the active SoundCloud track duration and commit once on release; update only the visual preview while dragging.
 - Keep the yellow pointer dilation and white playback shocks as independent layers; seismic motion applies only to the white trace and must never alter scrub geometry or seeking behaviour.
@@ -33,3 +32,10 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 ## Artist positioning
 
 - Mention Kuala Lumpur only in the website footer. Keep city names and location coordinates out of the hero, bio, page titles, metadata and release-sharing artwork. Let the music, character and visual world lead.
+
+## Approved makeover — 10 November 2026
+
+- The character is confined, but the music keeps getting out: connect the blue physical poster, full scroll film, closing foreground wall and architectural cell.
+- Preserve the original wordmark, film, GLB pose, cursor following and waveform behaviour.
+- Expose both releases with distinct sleeve compositions on pale concrete. Keep a compact player available after playback starts when the main player leaves view.
+- Use comfortable reading typography, concise liner notes and a compact booking/follow close instead of a large empty Live section.

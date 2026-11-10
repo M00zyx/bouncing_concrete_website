@@ -19,7 +19,7 @@ export const siteContent = {
     },
   ],
   statement: 'Machines. Physical rhythm. Music for a world still under construction.',
-  bio: 'Bouncing Concrete brings machines, physical rhythm and a tactile visual world together. Its concrete character moves through the city, leaves damage in its wake and ends up confined. Behind the cell wall, the music continues.',
+  bio: 'Bouncing Concrete brings machines, physical rhythm and a tactile visual world together.',
   shows: [],
   socialLinks: [],
   footer: 'Bouncing Concrete MMXXVI · All Rights Reserved.',

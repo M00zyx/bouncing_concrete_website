@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { siteContent } from './content'
+import { Icon } from './Icons'
+import { RecordArt } from './RecordArt'
 
 let widgetScript
 function loadWidgetScript() {
@@ -33,13 +35,16 @@ function releaseFor(sound, index) {
   }
 }
 
-export function MusicPlayer({ playRequest }) {
+export function MusicPlayer({ playRequest, children }) {
   const initialSlug = useRef(new URLSearchParams(location.search).get('track') || document.querySelector('meta[name=bc-track]')?.content || siteContent.featuredSlug)
   const initialRelease = siteContent.releases.find(release => release.slug === initialSlug.current) || siteContent.releases[0]
   const [tracks, setTracks] = useState(siteContent.releases)
   const [track, setTrack] = useState(initialRelease)
   const [ready, setReady] = useState(false)
   const [playing, setPlaying] = useState(false)
+  const [hasPlayed, setHasPlayed] = useState(false)
+  const [playerInView, setPlayerInView] = useState(true)
+  const playerSurface = useRef(null)
   const [status, setStatus] = useState('Loading the player…')
   const [failed, setFailed] = useState(false)
   const [revision, setRevision] = useState(0)
@@ -81,11 +86,26 @@ export function MusicPlayer({ playRequest }) {
 
   function choose(release) {
     if (!readyRef.current) return
+    if (trackRef.current.slug === release.slug) { widget.current.play(); return }
+    request.current++
     setPosition(0)
+    setShareStatus('')
+    setShareUrl('')
+    trackRef.current = release
+    duration.current = release.duration
+    setTrack(release)
     updateLocation(release)
     widget.current.skip(release.playlistIndex)
+    widget.current.seekTo(0)
+    widget.current.play()
     syncCurrent()
   }
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => setPlayerInView(entry.isIntersecting), { threshold: 0 })
+    if (playerSurface.current) observer.observe(playerSurface.current)
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     if (!playRequest) return
@@ -143,7 +163,7 @@ export function MusicPlayer({ playRequest }) {
           syncCurrent()
         })
       })
-      player.bind(events.PLAY, () => { if (active) { setPlaying(true); syncCurrent() } })
+      player.bind(events.PLAY, () => { if (active) { setPlaying(true); setHasPlayed(true); setFailed(false); setStatus(''); syncCurrent() } })
       player.bind(events.PAUSE, () => { if (active) setPlaying(false) })
       player.bind(events.FINISH, () => { if (active) { setPlaying(false); syncCurrent() } })
       player.bind(events.PLAY_PROGRESS, event => {
@@ -197,66 +217,61 @@ export function MusicPlayer({ playRequest }) {
 
   const index = tracks.findIndex(release => release.slug === track.slug)
   const progress = `${position * 100}%`
-  return <div className="release-player">
-    <div className="player">
-      <div className="wave-hitbox" style={{ '--track-progress': progress }}
-        onPointerMove={event => {
-          const box = event.currentTarget.getBoundingClientRect()
-          event.currentTarget.style.setProperty('--wave-focus-x', `${Math.max(0, Math.min(100, (event.clientX - box.left) / box.width * 100))}%`)
-        }} onPointerEnter={() => setFocused(true)} onPointerLeave={() => setFocused(false)}>
-        <div className={`wave${playing ? ' on' : ''}${focused ? ' is-focused' : ''}`} aria-hidden="true">
-          <span className="wave-shock"/><span className="wave-dilation"/>
+  return <>
+    <section id="music" className="release" aria-label="Listen to Bouncing Concrete">
+      {children}
+      <div className="release-player" ref={playerSurface}>
+        <div className="wave-hitbox" style={{ '--track-progress': progress }}
+          onPointerMove={event => {
+            const box = event.currentTarget.getBoundingClientRect()
+            event.currentTarget.style.setProperty('--wave-focus-x', `${Math.max(0, Math.min(100, (event.clientX - box.left) / box.width * 100))}%`)
+          }} onPointerEnter={() => setFocused(true)} onPointerLeave={() => setFocused(false)}>
+          <div className={`wave${playing ? ' on' : ''}${focused ? ' is-focused' : ''}`} aria-hidden="true"><span className="wave-shock"/><span className="wave-dilation"/></div>
+          <span className="playhead" aria-hidden="true"/>
+          <input className="wave-scrubber" type="range" min="0" max="100" step="0.1" value={position * 100}
+            disabled={!ready} aria-label="Track position" aria-valuetext={`${time(position * track.duration)} of ${time(track.duration)}`}
+            onPointerDown={event => { dragging.current = true; event.currentTarget.setPointerCapture(event.pointerId) }}
+            onChange={event => {
+              const ratio = Number(event.target.value) / 100
+              setPosition(ratio)
+              if (!dragging.current) seek(ratio)
+            }}
+            onPointerUp={event => { dragging.current = false; seek(Number(event.currentTarget.value) / 100) }}
+            onPointerCancel={() => {
+              dragging.current = false
+              widget.current?.getPosition(milliseconds => setPosition(milliseconds / (duration.current || 1)))
+            }}/>
         </div>
-        <span className="playhead" aria-hidden="true"/>
-        <input className="wave-scrubber" type="range" min="0" max="100" step="0.1" value={position * 100}
-          disabled={!ready} aria-label="Track position" aria-valuetext={`${time(position * track.duration)} of ${time(track.duration)}`}
-          onPointerDown={event => { dragging.current = true; event.currentTarget.setPointerCapture(event.pointerId) }}
-          onChange={event => {
-            const ratio = Number(event.target.value) / 100
-            setPosition(ratio)
-            if (!dragging.current) seek(ratio)
-          }}
-          onPointerUp={event => { dragging.current = false; seek(Number(event.currentTarget.value) / 100) }}
-          onPointerCancel={() => {
-            dragging.current = false
-            widget.current?.getPosition(milliseconds => setPosition(milliseconds / (duration.current || 1)))
-          }}/>
+        <div className="playback-console">
+          <div className="track-copy"><h2>{track.title}</h2><p className="track-time"><span>{time(position * track.duration)}</span><span aria-hidden="true"> / </span><span>{time(track.duration)}</span></p></div>
+          <div className="transport-controls">
+            <button className="icon-button" aria-label="Previous track" disabled={!ready || index <= 0} onClick={() => choose(tracks[index - 1])}><Icon name="previous"/></button>
+            <button className="play-button" disabled={!ready} aria-label={playing ? 'Pause track' : 'Play track'} onClick={() => widget.current?.toggle()}><Icon name={playing ? 'pause' : 'play'}/></button>
+            <button className="icon-button" aria-label="Next track" disabled={!ready || index >= tracks.length - 1} onClick={() => choose(tracks[index + 1])}><Icon name="next"/></button>
+          </div>
+        </div>
+        <p className="player-status" role="status">{status}{failed && <button className="text-button" onClick={() => { initialSlug.current = trackRef.current.slug; setRevision(value => value + 1) }}>Retry player</button>}</p>
+        <nav className="player-destinations" aria-label="Track links"><a href={track.soundcloudUrl} target="_blank" rel="noreferrer">SoundCloud <Icon name="arrow"/></a><a href={track.purchaseUrl || siteContent.bandcamp} target="_blank" rel="noreferrer">{track.purchaseUrl ? 'Buy release' : 'Bandcamp'}<Icon name="arrow"/></a><button onClick={share}>Share track <Icon name="arrow"/></button><a className="records-jump" href="#records">All records <Icon name="down"/></a></nav>
+        <span className="share-status" role="status">{shareStatus}</span>
+        {shareUrl && <input className="share-url" aria-label="Shareable track link" readOnly value={shareUrl} onFocus={event => event.target.select()}/>}
       </div>
-      <div className="player-rail">
-        <div className="player-actions">
-          <button className={`play-button${playing ? ' is-playing' : ''}`} disabled={!ready}
-            aria-label={playing ? 'Pause track' : 'Play track'} onClick={() => widget.current?.toggle()}>{playing ? 'Ⅱ' : '▶'}</button>
-        </div>
-        <div className="track-copy">
-          <p className="eyebrow">{track.slug === siteContent.featuredSlug ? 'FEATURED TRACK' : 'BOUNCING CONCRETE'}</p>
-          <h2>{track.title}</h2>
-          <p className="meta"><span>{time(position * track.duration)}</span><span aria-hidden="true"> / </span><span>{time(track.duration)}</span></p>
-          {track.description && <p className="track-description">{track.description}</p>}
-        </div>
-        <div className="track-skip">
-          <button aria-label="Previous track" disabled={!ready || index <= 0} onClick={() => choose(tracks[index - 1])}>◀</button>
-          <button aria-label="Next track" disabled={!ready || index >= tracks.length - 1} onClick={() => choose(tracks[index + 1])}>▶</button>
-        </div>
-      </div>
-      <p className="player-status" role="status">{status}{failed && <button className="text-button" onClick={() => setRevision(value => value + 1)}>Retry player</button>}</p>
-      <nav className="player-destinations" aria-label="Track links">
-        <a href={track.soundcloudUrl} target="_blank" rel="noreferrer">Listen on SoundCloud ↗</a>
-        <a href={track.purchaseUrl || siteContent.bandcamp} target="_blank" rel="noreferrer">{track.purchaseUrl ? 'Buy this release' : 'Visit Bandcamp'} ↗</a>
-        <button onClick={share}>Share track ↗</button>
-      </nav>
-      <span className="share-status" role="status">{shareStatus}</span>
-      {shareUrl && <input className="share-url" aria-label="Shareable track link" readOnly value={shareUrl} onFocus={event => event.target.select()}/>}
-      <details className="track-list">
-        <summary>Explore the tracks <span>{tracks.length}</span></summary>
-        <ol>{tracks.map(release => <li key={release.slug}>
-          <button disabled={!ready} aria-current={release.slug === track.slug ? 'true' : undefined} onClick={() => choose(release)}>
-            <span>{release.title}</span><span>{time(release.duration)}</span>
-          </button>
-        </li>)}</ol>
-      </details>
-    </div>
-    <iframe ref={frame} key={revision} className="soundcloud-engine is-hidden" title="Bouncing Concrete audio playback"
-      tabIndex={-1} aria-hidden="true" allow="autoplay"
+    </section>
+    <section id="records" className="records-section" aria-labelledby="records-title">
+      <div className="records-heading"><h2 id="records-title">The records.</h2><p>Press play.<br/>Stay a while.</p></div>
+      <div className="record-grid">{tracks.map(release => <article className="record" key={release.slug}>
+        <button className="record-sleeve" disabled={!ready} aria-label={`Play ${release.title}`} aria-current={release.slug === track.slug ? 'true' : undefined} onClick={() => choose(release)}><RecordArt release={release}/><span className="record-play"><Icon name="play"/></span></button>
+        <div className="record-caption"><div><h3>{release.title}</h3><span className="record-duration">{time(release.duration)}{release.slug === track.slug && playing ? ' · Playing' : ''}</span></div><a href={release.soundcloudUrl} target="_blank" rel="noreferrer" aria-label={`${release.title} on SoundCloud`}><Icon name="arrow"/></a></div>
+      </article>)}</div>
+    </section>
+    {hasPlayed && !playerInView && <aside className="mini-player" aria-label="Persistent music player">
+      <span className="mini-progress" style={{width:progress}} aria-hidden="true"/>
+      <button className="mini-toggle" disabled={!ready} aria-label={playing ? 'Pause music' : 'Resume music'} onClick={() => widget.current?.toggle()}><Icon name={playing ? 'pause' : 'play'}/></button>
+      <a className="mini-track" href="#music"><strong>{track.title}</strong><span>Bouncing Concrete</span></a>
+      <span className="mini-time">{time(position * track.duration)} / {time(track.duration)}</span>
+      <button className="icon-button" aria-label="Next track in mini player" disabled={!ready || index >= tracks.length - 1} onClick={() => choose(tracks[index + 1])}><Icon name="next"/></button>
+      <a className="mini-return" href="#music" aria-label="Return to full player"><Icon name="arrow"/></a>
+    </aside>}
+    <iframe ref={frame} key={revision} className="soundcloud-engine" title="Bouncing Concrete audio playback" tabIndex={-1} aria-hidden="true" allow="autoplay"
       src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(siteContent.soundcloudPlaylist)}&start_track=${initialRelease.playlistIndex}&auto_play=false&buying=false&sharing=false&download=false&show_artwork=false&visual=false`}/>
-  </div>
+  </>
 }
