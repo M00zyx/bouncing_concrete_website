@@ -50,7 +50,7 @@ export function App() {
   const detailOpacity = reducedMotion ? 0 : progress < .5 ? 0 : Math.min(1, (progress - .5) / .1)
   return <main id="top">
     <a className="skip-link" href="#music">Skip to music</a>
-    <h1 className="sr-only">Bouncing Concrete — music from Kuala Lumpur</h1>
+    <h1 className="sr-only">Bouncing Concrete — music and releases</h1>
     <section className="scroll-film" ref={hero} aria-label="Bouncing Concrete film">
       <div className="film-sticky">
         <video ref={video} muted playsInline preload="metadata" poster="/assets/scene-plate.webp" aria-hidden="true">
@@ -75,12 +75,11 @@ export function App() {
           <img className="poster-symbol globe" src="/assets/symbol-globe.webp" alt=""/>
           <i className="poster-checker" aria-hidden="true"/>
           <div className="poster-index"><img className="mark-glyph" src="/assets/mark-glyph-06-sideways.webp" alt=""/><img className="mark-hatch" src="/assets/mark-hatch-alpha.webp" alt=""/><b>{siteContent.poster.sequence}</b></div>
-          <span className="poster-coordinates">{siteContent.poster.coordinates[0]}<br/>{siteContent.poster.coordinates[1]}</span>
           <span className="poster-arrow" aria-hidden="true">↓</span>
         </article>
         <div className="video-ornaments" style={{ opacity: detailOpacity }}><b>BUILD. BOUNCE. BREAK.</b><i/></div>
         <div className="hero-release" style={{ opacity: posterOpacity, pointerEvents: posterOpacity > .5 ? 'auto' : 'none' }}>
-          <span>FROM KUALA LUMPUR<br/><strong>{featured.title}</strong></span>
+          <span>FEATURED TRACK<br/><strong>{featured.title}</strong></span>
           <a className="primary-link" href="#music" onClick={() => setPlayRequest(value => value + 1)}>Play {featured.title} <span aria-hidden="true">↗</span></a>
         </div>
       </div>

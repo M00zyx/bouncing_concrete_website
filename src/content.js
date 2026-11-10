@@ -5,7 +5,7 @@ export const siteContent = {
   bandcamp: 'https://bouncingconcrete.bandcamp.com/',
   bookingEmail: 'bouncingconcrete@gmail.com',
   featuredSlug: 'funkacaine',
-  poster: { sequence: '01', coordinates: ['3.1390° N', '101.6869° E'] },
+  poster: { sequence: '01' },
   releases: [
     {
       slug: 'funkacaine', title: 'Funkacaine', playlistIndex: 0,
@@ -19,7 +19,7 @@ export const siteContent = {
     },
   ],
   statement: 'Machines. Physical rhythm. Music for a world still under construction.',
-  bio: 'Bouncing Concrete is a music project from Kuala Lumpur, bringing machines, physical rhythm and a tactile visual world together. Its concrete character moves through the city, leaves damage in its wake and ends up confined. Behind the cell wall, the music continues.',
+  bio: 'Bouncing Concrete brings machines, physical rhythm and a tactile visual world together. Its concrete character moves through the city, leaves damage in its wake and ends up confined. Behind the cell wall, the music continues.',
   shows: [],
   socialLinks: [],
   footer: 'Bouncing Concrete MMXXVI · All Rights Reserved.',

@@ -29,3 +29,7 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Carry the damage-to-confinement narrative into the music section, with the character following the pointer behind a recessed cell slit.
 - Improve release discovery, player usability, responsive composition, factual content, real destinations, loading, and accessibility within the existing visual identity.
 - Keep the website local during refinement.
+
+## Artist positioning
+
+- Mention Kuala Lumpur only in the website footer. Keep city names and location coordinates out of the hero, bio, page titles, metadata and release-sharing artwork. Let the music, character and visual world lead.
