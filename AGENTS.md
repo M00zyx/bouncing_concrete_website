@@ -54,3 +54,12 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Shutters, prison wall and player must read as one continuous concrete surface. Matching a filename is insufficient: pixel scale, texture phase and lighting must also match, with no faded facade overlay or separate player texture.
 - The continuous atlas in `public/assets/concrete-continuous.svg` uses the complete selected cell plate, extended with mirrored edge strips. `scripts/build-concrete-atlas.mjs` reproduces it. Align the closed shutters' bottom edge with source row zero at the music section's top.
 - Preserve the original 300vh film, live GLB camera and pose, cursor-following eyes, waveform mouth and working SoundCloud playback/seek controls.
+
+
+## Approved integrated orbit study — 12 November 2026
+
+- `studies/film-to-orbit/` is the latest integrated preview backup. `studies/spatial-music/` remains the earlier standalone study; the production `src/` is not replaced by this backup.
+- The active direction opens with the actual three-viewport scroll film and flows into the rounded, rough character, staged orbiting wreckage and twelve attached curved title/sleeve groups. Preserve the film/character pose continuity and existing typography.
+- Orbit is discovery; a substantial expanded release sheet and shared compact player provide listening without duplicating the catalogue. Funkacaine has native audio and an audio-reactive seismograph. Ten titles remain clearly labelled samples.
+- Preserve idle motion, whole-group steering, centre-to-cursor title alignment and deliberate neighbouring-label handoff. The approved sticky capture ellipse is 70.56px horizontal / 60.48px vertical at desktop widths, responsively scaled; vertical reach was reduced 40% independently.
+- Kuala Lumpur remains footer-only. Further work is proposed in `studies/film-to-orbit/REFINEMENT-PLAN.md`; the backup request does not authorize public deployment.

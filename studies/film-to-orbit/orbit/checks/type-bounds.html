@@ -1,0 +1,24 @@
+<!doctype html><meta charset="utf-8"><title>Title ink bounds check</title>
+<style>@font-face{font-family:Anton;src:url(../assets/fonts/font-0.ttf)}body{background:#ccd0d3;font:16px sans-serif;padding:24px}canvas{max-width:100%;background:#1736df;border:1px solid black;display:block}section{margin-bottom:24px}</style>
+<h1>Title texture clearance</h1><p id="result">Checking…</p><main></main>
+<script type="module">
+import {titleCanvas} from '../typography.js';
+await document.fonts.load('150px Anton');
+const old=document.createElement('canvas');old.width=1100;old.height=195;
+const oldCtx=old.getContext('2d');oldCtx.font='150px Anton';oldCtx.fillStyle='#fff';oldCtx.textBaseline='top';oldCtx.fillText('FUNKACAINE',12,5);
+const oldTop=oldCtx.getImageData(0,0,old.width,1).data;let touched=0;for(let i=3;i<oldTop.length;i+=4)if(oldTop[i])touched++;
+const before=document.createElement('p');before.textContent=`Previous drawing method: ${touched} ink pixels touch the top edge.`;document.querySelector('main').append(before);
+let passed=true;
+for(const text of ['FUNKACAINE','CONCRETO INCARNAT','PRESSURE TEST','AFTERSHOCK','LOAD BEARING','SOFT COLLISION']){
+ const {canvas,context}=titleCanvas([text]);
+ const d=context.getImageData(0,0,canvas.width,canvas.height).data;
+ let left=canvas.width,top=canvas.height,right=0,bottom=0;
+ for(let y=0;y<canvas.height;y++)for(let x=0;x<canvas.width;x++)if(d[(y*canvas.width+x)*4+3]){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}
+ const margins=[left,top,canvas.width-1-right,canvas.height-1-bottom];
+ const ok=margins.every(v=>v>=28);passed&&=ok;
+ const section=document.createElement('section');const p=document.createElement('p');
+ p.textContent=`${ok?'PASS':'FAIL'} ${text}: clear pixels left/top/right/bottom ${margins.join('/')}`;
+ section.append(p,canvas);document.querySelector('main').append(section);
+}
+document.querySelector('#result').textContent=passed?'PASS — all six titles retain at least 28 clear pixels on every edge.':'FAIL — an edge is too close to the lettering.';
+</script>

@@ -1,0 +1,15 @@
+{
+  "addedEntranceAttributeBytes": 151024,
+  "debrisDrawCalls": 2,
+  "debrisTriangles": 4421,
+  "addedTextures": 0,
+  "measuredSceneWithDebris": {
+    "calls": 59,
+    "triangles": 2019859
+  },
+  "measuredSceneWithoutDebris": {
+    "calls": 57,
+    "triangles": 2015438
+  },
+  "frameTimeBenchmark": false
+}

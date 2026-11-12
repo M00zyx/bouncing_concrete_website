@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bouncing Concrete — Spatial music study</title>
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>
+<script src="assets/soundcloud-widget-api.js" defer></script>
+<script type="module" src="scene.js?v=sticky-vertical-60"></script>
+</head>
+<body>
+<main id="space" aria-label="Explore the concrete character and select a track"></main>
+<header><span class="brand">BOUNCING CONCRETE</span><h1 id="records-heading">THE RECORDS.</h1><nav aria-label="Scene controls"><button id="reset">Reset view</button><button id="menu" aria-expanded="false" aria-controls="tracks">Tracks <span aria-hidden="true">+</span></button></nav></header>
+<div id="loading" role="status">Opening the space…</div>
+<aside id="tracks" hidden aria-label="Tracks"><div class="list-top"><span>The records.</span><button id="list-close" aria-label="Close tracks">×</button></div><div id="track-list"></div></aside>
+<section id="selection" hidden aria-label="Selected track">
+  <button id="close" aria-label="Close track details">×</button>
+  <img id="sleeve" alt="" hidden>
+  <div class="track-copy"><p id="kind"></p><h1 id="title"></h1><div id="audio-controls" hidden><button id="play" disabled>Loading…</button><span id="clock">0:00</span><input id="seek" type="range" min="0" max="1000" value="0" aria-label="Seek in track"><a id="source" target="_blank" rel="noreferrer">SoundCloud ↗</a></div><p id="sample-note" hidden>Sample title for this spatial study.</p><p id="audio-status" role="status"></p></div>
+</section>
+<footer><span id="hint">Drag to explore · Select a sleeve or title</span><button id="motion" aria-pressed="false">Pause motion</button></footer>
+<iframe id="engine" title="SoundCloud audio player" aria-hidden="true" tabindex="-1" allow="autoplay" data-src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fmoo-497939951%2Fsets%2Fbouncing-concrete-the-singles&auto_play=false&show_artwork=false&show_comments=false"></iframe>
+<script>if(!new URLSearchParams(location.search).has('embedded')){const engine=document.querySelector('#engine');engine.src=engine.dataset.src;}</script></body></html>

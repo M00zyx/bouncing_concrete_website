@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {runInNewContext,createContext} from 'node:vm';
+import {journeyState,clamp} from '../journey-state.js';
+const nodes=new Map();const noop=()=>{};
+function node(key){if(!nodes.has(key))nodes.set(key,{style:{setProperty:noop},dataset:{},setAttribute:noop,addEventListener:noop,contentWindow:{postMessage:noop}});return nodes.get(key);}
+Object.assign(node('.journey'),{offsetHeight:3000,getBoundingClientRect:()=>({top:-2000})});node('.hero').offsetHeight=1000;
+Object.assign(node('video'),{duration:10,currentTime:9.94,readyState:4,seeking:true});
+const ctx=createContext({createListeningView:()=>({}),releases:{},journeyState,clamp,document:{body:{classList:{contains:()=>false}},querySelector:s=>s==='.verify output'?null:node(s),addEventListener:noop},matchMedia:()=>({matches:false,addEventListener:noop}),location:{search:'',hash:'',origin:'http://test'},addEventListener:noop,requestAnimationFrame:()=>1,IntersectionObserver:class{observe(){}},setTimeout:()=>1,clearTimeout:noop,URLSearchParams});
+const src=readFileSync(process.env.BC_JOURNEY_SOURCE||new URL('../journey.js',import.meta.url),'utf8').replace(/^import.*\n/gm,'');
+runInNewContext(src,ctx);
+runInNewContext('ready=true;scenePainted=true;started=true;update()',ctx);
+assert.equal(node('.film-layer').style.opacity,1,'Keep film visible while final seek is still pending');
+assert.equal(node('.hero').dataset.interactive,'false');
+node('video').seeking=false;
+runInNewContext('frameDecoded();update()',ctx);
+assert.equal(node('.film-layer').style.opacity,0,'Allow handover once final frame is decoded');
+assert.equal(node('.hero').dataset.interactive,'true');
+runInNewContext('scenePainted=false;update()',ctx);
+assert.equal(node('.film-layer').style.opacity,1,'Never expose an unpainted WebGL scene');
+console.log('PASS: requested video time cannot trigger handover; decoded video and painted scene are required.');

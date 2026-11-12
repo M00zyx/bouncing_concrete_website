@@ -1,0 +1,16 @@
+{
+  "heroObjects": 8,
+  "triangles": 3141,
+  "drawCalls": 1,
+  "geometryBufferBytes": 329805,
+  "downloadBytes": 520484,
+  "textures": 3,
+  "atlasSize": 256,
+  "estimatedRGBA8TextureBytesWithMipmaps": 1048572,
+  "parts": {
+    "light-curved": 148,
+    "traffic-light-object-horizontal": 232,
+    "original-wheel": 1424,
+    "original-bent-railing": 416
+  }
+}
