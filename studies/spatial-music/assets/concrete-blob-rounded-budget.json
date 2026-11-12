@@ -1,0 +1,12 @@
+{
+  "vertices": 669535,
+  "triangles": 999996,
+  "changedVertices": 329652,
+  "maxDisplacementNormalized": 0.31089280820063797,
+  "originalBytes": 7886940,
+  "revisedBytes": 7822980,
+  "extraDrawCalls": 0,
+  "extraRuntimeDeformation": false,
+  "texturesUnchanged": true,
+  "uvsUnchanged": true
+}

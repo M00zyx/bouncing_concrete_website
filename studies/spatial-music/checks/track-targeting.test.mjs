@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import {closestOnSegment,localCandidates,leavingTarget,handoffCandidate,CLICK_PADDING} from '../track-targeting.js';
+const cursor={clientX:100,clientY:100};
+const distant={x:100,y:-180,distance:280,track:'upper'};
+assert.equal(localCandidates([distant],cursor,0,-5).length,0,'Distant rows cannot hijack the sphere');
+const approach={x:100,y:0,distance:100,track:'front'};
+assert.equal(localCandidates([approach],cursor,0,-5)[0],approach,'Visible tracks engage before the cursor enters their lettering');
+assert.equal(localCandidates([approach],cursor,0,5).length,0,'The wider approach range still requires movement toward the track');
+const sideways={x:220,y:70,distance:120,track:'side'};
+assert.equal(localCandidates([sideways],cursor,0,-5).length,0,'Early attraction excludes tracks beside the approach path');
+const near={x:100,y:60,distance:40,track:'upper'};
+assert.equal(localCandidates([near],cursor,0,-5)[0],near,'Approaching a nearby upper track engages it');
+assert.equal(localCandidates([near],cursor,0,5).length,0,'Moving away must not attract');
+const hit=closestOnSegment(150,98,{x:100,y:90},{x:200,y:90});
+assert.equal(hit.distance,8);
+assert(hit.distance<=CLICK_PADDING,'A thin upper ribbon has a forgiving nearby click area');
+assert.equal(leavingTarget({clientX:105,clientY:68},0,-4,{x:100,y:100,aimX:100,aimY:60}),false,'Hold the intended track during approach');
+assert.equal(leavingTarget({clientX:105,clientY:-60},0,-4,{x:100,y:100,aimX:100,aimY:60}),true,'Deliberate departure releases the latch');
+console.log('PASS: local acquisition, approach direction, thin-ribbon tolerance and deliberate release.');
+
+const snapshot=[{x:160,y:60,track:'upper'},{x:105,y:95,track:'old'}];
+const capture={x:100,y:100,aimX:105,aimY:95};
+assert.equal(handoffCandidate(snapshot,{clientX:108,clientY:93},4,-4,capture,'old'),null,'A little motion cannot steal the latched track');
+assert.equal(handoffCandidate(snapshot,{clientX:152,clientY:65},5,-4,capture,'old').track,'upper','Continued movement into the upper row releases the old latch');
+console.log('PASS: stable capture permits deliberate upper-row handoff.');
