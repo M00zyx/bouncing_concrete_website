@@ -18,9 +18,9 @@ export function createOrbitalDebris(parent) {
   const chips=new THREE.InstancedMesh(stone,material,16);
   const dummy=new THREE.Object3D(),colour=new THREE.Color();
   // Sparse clusters around the outside, with a clear central face area.
-  const placement=[[-2.6,1.1,-1.4],[-3.1,1.6,-.3],[-2.1,2.6,.2],[-1.8,2.9,-1.3],
+  const placement=[[-2.6,1.1,-1.4],[-3.6,1.5,1.8],[-2.1,2.6,.2],[-1.8,2.9,-1.3],
     [.4,3.05,.3],[1.6,2.5,-1.5],[2.3,2.7,-.6],[3,.9,-1.3],
-    [3.1,-1.1,.1],[2.7,-2.3,-.8],[1.5,-2.8,-1.1],[.4,-2.6,1.1],
+    [3.55,-.9,1.65],[2.7,-2.3,-.8],[1.5,-2.8,-1.1],[.4,-2.6,1.1],
     [-1.9,-2.7,-.2],[-2.8,-1.1,1],[-2.7,-.5,-1.7],[2.6,.3,-1.9]];
   placement.forEach((p,i)=>{
     const s=.065+(i%4)*.025;dummy.position.set(...p);dummy.rotation.set(i*.71,i*1.17,i*.39);
@@ -47,8 +47,17 @@ export function createOrbitalDebris(parent) {
     });
     group.add(gltf.scene);stats.loaded=true;
   },undefined,()=>{stats.error='Wreckage could not load';});
+  const reactionAge={value:-1};let reactionStart=-Infinity;
+  function resetReaction(){reactionStart=-Infinity;reactionAge.value=-1;}
   return {
-    group,stats,
-    update(time,compact){group.rotation.y=time*.025;group.scale.setScalar(compact ? .73 : 1);},
+    group,stats,reactionAge,discovery:{value:new THREE.Vector2()},
+    react(now){reactionStart=now;reactionAge.value=0;},stopReaction:resetReaction,
+    update(time,compact,now=performance.now(),reactive=true){
+      group.rotation.y=time*.025;group.scale.setScalar(compact ? .73 : 1);
+      if(!reactive){resetReaction();return;}
+      if(reactionStart===-Infinity)return;
+      const age=(now-reactionStart)/1000;
+      if(age>=3.1)resetReaction();else reactionAge.value=age;
+    },
   };
 }

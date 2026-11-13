@@ -6,3 +6,47 @@ html{scroll-behavior:auto}body{height:auto}a{color:inherit;text-decoration:none}
 @font-face{font-family:Anton;src:url('orbit/assets/fonts/font-0.ttf')}.closing h2{font-family:Anton,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(32px,3.4vw,48px);line-height:1.05;letter-spacing:-.02em}
 
 .scene-shade{position:absolute;inset:0;background:#050c16;pointer-events:none;opacity:.58}
+
+/* The plate is registered in the film's 16:9 frame before cover-cropping. */
+.street-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:0;background:#050c16;will-change:opacity}
+.street-plate{position:absolute;left:50%;top:50%;width:max(100vw,177.7778svh);height:max(56.25vw,100svh);object-fit:fill;transform:translate(-50%,-52%) scaleY(1.05);filter:brightness(.82) saturate(.85)}
+
+/* Closing composition: approved type and copy, with a substantial editorial pause. */
+.closing{padding:clamp(64px,7vw,110px) 6vw 32px;min-height:600px;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);column-gap:7vw;row-gap:76px;align-items:start}
+.closing h2{font-size:clamp(40px,4.8vw,76px);line-height:1.06;letter-spacing:-.018em;max-width:none;margin:0 0 30px}
+.closing h2 span{display:block}
+.closing-statement>p{max-width:440px;margin:0;font-size:16px;line-height:1.65}
+.closing .contact{align-self:end;padding:0 0 5px;min-width:0}
+.contact p{margin:0 0 18px;font-size:13px;line-height:1.5}
+.contact a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 0 20px;border-bottom:1px solid #1736df;color:#1736df;font-size:clamp(16px,1.55vw,24px);line-height:1.5;min-height:44px}
+.contact a span:first-child{overflow-wrap:anywhere}
+.contact a span:last-child{font-size:30px;line-height:1;flex:none;transition:transform 180ms ease}
+.contact a:hover span:last-child{transform:translate(3px,-3px)}
+.end{align-self:end;align-items:baseline;margin-top:0;padding-top:28px;line-height:1.6;font-size:11px;gap:24px}
+.end>a{white-space:nowrap;padding:8px 0;margin:-8px 0}
+.end>span:last-child{text-align:right}
+@media(max-width:760px){
+ .closing{padding:64px 24px 30px;grid-template-columns:1fr;gap:48px;min-height:0}
+ .closing h2{font-size:clamp(32px,10vw,58px);margin-bottom:24px}
+ .closing-statement>p{font-size:15px;max-width:390px}
+ .closing .contact{padding:0;max-width:480px;width:100%}
+ .contact p{margin-bottom:14px}.contact a{font-size:clamp(15px,4.5vw,22px);padding-bottom:16px}
+ .end{flex-direction:column;align-items:flex-start;gap:18px;padding-top:24px}.end>span:last-child{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){.contact a span:last-child{transition:none}}
+
+/* Direction 1: the pale orbital world continues into a grounded aftermath. */
+.hero{background:#eff0ec}
+.closing{min-height:660px;column-gap:5vw;row-gap:64px;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);padding-top:72px}
+.closing-statement{padding-top:38px}
+.closing-aftermath{min-width:0;align-self:stretch;display:flex;flex-direction:column;justify-content:space-between}
+.grounded-fragment{margin:-48px -25px 8px;pointer-events:none}
+.grounded-fragment img{display:block;width:100%;height:auto}
+.closing-aftermath .contact{width:100%;align-self:stretch}
+@media(max-width:760px){
+ .closing{grid-template-columns:1fr;padding-top:48px;gap:32px;min-height:0}
+ .closing-statement{padding-top:0}
+ .grounded-fragment{margin:-20px -12px 8px}
+ .closing-aftermath{gap:6px}
+ .closing .end{margin-top:16px}
+}

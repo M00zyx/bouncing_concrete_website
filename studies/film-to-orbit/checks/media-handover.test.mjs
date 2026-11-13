@@ -1,12 +1,14 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext,createContext} from 'node:vm';
-import {journeyState,clamp} from '../journey-state.js';
-const nodes=new Map();const noop=()=>{};
+import {journeyState,clamp,smooth} from '../journey-state.js';
+import {releases} from '../catalogue.js';
+import {streetOpacity} from '../street-handover.js';
+const nodes=new Map();const noop=()=>{};const events={},opened=[],messages=[];
 function node(key){if(!nodes.has(key))nodes.set(key,{style:{setProperty:noop},dataset:{},setAttribute:noop,addEventListener:noop,contentWindow:{postMessage:noop}});return nodes.get(key);}
 Object.assign(node('.journey'),{offsetHeight:3000,getBoundingClientRect:()=>({top:-2000})});node('.hero').offsetHeight=1000;
 Object.assign(node('video'),{duration:10,currentTime:9.94,readyState:4,seeking:true});
-const ctx=createContext({createListeningView:()=>({}),releases:{},journeyState,clamp,document:{body:{classList:{contains:()=>false}},querySelector:s=>s==='.verify output'?null:node(s),addEventListener:noop},matchMedia:()=>({matches:false,addEventListener:noop}),location:{search:'',hash:'',origin:'http://test'},addEventListener:noop,requestAnimationFrame:()=>1,IntersectionObserver:class{observe(){}},setTimeout:()=>1,clearTimeout:noop,URLSearchParams});
+const ctx=createContext({createListeningView:()=>({open:(...args)=>opened.push(args)}),releases,journeyState,clamp,smooth,streetOpacity,document:{body:{classList:{contains:()=>false}},querySelector:s=>s==='.verify output'?null:node(s),addEventListener:noop},matchMedia:()=>({matches:false,addEventListener:noop}),location:{search:'',hash:'',origin:'http://test'},addEventListener:(name,fn)=>{(events[name]??=[]).push(fn);},requestAnimationFrame:()=>1,IntersectionObserver:class{observe(){}},setTimeout:()=>1,clearTimeout:noop,URLSearchParams});
 const src=readFileSync(process.env.BC_JOURNEY_SOURCE||new URL('../journey.js',import.meta.url),'utf8').replace(/^import.*\n/gm,'');
 runInNewContext(src,ctx);
 runInNewContext('ready=true;scenePainted=true;started=true;update()',ctx);
@@ -19,3 +21,22 @@ assert.equal(node('.hero').dataset.interactive,'true');
 runInNewContext('scenePainted=false;update()',ctx);
 assert.equal(node('.film-layer').style.opacity,1,'Never expose an unpainted WebGL scene');
 console.log('PASS: requested video time cannot trigger handover; decoded video and painted scene are required.');
+
+runInNewContext('scenePainted=true;plateReady=true;update()',ctx);
+assert.equal(node('.hero').dataset.street,'0.0000','Full arrival restores the existing orbit backdrop');
+node('.journey').getBoundingClientRect=()=>({top:-1700});
+runInNewContext('update()',ctx);
+assert.equal(node('.hero').dataset.street,'1.0000','Plate stays behind character after film has dissolved');
+runInNewContext('plateReady=false;update()',ctx);
+assert.equal(node('.hero').dataset.street,'0.0000','Missing plate falls back without blocking exploration');
+console.log('PASS: retained street, settled backdrop and missing-plate fallback.');
+
+node('.orbit-frame').getBoundingClientRect=()=>({left:0,top:0});
+node('.orbit-frame').contentWindow.postMessage=message=>messages.push(message);
+const select=slug=>events.message.forEach(fn=>fn({origin:'http://test',source:node('.orbit-frame').contentWindow,data:{type:'bc:select-release',slug}}));
+for(const slug of Object.keys(releases))select(slug);
+select('rebar');
+assert.equal(opened.length,13);
+assert.equal(messages.filter(m=>m.type==='bc:playback-reaction'&&m.start).length,13,'Every real/sample selection, including reselection, triggers exactly one pulse');
+select('not-a-track');assert.equal(opened.length,13);assert.equal(messages.length,13);
+console.log('PASS: all twelve tracks and repeat selections trigger one pulse; invalid selections do not.');

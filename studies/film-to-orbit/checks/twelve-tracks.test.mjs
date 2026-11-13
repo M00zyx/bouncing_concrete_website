@@ -2,10 +2,11 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 import * as THREE from '../orbit/vendor/three/build/three.module.js';
+import {catalogue as tracks} from '../catalogue.js';
 import {trackEntry,ease} from '../orbit/entry-sequence.js';
 const source=readFileSync(new URL('../orbit/scene.js',import.meta.url),'utf8');
-const tracks=runInNewContext(source.slice(source.indexOf('const tracks = ['),source.indexOf('const host ='))+'tracks;');
-assert.equal(tracks.length,12);assert.equal(tracks.filter(t=>t.slug).length,2,'Ten samples must not become fictitious releases');
+
+assert.equal(tracks.length,12);assert.equal(tracks.filter(t=>!t.sample).length,2,'Ten samples must not become fictitious releases');
 const original=[[-.2,.19,1.7],[1.05,.17,-1.75],[2.2,.21,2.85],[3.35,.18,.55],[4,.16,-2.9],[5.3,.2,-.6]];
 for(let i=0;i<6;i++){
  assert.deepEqual([tracks[i].phase,tracks[i].speed,tracks[i].lane],original[i],'Original idle parameters are unchanged');

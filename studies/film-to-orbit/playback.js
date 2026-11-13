@@ -25,7 +25,7 @@ export function createPlayback({audio,cloudFrame,getCloud=()=>window.SC,onSignal
   clearTimeout(timer);timer=setTimeout(()=>{if(state.mode==='cloud'&&state.status==='loading'){state.status='paused';state.error='Press Play to start, or listen on SoundCloud.';emit();}},8000);
  }
  async function play(){
-  if(!state.track)return;
+  if(!state.track||state.mode==='sample')return;
   state.error='';
   if(state.mode==='cloud'){cloudWanted=true;cloudStart();return;}
   const requested=revision;
@@ -37,7 +37,8 @@ export function createPlayback({audio,cloudFrame,getCloud=()=>window.SC,onSignal
  function select(track){
   if(state.track?.slug===track.slug){if(state.status!=='playing')play();return;}
   revision++;clearTimeout(timer);cloudWanted=false;cloudConfirmed=false;audio.pause();cloud?.pause();
-  Object.assign(state,{track,status:'loading',position:0,duration:track.duration||0,error:'',mode:track.audio?'native':'cloud'});onSignalReset();emit();
+  Object.assign(state,{track,status:track.sample?'unavailable':'loading',position:0,duration:track.duration||0,error:'',mode:track.sample?'sample':track.audio?'native':'cloud'});onSignalReset();emit();
+  if(track.sample)return;
   if(track.audio){audio.src=track.audio;audio.load();play();}else loadCloud(track);
  }
  function seek(seconds){if(!state.track||!Number.isFinite(seconds))return;const target=Math.max(0,Math.min(seconds,state.duration||0));state.position=target;onSignalReset();if(state.mode==='native')audio.currentTime=target;else cloud?.seekTo(target*1000);emit();}
@@ -48,5 +49,5 @@ export function createPlayback({audio,cloudFrame,getCloud=()=>window.SC,onSignal
  audio.addEventListener('timeupdate',()=>{if(state.mode==='native'){state.position=audio.currentTime;emit();}});
  audio.addEventListener('ended',()=>{if(state.mode==='native'){state.status='ended';state.position=state.duration;emit();}});
  audio.addEventListener('error',()=>{if(state.mode==='native')fail('Audio could not load. Try Play again or open SoundCloud.');});
- return {state,select,play,pause,seek,toggle:()=>state.status==='playing'||state.status==='buffering'?pause():play(),subscribe(fn){listeners.add(fn);fn({...state});return()=>listeners.delete(fn);},getAnalyser:()=>state.mode==='native'?analyser:null};
+ return {state,select,play,pause,seek,retry(){const track=state.track;if(!track)return;state.track=null;select(track);},toggle:()=>state.status==='playing'||state.status==='buffering'?pause():play(),subscribe(fn){listeners.add(fn);fn({...state});return()=>listeners.delete(fn);},getAnalyser:()=>state.mode==='native'?analyser:null};
 }
