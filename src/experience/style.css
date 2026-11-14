@@ -50,3 +50,34 @@ html{scroll-behavior:auto}body{height:auto}a{color:inherit;text-decoration:none}
  .closing-aftermath{gap:6px}
  .closing .end{margin-top:16px}
 }
+
+/* Mailing list: scoped to the closing statement; no scene/player styles. */
+.mailing-list{margin-top:48px;max-width:520px}
+.mailing-list h3{font:500 20px/1.3 'DM Sans',sans-serif;margin:0 0 10px}
+.closing .mailing-list p{font-size:13px;line-height:1.6;margin:0 0 22px}
+.mailing-list .formkit-fields{display:flex;align-items:end;gap:12px}
+.mailing-list .formkit-field{flex:1;min-width:0}
+.mailing-list label{display:block;font-size:12px;margin-bottom:8px}
+.mailing-list input{width:100%;min-width:0;height:48px;border:0;border-bottom:1px solid #1736df;border-radius:0;background:transparent;color:#20231e;font:16px 'DM Sans',sans-serif;padding:10px 0}
+.mailing-list button{position:relative;min-height:48px;padding:12px 18px;background:#1736df;color:#fff;border:0;border-radius:0;cursor:pointer;white-space:nowrap;font:500 14px 'DM Sans',sans-serif}
+.mailing-list input:focus-visible,.mailing-list button:focus-visible,.mailing-list a:focus-visible{outline:2px solid #1736df;outline-offset:4px}
+.mailing-list button:hover{background:#102bbf}
+.mailing-list .formkit-spinner{display:none}
+.mailing-list button[data-active]>span:first-child{visibility:hidden}
+.mailing-list button[data-active] .formkit-spinner{display:block;position:absolute;inset:0;align-content:center}
+.mailing-list .formkit-alert:empty{display:none}
+.mailing-list .formkit-alert{list-style:none;padding:12px 0;margin:12px 0;font-size:14px;line-height:1.5}
+.mailing-list .formkit-alert-error{color:#a52c19}
+.mailing-list .formkit-alert-success{color:#1736df}
+.mailing-list .formkit-powered-by-convertkit-container{margin-top:12px}
+.mailing-list .formkit-powered-by-convertkit{font-size:11px;color:#565b53;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:420px){.mailing-list{margin-top:36px}.mailing-list .formkit-fields{flex-direction:column;align-items:stretch}.mailing-list button{align-self:start}}
+
+/* Align both desktop closing actions above the separate Kit credit line. */
+.mailing-list input{display:block}
+.mailing-list .formkit-powered-by-convertkit-container{line-height:16px;font-size:11px}
+@media(min-width:761px){
+ .closing-aftermath .contact{padding-bottom:0;margin-bottom:28px}
+ .closing-aftermath .contact p{font-size:12px;line-height:normal;margin-bottom:8px}
+ .closing-aftermath .contact a{height:48px;min-height:48px;padding:10px 0}
+}

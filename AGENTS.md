@@ -73,3 +73,9 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Preserve the three-viewport film, matched character transition, twelve-track orbit, exact current idle/steering/selection, shared player and live seismograph. All track selections trigger the approved one-shot debris pulse; samples remain honestly unavailable.
 - Preserve the brighter environment, grounded photoreal closing fragment, existing type/copy and footer-only Kuala Lumpur. Keep photoreal closing as a static image, not another renderer.
 - Public readiness still requires confirmed catalogue/social destinations and physical-phone/network validation. Keep the existing worker and Sites build packaging intact.
+
+## Mailing list — 14 November 2026
+
+- User supplied Kit form 10188593, UID 1b4f8eb4f1. Use its official embed script and subscription endpoint; no API secret is required.
+- Signup sits beneath the closing bio, retaining existing film/orbit/player behavior. Keep Kit attribution visible.
+- Build and hosting tests passed. Browser automation timed out during this change; visual review and a real confirmation-email signup remain unverified. Never report a successful subscription without provider evidence.

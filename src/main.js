@@ -10,3 +10,9 @@ import(/* @vite-ignore */ runtime.href).catch(() => {
   error.querySelector('p').textContent='The experience could not load. Reload to try again.';
   document.querySelector('#retry').onclick=()=>location.reload();
 });
+
+// Load Kit only after the form is mounted; plain POST remains a fallback.
+const kitScript = document.createElement('script');
+kitScript.src = 'https://f.convertkit.com/ckjs/ck.5.js';
+kitScript.async = true;
+document.body.append(kitScript);
