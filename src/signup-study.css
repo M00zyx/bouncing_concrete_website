@@ -1,0 +1,59 @@
+/* Optional design studies only: the default signup stays unchanged. */
+.signup-comparison{position:fixed;z-index:80;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;background:#eff0ec;border:1px solid #20231e;color:#20231e;box-shadow:0 3px 14px #0001;font:12px 'DM Sans',sans-serif;white-space:nowrap}
+.signup-comparison span{padding:0 8px}.signup-comparison a{padding:8px 12px}.signup-comparison a[aria-current]{background:#1736df;color:white}
+.signup-study{position:relative;margin-top:40px;max-width:540px}
+.closing .signup-study h3{font-family:Anton,sans-serif;font-size:clamp(38px,4.1vw,60px);font-weight:400;text-transform:uppercase;line-height:1.02;letter-spacing:-.02em;margin:0;color:#1736df}
+.signup-study .signup-trace{height:52px;margin:12px 0 14px;overflow:hidden}
+.signup-trace svg{width:100%;height:100%;fill:none;stroke:#1736df;stroke-width:1.5}
+.signup-trace .trace-base{opacity:.2}.signup-trace .trace-signal{stroke-dasharray:1;stroke-dashoffset:0}
+.signup-seismic.is-pulsing .trace-signal{animation:signal-draw .85s cubic-bezier(.12,.7,.3,1) both}
+.signup-seismic.is-pulsing h3{animation:heavy-tick .35s ease-out}
+.closing .signup-study p{margin-bottom:20px}
+.signup-notice{background:#ffdf2b;padding:26px 28px 20px;box-shadow:4px 5px 0 #20231e;transform:rotate(-1deg);transform-origin:50% 50%}
+.closing .signup-notice h3{color:#20231e}
+.signup-notice .signup-trace{display:none}
+.closing .signup-notice #mailing-description{margin-top:20px}
+.signup-notice input{color:#20231e}
+.signup-notice input::placeholder{color:#56533b;opacity:1}
+.signup-notice.is-pulsing{animation:notice-lock .65s cubic-bezier(.2,.7,.3,1) both}
+.signup-notice:focus-within{transform:rotate(0)}
+.signup-notice .signup-stamp{font:28px/1.1 Anton,sans-serif!important;text-transform:uppercase;border:3px solid #1736df;color:#1736df;display:inline-block;padding:8px 12px;margin:18px 0 0!important;transform:rotate(-5deg)}
+@keyframes signal-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes heavy-tick{0%,100%{transform:translate(0)}18%{transform:translate(2px,-1px)}35%{transform:translate(-1px,0)}}
+@keyframes notice-lock{0%{transform:rotate(-1deg)}35%{transform:rotate(.3deg) translateY(-2px)}100%{transform:rotate(0)}}
+@media(max-width:760px){.closing .signup-study h3{font-size:clamp(40px,10vw,60px)}.signup-notice{padding:24px 20px 18px;margin-right:4px}.signup-comparison span{display:none}.signup-comparison{top:8px}}
+@media(prefers-reduced-motion:reduce){.signup-study,.signup-study *{animation:none!important;transform:none!important}}
+
+/* Approved combination: paper notice, seismic signal and one stone impulse. */
+.signup-combined .signup-trace{display:block;margin:12px 0 14px}
+.closing .signup-combined #mailing-description{margin-top:0}
+.signup-combined.is-pulsing{animation:none}
+.signup-combined.is-settled,.signup-combined:focus-within{transform:none}
+.signup-combined.is-pulsing .trace-signal{animation:signal-draw .6s ease-out both}
+.signup-impact .grounded-fragment img{animation:stone-impulse .38s ease-out both}
+.signup-impact .signup-combined{animation:notice-lock .55s .16s ease-out both}
+.signup-impact .signup-combined .trace-signal{animation:signal-draw .7s .2s ease-out both}
+.signup-combined .formkit-alert-success{margin:0;padding:0}
+.closing .signup-combined .formkit-alert-success p:not(.signup-stamp){margin:22px 0 0;font-size:14px}
+.signup-combined .signup-stamp{margin-top:4px!important}
+@media(min-width:761px){.closing-combined .closing-aftermath .contact{margin-bottom:48px}}
+@keyframes stone-impulse{0%,100%{transform:translate(0,0) rotate(0)}12%{transform:translate(-3px,-2px) rotate(-.25deg)}30%{transform:translate(1px,0) rotate(.08deg)}60%{transform:translate(-.4px,0)}}
+@media(prefers-reduced-motion:reduce){.signup-impact .grounded-fragment img{animation:none!important}.signup-combined{transform:none!important}}
+
+.signup-preview-label{font:11px/1.4 'DM Sans',sans-serif!important;border-bottom:1px solid #20231e66;padding-bottom:8px;margin:0 0 20px!important}
+.preview-active input{outline:2px solid #1736df;outline-offset:4px}
+.preview-active .trace-signal{stroke-dashoffset:.35}
+.state-preview button:disabled{cursor:wait}
+
+/* Stamp lands once after the provider confirms receipt. */
+.is-confirmed .signup-stamp{animation:stamp-impact .38s cubic-bezier(.15,.75,.25,1) both;transform-origin:45% 50%}
+@keyframes stamp-impact{0%{opacity:0;transform:translateY(-16px) rotate(-9deg) scale(1.22)}48%{opacity:1;transform:translateY(1px) rotate(-5deg) scale(.98)}72%{transform:translateY(-1px) rotate(-5deg) scale(1.01)}100%{opacity:1;transform:translateY(0) rotate(-5deg) scale(1)}}
+.motion-replay{position:fixed;top:12px;right:12px;z-index:100;background:#1736df;color:white;border:0;padding:12px 16px;font:13px 'DM Sans',sans-serif;cursor:pointer}
+
+/* Local recording stage scales the same desktop section into the capture frame. */
+.signup-motion-page{background:#eff0ec}
+.signup-motion-page .journey{display:none}
+.signup-motion-page .closing{width:1280px;max-width:none;zoom:.7;margin:0 auto;padding-left:76.8px;padding-right:76.8px;column-gap:64px}
+.signup-motion-page .closing h2{font-size:61.44px}
+.signup-motion-page .closing .signup-study h3{font-size:52.48px}
+.signup-motion-page .signup-study{min-height:500px}

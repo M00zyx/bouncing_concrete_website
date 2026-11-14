@@ -78,4 +78,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 
 - User supplied Kit form 10188593, UID 1b4f8eb4f1. Use its official embed script and subscription endpoint; no API secret is required.
 - Signup sits beneath the closing bio, retaining existing film/orbit/player behavior. Keep Kit attribution visible.
-- Build and hosting tests passed. Browser automation timed out during this change; visual review and a real confirmation-email signup remain unverified. Never report a successful subscription without provider evidence.
+- Build and hosting tests passed. Subsequent browser review verified the layout and recorded the combined animation; a real confirmation-email signup remains unverified. Never report a successful subscription without provider evidence.
+
+- User approved keeping double opt-in: Kit should send the confirmation email, with auto-confirm disabled. This is the intended provider configuration, not an independently verified account setting.
+- Approved CTA combines the yellow notice, blue seismograph and brief concrete jolt. The success stamp reads CHECK YOUR INBOX with the instruction to confirm via the email link. Keep animations brief and respect reduced motion.
+- src/signup-study.js and src/signup-study.css own these additions. The default is the combined design. Local-only signup-state previews prevent submission and explicitly label simulated states; they do not prove live Kit delivery.

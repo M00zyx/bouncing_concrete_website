@@ -1,8 +1,11 @@
 import shell from './experience/shell.html?raw';
+import { setupSignupStudy } from './signup-study.js';
+import './signup-study.css';
 
 // Keep the approved DOM and native ESM/WebGL runtime intact. Build/dev syncs
 // src/experience into public/experience; this is the only canonical app source.
 document.getElementById('root').outerHTML = shell;
+setupSignupStudy();
 const runtime = new URL('/experience/journey.js', window.location.origin);
 import(/* @vite-ignore */ runtime.href).catch(() => {
   const error=document.querySelector('.scene-error');
