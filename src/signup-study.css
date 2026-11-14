@@ -9,7 +9,7 @@
 .signup-seismic.is-pulsing .trace-signal{animation:signal-draw .85s cubic-bezier(.12,.7,.3,1) both}
 .signup-seismic.is-pulsing h3{animation:heavy-tick .35s ease-out}
 .closing .signup-study p{margin-bottom:20px}
-.signup-notice{background:#ffdf2b;padding:26px 28px 20px;box-shadow:4px 5px 0 #20231e;transform:rotate(-1deg);transform-origin:50% 50%}
+.signup-notice{background:#ffdf2b;padding:26px 28px 20px;box-shadow:none;transform:rotate(-1deg);transform-origin:50% 50%}
 .closing .signup-notice h3{color:#20231e}
 .signup-notice .signup-trace{display:none}
 .closing .signup-notice #mailing-description{margin-top:20px}
@@ -57,3 +57,6 @@
 .signup-motion-page .closing h2{font-size:61.44px}
 .signup-motion-page .closing .signup-study h3{font-size:52.48px}
 .signup-motion-page .signup-study{min-height:500px}
+
+.closing .signup-study .mailing-incentive{font-size:18px;line-height:1.45;font-weight:500;max-width:430px;margin-bottom:12px}
+.closing .signup-study .mailing-updates{font-size:12px;line-height:1.5;margin-bottom:22px}
