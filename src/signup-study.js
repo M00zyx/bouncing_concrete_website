@@ -7,12 +7,12 @@ export function setupSignupStudy() {
   const closing = section.closest('.closing');
   if (option === 'combined') { section.classList.add('signup-notice'); closing.classList.add('closing-combined'); }
   const title = section.querySelector('h3');
-  title.innerHTML = 'Join the<br>mailing list.';
+  title.textContent = 'A track that will never be publicly released.';
   const trace = document.createElement('div');
   trace.className = 'signup-trace';
   trace.setAttribute('aria-hidden', 'true');
   trace.innerHTML = '<svg viewBox="0 0 520 52" preserveAspectRatio="none"><path class="trace-base" d="M0 27H520"/><path class="trace-signal" pathLength="1" d="M0 27H115l8 -3 7 6 6 -9 5 17 5 -29 5 36 5 -42 5 46 5 -33 6 20 6 -14 8 5H290l5 -7 5 14 5 -25 5 32 5 -37 5 40 5 -30 5 20 5 -12 7 6H520"/></svg>';
-  title.after(trace);
+  section.querySelector('form').before(trace);
   const stamp = document.createElement('p');
   stamp.className = 'signup-stamp';
   stamp.textContent = 'Check your inbox';

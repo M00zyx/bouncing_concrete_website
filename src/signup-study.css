@@ -60,3 +60,41 @@
 
 .closing .signup-study .mailing-incentive{font-size:18px;line-height:1.45;font-weight:500;max-width:430px;margin-bottom:12px}
 .closing .signup-study .mailing-updates{font-size:12px;line-height:1.5;margin-bottom:22px}
+
+/* Full-width exclusive-track invitation. */
+.closing-combined{row-gap:48px}
+.closing-combined .closing-aftermath{justify-content:center}
+.closing-combined .closing-statement{padding-top:0}
+.closing-combined .grounded-fragment{margin:-24px -25px 0}
+.closing .signup-combined{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:5vw;max-width:none;width:auto;margin:0 -6vw;padding:48px 6vw;background:#ffdf2b;transform:none;box-shadow:none}
+.closing .signup-combined h3{font-size:clamp(34px,4.1vw,60px);line-height:1.06;max-width:650px}
+.closing .signup-combined #mailing-description{margin:22px 0 0;max-width:none;font-size:17px;font-weight:400}
+.mailing-action{min-width:0}
+.closing .signup-combined .signup-trace{margin:0 0 24px;height:52px}
+.closing .signup-combined .mailing-updates{margin:20px 0 0;font-size:12px;max-width:none}
+.closing-combined>.contact{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:0;margin:0}
+.closing-combined>.contact p{margin:0;font-size:13px}
+.closing-combined>.contact a{font-size:clamp(16px,1.55vw,24px);width:46%;padding-bottom:12px}
+.closing-combined .end{margin-top:0}
+.signup-impact .signup-combined{animation:none}
+.signup-impact .mailing-offer{animation:heavy-tick .35s .16s ease-out both}
+.signup-combined .signup-preview-label{grid-column:1/-1}
+@media(max-width:760px){
+ .closing-combined{row-gap:32px}
+ .closing .signup-combined{grid-template-columns:1fr;margin:0 -24px;padding:36px 24px;gap:28px}
+ .closing .signup-combined h3{font-size:clamp(34px,8.7vw,52px)}
+ .closing .signup-combined #mailing-description{margin-top:18px;font-size:16px}
+ .closing-combined .grounded-fragment{margin:0;max-width:460px}
+ .closing-combined>.contact{display:block}
+ .closing-combined>.contact p{margin-bottom:14px}
+ .closing-combined>.contact a{width:100%}
+}
+
+/* Official Instagram destination, within the closing contact area. */
+.closing-combined>.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,46%);gap:24px 32px}
+.closing-combined>.contact a{width:100%}
+.instagram-handle{display:flex;align-items:center;gap:12px;min-width:0}
+.instagram-handle svg{width:22px;height:22px;flex:none;stroke-width:1.6}
+.contact a .instagram-handle span{font-size:clamp(14px,1.4vw,20px);line-height:1.5;overflow-wrap:anywhere}
+.contact .instagram-handle svg,.contact .instagram-handle span{transform:none!important}
+@media(max-width:760px){.closing-combined>.contact{grid-template-columns:1fr;gap:12px}.closing-combined>.contact p{margin:0}.closing-combined>.contact p:not(:first-child){margin-top:12px}}

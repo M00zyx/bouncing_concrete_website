@@ -83,3 +83,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - User approved keeping double opt-in: Kit should send the confirmation email, with auto-confirm disabled. This is the intended provider configuration, not an independently verified account setting.
 - Approved CTA combines the yellow notice, blue seismograph and brief concrete jolt. The success stamp reads CHECK YOUR INBOX with the instruction to confirm via the email link. Keep animations brief and respect reduced motion.
 - src/signup-study.js and src/signup-study.css own these additions. The default is the combined design. Local-only signup-state previews prevent submission and explicitly label simulated states; they do not prove live Kit delivery.
+
+- Official Instagram supplied by user: @BOUNCING_CONCRETE, https://www.instagram.com/bouncing_concrete/. Show an outline Instagram icon, handle and outbound arrow in existing blue in the closing contact area; open in a new tab.
