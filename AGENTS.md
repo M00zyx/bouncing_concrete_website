@@ -85,3 +85,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - src/signup-study.js and src/signup-study.css own these additions. The default is the combined design. Local-only signup-state previews prevent submission and explicitly label simulated states; they do not prove live Kit delivery.
 
 - Official Instagram supplied by user: @BOUNCING_CONCRETE, https://www.instagram.com/bouncing_concrete/. Show an outline Instagram icon, handle and outbound arrow in existing blue in the closing contact area; open in a new tab.
+
+- Approved footer refinement: booking email is primary, Instagram is a compact secondary icon/handle link with no redundant label or link divider lines. Retain a single footer rule; mobile copyright and Back to the film share a row, with Kuala Lumpur beneath.
