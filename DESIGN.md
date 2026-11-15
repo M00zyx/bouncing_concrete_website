@@ -1,3 +1,5 @@
+> Historical design document: this describes earlier directions. See [the current project index](docs/INDEX.md) for Site 1.0 authority.
+
 ---
 name: Bouncing Concrete
 description: A tactile music world where a confined concrete character opens into records, liner notes, and listening.

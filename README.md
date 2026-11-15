@@ -1,25 +1,21 @@
-# Bouncing Concrete website
+# Bouncing Concrete — Site 1.0
 
-## Versions
+The approved film-to-orbit website. Release date: 15 November 2026. Release tag: `site-v1.0.0`.
 
-The previous website is preserved on `makeover/2026-11-10-contained-sound` at `cf9f4ae5948e9be076df7160a4bf3903842b76b3`.
-The approved film/orbit experience is integrated separately on `integration/2026-11-13-film-orbit`. No deployment is implied by this branch.
+Start with the [project index](docs/INDEX.md), [file inventory](docs/FILE-INVENTORY.csv), and [release notes](docs/releases/site-1.0.md).
 
-## Development
+## Run and build
 
-Run `npm install`, then `npm run dev`. Run `npm run build` and `npm run test:sites` before publishing. Use `npm run preview` to review the production output.
+`npm ci` installs the locked dependencies. `npm run dev` starts development. `npm run build` produces the website; `npm run test:sites` checks hosting behavior. `npm run preview -- --host 127.0.0.1 --port 4174 --strictPort` previews the production build.
 
-The active entry is `src/main.js`. Edit the approved runtime in `src/experience/`; `scripts/sync-experience.mjs` copies it to generated `public/experience/` before development and builds. Do not edit that generated directory. The original React implementation remains in source for reference; its preserved branch remains the authority for the previous site.
+Edit `src/main.js`, `src/experience/`, and `src/signup-study.{js,css}`. `public/experience/` is generated before dev/build; never edit it. Preserve `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs`.
 
-## Integration verification — 13 November 2026
+## Version history
 
-- Production build and all four Sites worker tests passed.
-- All published experience files matched their canonical source. Approved visual, steering, spacing, debris, playback and seismograph modules were unchanged from the checkpoint.
-- Film and audio byte-range requests returned HTTP 206 with the requested bytes.
-- Browser review verified scroll film progression, orbital scene, native playback/pause/seeking, compact player retention, both direct release pages and the shared sample player.
-- A 390px viewport review confirmed the expanded player scrolls to its controls. This is not a physical-phone test.
-- Closing section and contact content rendered at the root route. No browser console errors were reported in the inspected release session.
+| Name | Reference | Status |
+| --- | --- | --- |
+| Site 1.0 | `site-v1.0.0`, branch `integration/2026-11-13-film-orbit` | Current approved site |
+| Legacy Site — July 2026 | original `v1.0.0`, commit `46d4c65` | Preserved historical release |
+| Archived Direction — Contained Sound | `makeover/2026-11-10-contained-sound`, commit `cf9f4ae` | Preserved confinement design |
 
-## Before launch
-
-Confirm the ten sample releases or replace them with real tracks; supply official social links; choose the deployment/domain; test on physical phones and a constrained network. Concreto Incarnat uses SoundCloud and does not expose audio for the reactive seismograph. Its panel loaded correctly; streaming playback was not separately reverified in this integration pass.
+The old `v1.0.0` tag is intentionally retained. Site 1.0 is a versioned source release, not a public deployment. See release notes for remaining launch checks.

@@ -1,0 +1,388 @@
+category,path,bytes
+"Build, hosting or configuration",.gitignore,99
+"Build, hosting or configuration",.impeccable/design.json,20630
+"Build, hosting or configuration",.impeccable/review/cell-desktop-final.jpg,166474
+"Build, hosting or configuration",.impeccable/review/cell-mobile-final.jpg,45378
+"Build, hosting or configuration",.impeccable/review/cell-user-final.jpg,123156
+Documentation,.impeccable/review/direction.md,1609
+Documentation,.impeccable/review/finish-review.md,4140
+"Build, hosting or configuration",.impeccable/review/hero-desktop-final.jpg,213634
+"Build, hosting or configuration",.impeccable/review/hero-mobile-final.jpg,52600
+"Build, hosting or configuration",.impeccable/review/lower-desktop-final.jpg,282472
+"Build, hosting or configuration",.impeccable/review/lower-mobile-final.jpg,71870
+"Build, hosting or configuration",.impeccable/review/records-mobile.jpg,58743
+Documentation,.impeccable/surfaces/artist-website.md,3988
+"Build, hosting or configuration",.npmrc,23
+"Build, hosting or configuration",.openai/hosting.json,31
+Documentation,AGENTS.md,10155
+Documentation,DESIGN.md,14752
+Documentation,PRODUCT.md,2144
+Documentation,README.md,1365
+Documentation,docs/INDEX.md,2488
+Historical evidence,docs/archive/legacy-july-2026/design-qa.md,2196
+Historical evidence,docs/archive/legacy-july-2026/implementation.png,152912
+Documentation,docs/makeover-asset-provenance.md,3298
+Documentation,docs/makeover-verification.md,2028
+Documentation,docs/quiet-tension-verification.md,4277
+Documentation,docs/reference-correction-verification.md,3802
+Documentation,docs/releases/site-1.0.md,1821
+"Build, hosting or configuration",index.html,1282
+"Build, hosting or configuration",package-lock.json,57290
+"Build, hosting or configuration",package.json,556
+Shared or historical media,public/assets/bouncing-concrete-share.jpg,132641
+Shared or historical media,public/assets/cell-still-makeover.jpg,56751
+Shared or historical media,public/assets/cell-still.jpg,36930
+Shared or historical media,public/assets/clean-0-d12f3cfbe8a2-material.svg,178757
+Shared or historical media,public/assets/clean-0-d12f3cfbe8a2-material.webp,133820
+Shared or historical media,public/assets/clean-0-d12f3cfbe8a2.webp,278556
+Shared or historical media,public/assets/clean-1-4dd75c274972.webp,21194
+Shared or historical media,public/assets/concrete-blob-render.png,30643
+Shared or historical media,public/assets/concrete-blob-web.glb,7886940
+Shared or historical media,public/assets/concrete-blob.glb,55974944
+Shared or historical media,public/assets/concrete-continuous.svg,372701
+Shared or historical media,public/assets/concrete-grit-panel.png,3731153
+Shared or historical media,public/assets/concrete-grit-panel.webp,576274
+Shared or historical media,public/assets/concrete-stage.png,2405611
+Shared or historical media,public/assets/concrete-stage.webp,177750
+Shared or historical media,public/assets/concreto-incarnat-share.jpg,135878
+Shared or historical media,public/assets/construction-mark-raster.png,1882423
+Shared or historical media,public/assets/construction-mark-source.png,2228447
+Shared or historical media,public/assets/crop-11-63a82a4545cd.webp,31926
+Shared or historical media,public/assets/crop-18-bd5de7ab99aa.webp,35086
+Shared or historical media,public/assets/crop-31-064e73e487b9.webp,65712
+Shared or historical media,public/assets/dark-grit.png,3779219
+Shared or historical media,public/assets/dark-grit.webp,490536
+Shared or historical media,public/assets/film-still.jpg,208308
+Shared or historical media,public/assets/fonts/anton-OFL.txt,4484
+Shared or historical media,public/assets/fonts/dmmono-OFL.txt,4484
+Shared or historical media,public/assets/fonts/dmsans-OFL.txt,4482
+Shared or historical media,public/assets/fonts/font-0.ttf,130324
+Shared or historical media,public/assets/fonts/font-1.ttf,44784
+Shared or historical media,public/assets/fonts/font-2.ttf,45308
+Shared or historical media,public/assets/fonts/font-3.ttf,48280
+Shared or historical media,public/assets/fonts/font-4.ttf,48308
+Shared or historical media,public/assets/fonts/font-5.ttf,48280
+Shared or historical media,public/assets/funkacaine-share.jpg,132641
+Shared or historical media,public/assets/implementation.png,152912
+Shared or historical media,public/assets/mark-glyph-06-sideways.png,92765
+Shared or historical media,public/assets/mark-glyph-06-sideways.webp,14630
+Shared or historical media,public/assets/mark-glyph-06.png,144886
+Shared or historical media,public/assets/mark-hatch-alpha.png,207685
+Shared or historical media,public/assets/mark-hatch-alpha.webp,51150
+Shared or historical media,public/assets/mark-hatch-raster.png,384942
+Shared or historical media,public/assets/ornament-aperture-gritty.png,1513855
+Shared or historical media,public/assets/ornament-aperture-internal-shadow.png,664510
+Shared or historical media,public/assets/ornament-aperture-recessed-v2.png,3388374
+Shared or historical media,public/assets/ornament-aperture-socket-latest.png,308448
+Shared or historical media,public/assets/ornament-aperture-socket-shallow.png,105512
+Shared or historical media,public/assets/ornament-aperture-socket.png,808258
+Shared or historical media,public/assets/ornament-checker.png,219420
+Shared or historical media,public/assets/ornament-checker.webp,27344
+Shared or historical media,public/assets/ornament-cross.png,351186
+Shared or historical media,public/assets/ornament-cross.webp,49468
+Shared or historical media,public/assets/ornament-face.png,443121
+Shared or historical media,public/assets/ornament-face.webp,60124
+Shared or historical media,public/assets/ornament-flower.png,272591
+Shared or historical media,public/assets/ornament-flower.webp,39038
+Shared or historical media,public/assets/ornament-sheet-source.png,1749689
+Shared or historical media,public/assets/ornament-sheet.png,1248739
+Shared or historical media,public/assets/ornament-three-panel-asymmetric-v3.png,2969519
+Shared or historical media,public/assets/ornament-three-panel-asymmetric-v4.png,3343854
+Shared or historical media,public/assets/ornament-three-panel-asymmetric-v4.webp,488146
+Shared or historical media,public/assets/ornament-three-panel-v2.png,2937600
+Shared or historical media,public/assets/panel-b1.png,1795283
+Shared or historical media,public/assets/panel-b2.png,1539273
+Shared or historical media,public/assets/panel-b6.png,1621425
+Shared or historical media,public/assets/poster-construction-lockup-v2.png,1130675
+Shared or historical media,public/assets/poster-grit.png,2950264
+Shared or historical media,public/assets/poster-grit.webp,380016
+Shared or historical media,public/assets/record-aperture.webp,472180
+Shared or historical media,public/assets/reference-direction.png,2405410
+Shared or historical media,public/assets/scene-plate.png,2968628
+Shared or historical media,public/assets/scene-plate.webp,382218
+Shared or historical media,public/assets/scene-scrub.mp4,17089295
+Shared or historical media,public/assets/scene-web.mp4,5693954
+Shared or historical media,public/assets/scene.mp4,11946901
+Shared or historical media,public/assets/soundcloud-widget-api.js,5541
+Shared or historical media,public/assets/symbol-checker.png,173585
+Shared or historical media,public/assets/symbol-globe-tight.png,254307
+Shared or historical media,public/assets/symbol-globe-tight.webp,45348
+Shared or historical media,public/assets/symbol-globe.png,266409
+Shared or historical media,public/assets/symbol-globe.webp,46248
+Shared or historical media,public/assets/symbol-sheet-source.png,1515413
+Shared or historical media,public/assets/symbol-sheet.png,507453
+Shared or historical media,public/assets/title-animation.mp4,161746
+Shared or historical media,public/assets/upscaled-region-27-0744eb34a68a.webp,30674
+Shared or historical media,public/assets/wordmark-gritty.png,2031553
+Shared or historical media,public/assets/wordmark-gritty.webp,314608
+Shared or historical media,public/assets/wordmark.png,2840384
+"Build, hosting or configuration",public/qa.html,572
+"Build, hosting or configuration",releases/concreto-incarnat.html,1368
+"Build, hosting or configuration",releases/funkacaine.html,1333
+"Build, hosting or configuration",scripts/build-concrete-atlas.mjs,1749
+"Build, hosting or configuration",scripts/index-files.py,1217
+"Build, hosting or configuration",scripts/prepare-sites-build.mjs,910
+"Build, hosting or configuration",scripts/social-card.html,2296
+"Build, hosting or configuration",scripts/sync-experience.mjs,694
+Legacy source retained,src/App.jsx,7582
+Legacy source retained,src/BlobPreview.jsx,1522
+Legacy source retained,src/ConcreteObject.jsx,5253
+Legacy source retained,src/Icons.jsx,728
+Legacy source retained,src/MusicPlayer.jsx,15780
+Legacy source retained,src/RecordArt.jsx,323
+Legacy source retained,src/construction-mark.css,813
+Legacy source retained,src/content.js,1147
+Current runtime and retained media,src/experience/assets/empty-street.jpg,554088
+Current runtime and retained media,src/experience/assets/film-opening.png,3202679
+Current runtime and retained media,src/experience/assets/grounded-concrete-photoreal.webp,396562
+Current runtime and retained media,src/experience/assets/grounded-slab.png,509310
+Current runtime and retained media,src/experience/assets/interface.ttf,48280
+Current runtime and retained media,src/experience/assets/scene-web.mp4,5693954
+Current runtime and retained media,src/experience/assets/wordmark-gritty.webp,314608
+Current runtime and retained media,src/experience/catalogue.js,2589
+Current runtime and retained media,src/experience/journey-state.js,487
+Current runtime and retained media,src/experience/journey.js,9405
+Current runtime and retained media,src/experience/listening-view.js,9621
+Current runtime and retained media,src/experience/listening.css,8605
+Current runtime and retained media,src/experience/orbit/README.md,36278
+Current runtime and retained media,src/experience/orbit/assets/audio/funkacaine.mp3,6071946
+Current runtime and retained media,src/experience/orbit/assets/concrete-blob-rounded-budget.json,296
+Current runtime and retained media,src/experience/orbit/assets/concrete-blob-rounded.glb,7822980
+Current runtime and retained media,src/experience/orbit/assets/concrete-blob-web.glb,7886940
+Current runtime and retained media,src/experience/orbit/assets/crop-11-63a82a4545cd.webp,31926
+Current runtime and retained media,src/experience/orbit/assets/crop-18-bd5de7ab99aa.webp,35086
+Current runtime and retained media,src/experience/orbit/assets/debris-entry-parts.json,1524
+Current runtime and retained media,src/experience/orbit/assets/fonts/font-0.ttf,130324
+Current runtime and retained media,src/experience/orbit/assets/fonts/font-1.ttf,44784
+Current runtime and retained media,src/experience/orbit/assets/fonts/font-3.ttf,48280
+Current runtime and retained media,src/experience/orbit/assets/orbital-wreckage-budget.json,359
+Current runtime and retained media,src/experience/orbit/assets/orbital-wreckage.glb,520484
+Current runtime and retained media,src/experience/orbit/assets/soundcloud-widget-api.js,5541
+Current runtime and retained media,src/experience/orbit/character-awareness.js,731
+Current runtime and retained media,src/experience/orbit/debris-entrance.js,5825
+Current runtime and retained media,src/experience/orbit/entry-sequence.js,586
+Current runtime and retained media,src/experience/orbit/focus-layout.js,7296
+Current runtime and retained media,src/experience/orbit/group-steering.js,2625
+Current runtime and retained media,src/experience/orbit/index.html,2387
+Current runtime and retained media,src/experience/orbit/orbital-debris.js,3679
+Current runtime and retained media,src/experience/orbit/performance-review.js,1775
+Current runtime and retained media,src/experience/orbit/raycast-grid.js,2779
+Current runtime and retained media,src/experience/orbit/scene.js,46930
+Current runtime and retained media,src/experience/orbit/spacing.js,1746
+Current runtime and retained media,src/experience/orbit/sphere-spacing.js,6340
+Current runtime and retained media,src/experience/orbit/style.css,4731
+Current runtime and retained media,src/experience/orbit/track-targeting.js,2003
+Current runtime and retained media,src/experience/orbit/typography.js,1017
+Current runtime and retained media,src/experience/orbit/vendor/three/LICENSE,1081
+Current runtime and retained media,src/experience/orbit/vendor/three/build/three.core.js,1443056
+Current runtime and retained media,src/experience/orbit/vendor/three/build/three.module.js,650153
+Current runtime and retained media,src/experience/orbit/vendor/three/examples/jsm/libs/meshopt_decoder.module.js,29256
+Current runtime and retained media,src/experience/orbit/vendor/three/examples/jsm/loaders/GLTFLoader.js,114959
+Current runtime and retained media,src/experience/orbit/vendor/three/examples/jsm/utils/BufferGeometryUtils.js,37621
+Current runtime and retained media,src/experience/orbit/vendor/three/examples/jsm/utils/SkeletonUtils.js,11535
+Current runtime and retained media,src/experience/playback.js,5659
+Current runtime and retained media,src/experience/seismograph-trace.js,1680
+Current runtime and retained media,src/experience/seismograph.js,4023
+Current runtime and retained media,src/experience/shell.html,5628
+Current runtime and retained media,src/experience/street-handover.js,364
+Current runtime and retained media,src/experience/style.css,9848
+Legacy source retained,src/film.js,446
+Legacy source retained,src/fonts.css,970
+Legacy source retained,src/layers.css,19696
+Current entry and signup,src/main.js,974
+Legacy source retained,src/main.jsx,663
+Legacy source retained,src/makeover.css,19289
+Legacy source retained,src/quiet-tension.css,10910
+Legacy source retained,src/refinements.css,8918
+Current entry and signup,src/signup-study.css,9567
+Current entry and signup,src/signup-study.js,6188
+Legacy source retained,src/soundcloud-widget-api.js,5541
+Legacy source retained,src/styles.css,4063
+Legacy source retained,src/waveform.css,2747
+Legacy source retained,src/wordmark.css,114
+Archived prototype,studies/film-to-orbit/CHECKPOINT-MANIFEST.json,12207
+Archived prototype,studies/film-to-orbit/PERFORMANCE-REVIEW.md,3671
+Archived prototype,studies/film-to-orbit/README.md,40166
+Archived prototype,studies/film-to-orbit/REFINEMENT-PLAN.md,10165
+Archived prototype,studies/film-to-orbit/assets/empty-street.jpg,554088
+Archived prototype,studies/film-to-orbit/assets/film-opening.png,3202679
+Archived prototype,studies/film-to-orbit/assets/grounded-concrete-photoreal.webp,396562
+Archived prototype,studies/film-to-orbit/assets/grounded-slab.png,509310
+Archived prototype,studies/film-to-orbit/assets/interface.ttf,48280
+Archived prototype,studies/film-to-orbit/assets/scene-web.mp4,5693954
+Archived prototype,studies/film-to-orbit/assets/wordmark-gritty.webp,314608
+Archived prototype,studies/film-to-orbit/catalogue.js,2589
+Archived prototype,studies/film-to-orbit/character-awareness-vertical.jpg,76415
+Archived prototype,studies/film-to-orbit/character-awareness.jpg,62976
+Archived prototype,studies/film-to-orbit/checks/entrance.test.mjs,1713
+Archived prototype,studies/film-to-orbit/checks/entry-sequence-budget.json,306
+Archived prototype,studies/film-to-orbit/checks/entry-sequence.test.mjs,1100
+Archived prototype,studies/film-to-orbit/checks/journey.test.mjs,1328
+Archived prototype,studies/film-to-orbit/checks/media-handover.test.mjs,3578
+Archived prototype,studies/film-to-orbit/checks/playback.test.mjs,2742
+Archived prototype,studies/film-to-orbit/checks/seismograph.test.mjs,2049
+Archived prototype,studies/film-to-orbit/checks/street-handover.test.mjs,1100
+Archived prototype,studies/film-to-orbit/checks/twelve-tracks.test.mjs,2323
+Archived prototype,studies/film-to-orbit/connected-compact.jpg,76104
+Archived prototype,studies/film-to-orbit/connected-listening.jpg,81930
+Archived prototype,studies/film-to-orbit/cursor-centering.jpg,58351
+Archived prototype,studies/film-to-orbit/debris-discoveries.jpg,64453
+Archived prototype,studies/film-to-orbit/depth-lighting.jpg,76740
+Archived prototype,studies/film-to-orbit/entry-sequence-preview.png,44166
+Archived prototype,studies/film-to-orbit/fast-pulse.jpg,74831
+Archived prototype,studies/film-to-orbit/film-scroll-verified.png,104529
+Archived prototype,studies/film-to-orbit/full-debris-reaction.jpg,74003
+Archived prototype,studies/film-to-orbit/heavy-settle.jpg,52247
+Archived prototype,studies/film-to-orbit/hero-implemented.png,157325
+Archived prototype,studies/film-to-orbit/hero-mobile.png,52212
+Archived prototype,studies/film-to-orbit/immediate-pulse.jpg,73582
+Archived prototype,studies/film-to-orbit/index.html,3570
+Archived prototype,studies/film-to-orbit/journey-state.js,487
+Archived prototype,studies/film-to-orbit/journey.js,8967
+Archived prototype,studies/film-to-orbit/listening-view.js,9621
+Archived prototype,studies/film-to-orbit/listening.css,8605
+Archived prototype,studies/film-to-orbit/open-player-switching.jpg,76898
+Archived prototype,studies/film-to-orbit/orbit-12-tracks.jpg,56111
+Archived prototype,studies/film-to-orbit/orbit-arrival.png,42736
+Archived prototype,studies/film-to-orbit/orbit/README.md,36278
+Archived prototype,studies/film-to-orbit/orbit/asset-sources/README.md,3072
+Archived prototype,studies/film-to-orbit/orbit/asset-sources/kenney-city-kit-roads/LICENSE.txt,703
+Archived prototype,studies/film-to-orbit/orbit/asset-sources/kenney-city-kit-roads/colormap.png,11428
+Archived prototype,studies/film-to-orbit/orbit/asset-sources/kenney-city-kit-roads/light-curved.obj,7989
+Archived prototype,studies/film-to-orbit/orbit/asset-sources/kenney-city-kit-roads/road-sign-object-street.obj,4892
+Archived prototype,studies/film-to-orbit/orbit/asset-sources/kenney-city-kit-roads/traffic-light-object-horizontal.obj,11447
+Archived prototype,studies/film-to-orbit/orbit/assets/audio/funkacaine.mp3,6071946
+Archived prototype,studies/film-to-orbit/orbit/assets/concrete-blob-rounded-budget.json,296
+Archived prototype,studies/film-to-orbit/orbit/assets/concrete-blob-rounded.glb,7822980
+Archived prototype,studies/film-to-orbit/orbit/assets/concrete-blob-web.glb,7886940
+Archived prototype,studies/film-to-orbit/orbit/assets/crop-11-63a82a4545cd.webp,31926
+Archived prototype,studies/film-to-orbit/orbit/assets/crop-18-bd5de7ab99aa.webp,35086
+Archived prototype,studies/film-to-orbit/orbit/assets/debris-entry-parts.json,1524
+Archived prototype,studies/film-to-orbit/orbit/assets/fonts/font-0.ttf,130324
+Archived prototype,studies/film-to-orbit/orbit/assets/fonts/font-1.ttf,44784
+Archived prototype,studies/film-to-orbit/orbit/assets/fonts/font-3.ttf,48280
+Archived prototype,studies/film-to-orbit/orbit/assets/orbital-wreckage-budget.json,359
+Archived prototype,studies/film-to-orbit/orbit/assets/orbital-wreckage.glb,520484
+Archived prototype,studies/film-to-orbit/orbit/assets/soundcloud-widget-api.js,5541
+Archived prototype,studies/film-to-orbit/orbit/character-awareness.js,731
+Archived prototype,studies/film-to-orbit/orbit/checks/character-asset.test.mjs,1680
+Archived prototype,studies/film-to-orbit/orbit/checks/character-shape.html,2952
+Archived prototype,studies/film-to-orbit/orbit/checks/exploration-controls.js,12031
+Archived prototype,studies/film-to-orbit/orbit/checks/group-steering.test.mjs,3909
+Archived prototype,studies/film-to-orbit/orbit/checks/raycast-grid.test.mjs,1388
+Archived prototype,studies/film-to-orbit/orbit/checks/spacing.test.mjs,1470
+Archived prototype,studies/film-to-orbit/orbit/checks/sphere-spacing.test.mjs,2719
+Archived prototype,studies/film-to-orbit/orbit/checks/track-targeting.test.mjs,2166
+Archived prototype,studies/film-to-orbit/orbit/checks/type-bounds.html,2090
+Archived prototype,studies/film-to-orbit/orbit/debris-entrance.js,5825
+Archived prototype,studies/film-to-orbit/orbit/entry-sequence.js,586
+Archived prototype,studies/film-to-orbit/orbit/focus-layout.js,7296
+Archived prototype,studies/film-to-orbit/orbit/group-steering.js,2625
+Archived prototype,studies/film-to-orbit/orbit/index.html,2387
+Archived prototype,studies/film-to-orbit/orbit/orbital-debris.js,3679
+Archived prototype,studies/film-to-orbit/orbit/performance-review.js,1775
+Archived prototype,studies/film-to-orbit/orbit/raycast-grid.js,2779
+Archived prototype,studies/film-to-orbit/orbit/scene.js,46930
+Archived prototype,studies/film-to-orbit/orbit/scripts/build_orbital_debris.py,17169
+Archived prototype,studies/film-to-orbit/orbit/scripts/round-character.mjs,6986
+Archived prototype,studies/film-to-orbit/orbit/spacing.js,1746
+Archived prototype,studies/film-to-orbit/orbit/sphere-spacing.js,6340
+Archived prototype,studies/film-to-orbit/orbit/style.css,4731
+Archived prototype,studies/film-to-orbit/orbit/track-targeting.js,2003
+Archived prototype,studies/film-to-orbit/orbit/typography.js,1017
+Archived prototype,studies/film-to-orbit/orbit/vendor/three/LICENSE,1081
+Archived prototype,studies/film-to-orbit/orbit/vendor/three/build/three.core.js,1443056
+Archived prototype,studies/film-to-orbit/orbit/vendor/three/build/three.module.js,650153
+Archived prototype,studies/film-to-orbit/orbit/vendor/three/examples/jsm/libs/meshopt_decoder.module.js,29256
+Archived prototype,studies/film-to-orbit/orbit/vendor/three/examples/jsm/loaders/GLTFLoader.js,114959
+Archived prototype,studies/film-to-orbit/orbit/vendor/three/examples/jsm/utils/BufferGeometryUtils.js,37621
+Archived prototype,studies/film-to-orbit/orbit/vendor/three/examples/jsm/utils/SkeletonUtils.js,11535
+Archived prototype,studies/film-to-orbit/orientation-reveal.png,27229
+Archived prototype,studies/film-to-orbit/playback-reaction.jpg,77655
+Archived prototype,studies/film-to-orbit/playback.js,5659
+Archived prototype,studies/film-to-orbit/player-polish.jpg,73728
+Archived prototype,studies/film-to-orbit/records-heading-preview.png,45381
+Archived prototype,studies/film-to-orbit/reduced-travel.jpg,74939
+Archived prototype,studies/film-to-orbit/restored-debris-motion.jpg,74879
+Archived prototype,studies/film-to-orbit/return-braking.jpg,75123
+Archived prototype,studies/film-to-orbit/seismograph-drawing.jpg,87419
+Archived prototype,studies/film-to-orbit/seismograph-trace.js,1680
+Archived prototype,studies/film-to-orbit/seismograph.js,4023
+Archived prototype,studies/film-to-orbit/selective-pulse.jpg,74840
+Archived prototype,studies/film-to-orbit/serve.py,1796
+Archived prototype,studies/film-to-orbit/settling-drift.jpg,74752
+Archived prototype,studies/film-to-orbit/split-listening.jpg,74982
+Archived prototype,studies/film-to-orbit/street-handover.jpg,114764
+Archived prototype,studies/film-to-orbit/street-handover.js,364
+Archived prototype,studies/film-to-orbit/style.css,7502
+Archived prototype,studies/film-to-orbit/tight-pulse.jpg,75409
+Archived prototype,studies/film-to-orbit/weighted-travel.jpg,74672
+Archived prototype,studies/spatial-music/CHECKPOINT-MANIFEST.json,6748
+Archived prototype,studies/spatial-music/README.md,36278
+Archived prototype,studies/spatial-music/asset-sources/README.md,3072
+Archived prototype,studies/spatial-music/asset-sources/kenney-city-kit-roads/LICENSE.txt,703
+Archived prototype,studies/spatial-music/asset-sources/kenney-city-kit-roads/colormap.png,11428
+Archived prototype,studies/spatial-music/asset-sources/kenney-city-kit-roads/light-curved.obj,7989
+Archived prototype,studies/spatial-music/asset-sources/kenney-city-kit-roads/road-sign-object-street.obj,4892
+Archived prototype,studies/spatial-music/asset-sources/kenney-city-kit-roads/traffic-light-object-horizontal.obj,11447
+Archived prototype,studies/spatial-music/assets/concrete-blob-rounded-budget.json,296
+Archived prototype,studies/spatial-music/assets/concrete-blob-rounded.glb,7822980
+Archived prototype,studies/spatial-music/assets/concrete-blob-web.glb,7886940
+Archived prototype,studies/spatial-music/assets/crop-11-63a82a4545cd.webp,31926
+Archived prototype,studies/spatial-music/assets/crop-18-bd5de7ab99aa.webp,35086
+Archived prototype,studies/spatial-music/assets/fonts/font-0.ttf,130324
+Archived prototype,studies/spatial-music/assets/fonts/font-1.ttf,44784
+Archived prototype,studies/spatial-music/assets/fonts/font-3.ttf,48280
+Archived prototype,studies/spatial-music/assets/orbital-wreckage-budget.json,359
+Archived prototype,studies/spatial-music/assets/orbital-wreckage.glb,520484
+Archived prototype,studies/spatial-music/assets/soundcloud-widget-api.js,5541
+Archived prototype,studies/spatial-music/checks/character-asset.test.mjs,1680
+Archived prototype,studies/spatial-music/checks/character-shape.html,2952
+Archived prototype,studies/spatial-music/checks/exploration-controls.js,11729
+Archived prototype,studies/spatial-music/checks/group-steering.test.mjs,3255
+Archived prototype,studies/spatial-music/checks/spacing.test.mjs,1470
+Archived prototype,studies/spatial-music/checks/sphere-spacing.test.mjs,2719
+Archived prototype,studies/spatial-music/checks/track-targeting.test.mjs,2166
+Archived prototype,studies/spatial-music/checks/type-bounds.html,2090
+Archived prototype,studies/spatial-music/damaged-wreckage-preview.jpg,56977
+Archived prototype,studies/spatial-music/early-pull-preview.jpg,48141
+Archived prototype,studies/spatial-music/faster-approach-preview.jpg,49806
+Archived prototype,studies/spatial-music/focus-layout.js,7296
+Archived prototype,studies/spatial-music/focus-preview.jpg,54864
+Archived prototype,studies/spatial-music/group-rotation-preview.jpg,37160
+Archived prototype,studies/spatial-music/group-steering.js,2600
+Archived prototype,studies/spatial-music/index.html,2177
+Archived prototype,studies/spatial-music/local-targeting-preview.jpg,49515
+Archived prototype,studies/spatial-music/magnetic-preview.jpg,50160
+Archived prototype,studies/spatial-music/orbit-preview.jpg,65508
+Archived prototype,studies/spatial-music/orbital-debris.js,3170
+Archived prototype,studies/spatial-music/orbital-wreckage-preview.jpg,55903
+Archived prototype,studies/spatial-music/overlap-focus-preview.png,44968
+Archived prototype,studies/spatial-music/polar-selection-preview.png,42484
+Archived prototype,studies/spatial-music/preview.jpg,50160
+Archived prototype,studies/spatial-music/proximity-rotation-preview.jpg,44984
+Archived prototype,studies/spatial-music/rounded-character-preview.png,55049
+Archived prototype,studies/spatial-music/scene.js,35989
+Archived prototype,studies/spatial-music/scripts/build_orbital_debris.py,17169
+Archived prototype,studies/spatial-music/scripts/round-character.mjs,6986
+Archived prototype,studies/spatial-music/soft-separation-preview.jpg,49730
+Archived prototype,studies/spatial-music/spacing.js,1746
+Archived prototype,studies/spatial-music/sphere-spacing.js,6340
+Archived prototype,studies/spatial-music/spherical-spacing-preview.png,54787
+Archived prototype,studies/spatial-music/sticky-focus-preview.png,53220
+Archived prototype,studies/spatial-music/style.css,3629
+Archived prototype,studies/spatial-music/track-targeting.js,2003
+Archived prototype,studies/spatial-music/typography.js,1017
+Archived prototype,studies/spatial-music/upright-rollback-preview.jpg,49920
+Archived prototype,studies/spatial-music/vendor/three/LICENSE,1081
+Archived prototype,studies/spatial-music/vendor/three/build/three.core.js,1443056
+Archived prototype,studies/spatial-music/vendor/three/build/three.module.js,650153
+Archived prototype,studies/spatial-music/vendor/three/examples/jsm/libs/meshopt_decoder.module.js,29256
+Archived prototype,studies/spatial-music/vendor/three/examples/jsm/loaders/GLTFLoader.js,114959
+Archived prototype,studies/spatial-music/vendor/three/examples/jsm/utils/BufferGeometryUtils.js,37621
+Archived prototype,studies/spatial-music/vendor/three/examples/jsm/utils/SkeletonUtils.js,11535
+Archived prototype,studies/spatial-music/visible-handoff-preview.png,57377
+"Build, hosting or configuration",tests/film.test.mjs,1120
+"Build, hosting or configuration",tests/sites-worker.test.mjs,2219
+"Build, hosting or configuration",vite.config.mjs,559
+"Build, hosting or configuration",worker/index.js,483

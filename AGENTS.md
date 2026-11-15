@@ -87,3 +87,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Official Instagram supplied by user: @BOUNCING_CONCRETE, https://www.instagram.com/bouncing_concrete/. Show an outline Instagram icon, handle and outbound arrow in existing blue in the closing contact area; open in a new tab.
 
 - Approved footer refinement: booking email is primary, Instagram is a compact secondary icon/handle link with no redundant label or link divider lines. Retain a single footer rule; mobile copyright and Back to the film share a row, with Kuala Lumpur beneath.
+
+## Site 1.0 — 15 November 2026
+
+- Current release uses `site-v1.0.0`; preserve the original July `v1.0.0` tag and old confinement branch. See `docs/INDEX.md` for file authority and `docs/releases/site-1.0.md` for release boundaries.
+- Use the shared `.at-sign` optical alignment for displayed contact @ symbols; keep actual addresses and destinations unchanged.

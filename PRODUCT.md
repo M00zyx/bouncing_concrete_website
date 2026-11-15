@@ -1,3 +1,5 @@
+> Historical design document: this describes earlier directions. See [the current project index](docs/INDEX.md) for Site 1.0 authority.
+
 # Bouncing Concrete
 
 A music artist website where visitors encounter the character and visual world, listen to the music, explore releases, follow and enquire about bookings.
