@@ -55,7 +55,7 @@ function update(){
  const selectable=handoverReady&&state.arrival>.64;
  frame.style.visibility=ready&&p>.70?'visible':'hidden';frame.style.pointerEvents=selectable?'auto':'none';frame.inert=!selectable;frame.tabIndex=selectable?0:-1;frame.setAttribute('aria-hidden',String(!selectable));
  layer.inert=dissolve>=1;
- loading.hidden=!(p>.012&&!handoverReady&&!failed&&(!hasVideoFrame||p>.76));loading.querySelector('[role=status]').textContent=filmFailed||filmEndTimedOut?'Opening the records without the film…':!hasVideoFrame?'Loading the film…':'Opening the records…';error.hidden=!(p>.76&&failed);loading.querySelector('button').hidden=p<=.76;
+ loading.hidden=!(p>.012&&!handoverReady&&!failed&&(!hasVideoFrame||p>.76));loading.querySelector('[role=status]').textContent=filmFailed||filmEndTimedOut?'Opening the records without the film…':!hasVideoFrame?'Loading the film…':'Opening the records…';error.hidden=!(p>.76&&failed);
  const data={type:'bc:journey',visible:inView&&!document.hidden&&p>.70,arrival:state.arrival,orbit:state.orbit,street:streetAmount,interactive};const serialized=JSON.stringify(data);
  if(ready&&serialized!==lastMessage){frame.contentWindow.postMessage(data,location.origin);lastMessage=serialized;}
  stage.dataset.progress=p.toFixed(4);stage.dataset.filmTime=decodedTime.toFixed(3);stage.dataset.decodedTime=decodedTime.toFixed(3);stage.dataset.dissolve=dissolve.toFixed(4);stage.dataset.street=streetAmount.toFixed(4);stage.dataset.sceneReady=String(ready);stage.dataset.interactive=String(interactive);
@@ -69,10 +69,6 @@ if(event.data?.type==='bc:painted'){scenePainted=true;schedule();openInitialRele
 if(event.data?.type==='bc:ready'){ready=true;failed=false;clearTimeout(loadTimer);lastMessage='';schedule();openInitialRelease();}if(event.data?.type==='bc:error'){failed=true;schedule();}if(event.data?.type==='bc:back')go('top');});
 addEventListener('scroll',schedule,{passive:true});// Mobile browser chrome can resize the viewport during ordinary scrolling.
 addEventListener('resize',schedule);document.addEventListener('visibilitychange',schedule);reduced.addEventListener('change',schedule);
-for(const button of document.querySelectorAll('[data-open-release]')){
- button.hidden=false;
- button.addEventListener('click',()=>listening.open(button.dataset.openRelease));
-}
 const observer=new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;schedule();});observer.observe(stage);
 function go(id){if(id==='top'||id==='music')history.replaceState(null,'',`#${id}`);if(id==='music'){skipFilm=true;startScene();scrollTo({top:journey.offsetTop+journeyDistance(),behavior:'instant'});}else if(id==='top'){skipFilm=false;scrollTo({top:0,behavior:'instant'});}else document.getElementById(id)?.scrollIntoView({behavior:reduced.matches?'instant':'smooth'});schedule();}
 document.addEventListener('click',event=>{const link=event.target.closest('a[href^="#"]');if(!link)return;event.preventDefault();const id=link.hash.slice(1);history.replaceState(null,'',`#${id}`);go(id);});

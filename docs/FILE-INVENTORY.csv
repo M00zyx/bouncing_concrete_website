@@ -155,7 +155,7 @@ Current runtime and retained media,src/experience/assets/scroll-frames/10.webp,2
 Current runtime and retained media,src/experience/assets/wordmark-gritty.webp,314608
 Current runtime and retained media,src/experience/catalogue.js,2589
 Current runtime and retained media,src/experience/journey-state.js,487
-Current runtime and retained media,src/experience/journey.js,9889
+Current runtime and retained media,src/experience/journey.js,9666
 Current runtime and retained media,src/experience/listening-view.js,10022
 Current runtime and retained media,src/experience/listening.css,9680
 Current runtime and retained media,src/experience/orbit/README.md,36278
@@ -198,13 +198,13 @@ Current runtime and retained media,src/experience/playback.js,5659
 Current runtime and retained media,src/experience/scroll-film.js,1584
 Current runtime and retained media,src/experience/seismograph-trace.js,1680
 Current runtime and retained media,src/experience/seismograph.js,4023
-Current runtime and retained media,src/experience/shell.html,5787
+Current runtime and retained media,src/experience/shell.html,5619
 Current runtime and retained media,src/experience/street-handover.js,364
-Current runtime and retained media,src/experience/style.css,10053
+Current runtime and retained media,src/experience/style.css,9916
 Legacy source retained,src/film.js,446
 Legacy source retained,src/fonts.css,970
 Legacy source retained,src/layers.css,19696
-Current entry and signup,src/main.js,995
+Current entry and signup,src/main.js,992
 Legacy source retained,src/main.jsx,663
 Legacy source retained,src/makeover.css,19289
 Legacy source retained,src/quiet-tension.css,10910
