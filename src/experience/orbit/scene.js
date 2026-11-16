@@ -40,6 +40,7 @@ const cameraGoal = new THREE.Vector3();
 const lookGoal = new THREE.Vector3();
 const currentLook = new THREE.Vector3();
 const orbit = {x:0,y:0};
+const spin=new THREE.Vector2();
 const meshes = [];
 const labels = [];
 const textureLoader = new THREE.TextureLoader();
@@ -63,8 +64,9 @@ const projected=new THREE.Vector3();
 const orbitShell=new THREE.Sphere(new THREE.Vector3(),4.3);
 const cursorEvent={clientX:0,clientY:0};
 
-const renderer = new THREE.WebGLRenderer({antialias:true,alpha:embedded});
-renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));
+const touchDevice = matchMedia('(pointer:coarse)').matches;
+const renderer = new THREE.WebGLRenderer({antialias:!touchDevice,alpha:embedded});
+renderer.setPixelRatio(Math.min(devicePixelRatio,touchDevice?1.25:1.8));
 renderer.setSize(innerWidth,innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFShadowMap;
@@ -116,12 +118,15 @@ function radius() {
   return Math.max(compact()?8.7:6.8,envelope*Math.sqrt(1+1/(horizontal*horizontal)));
 }
 camera.position.set(0,.25,radius());
+const orbitFacingPosition=camera.position.clone();
+const orbitFacingGoal=new THREE.Vector3();
 const groupSteering=createGroupSteering();
 const fill=new THREE.HemisphereLight(0xffffff,0x717987,1.8);scene.add(fill);
 const key = new THREE.DirectionalLight(0xffffff,3.2);
 key.position.set(-4,7,6);
 key.castShadow = true;
-key.shadow.mapSize.set(1024,1024);
+const shadowSize=touchDevice?512:1024;
+key.shadow.mapSize.set(shadowSize,shadowSize);
 Object.assign(key.shadow.camera,{left:-9,right:9,top:9,bottom:-9,near:.5,far:30});
 key.shadow.normalBias = .025;
 key.shadow.bias = -.0002;
@@ -139,11 +144,14 @@ ground.material.transparent=true;
 ground.material.depthWrite=false;
 ground.renderOrder=-1;
 scene.add(ground);
+const characterFacing = new THREE.Group();
+characterFacing.rotation.order='YXZ';
 const character = new THREE.Group();
 const awareness=createCharacterAwareness(),attentionPoint=new THREE.Vector3();
 let appliedYaw=0,appliedPitch=0,attentionTrack=null,attentionUntil=0;
 character.rotation.set(.506,0,.052);
-scene.add(character);
+characterFacing.add(character);
+scene.add(characterFacing);
 
 function finishLoading() {
   if (modelReady && labelsReady) { loading.hidden = true; if(embedded)parent.postMessage({type:'bc:ready'},location.origin); }
@@ -395,7 +403,7 @@ function closeSelection() {
   tracks.forEach(item => item.button.setAttribute('aria-current','false'));
 }
 document.querySelector('#close').addEventListener('click',closeSelection);
-document.querySelector('#reset').addEventListener('click',() => {sphereSpacing?.reset();orbit.x=0;orbit.y=0;pointer.set(0,0);driftTime=0;steerGoal.identity();constellation.quaternion.identity();groupSteering.reset();explore.strength=0;explore.intent=null;explore.docked=false;explore.released=null;explore.releaseUntil=0;explore.target=null;lastPointerMove=-Infinity;meshes.forEach(group=>{group.userData.phase=group.userData.track.phase;});hovered=null;closeSelection();toggleMenu(false);});
+document.querySelector('#reset').addEventListener('click',() => {sphereSpacing?.reset();orbit.x=0;orbit.y=0;spin.set(0,0);pointer.set(0,0);driftTime=0;steerGoal.identity();constellation.quaternion.identity();groupSteering.reset();explore.strength=0;explore.intent=null;explore.docked=false;explore.released=null;explore.releaseUntil=0;explore.target=null;lastPointerMove=-Infinity;meshes.forEach(group=>{group.userData.phase=group.userData.track.phase;});hovered=null;closeSelection();toggleMenu(false);});
 const driftButton=document.querySelector('#motion');
 function updateMotion() {
   driftButton.textContent=driftPaused?'Resume motion':'Pause motion';
@@ -428,27 +436,57 @@ function pickRaw(event) {
   }
   return null;
 }
+const touchOrbitHoldMs=75;
+const orbitDragThreshold=5;
+// A quick vertical swipe belongs to the browser. Once the canvas has been
+// held, cancel the touch move so it can rotate on both axes.
+host.addEventListener('touchmove',event=>{
+  if(!drag||event.touches.length!==1||drag.axis==='vertical')return;
+  const finger=event.touches[0];
+  if(!drag.axis&&performance.now()-drag.startedAt>=touchOrbitHoldMs&&
+    Math.hypot(finger.clientX-drag.startX,finger.clientY-drag.startY)>=orbitDragThreshold)drag.axis='orbit';
+  if(drag.axis==='orbit'&&event.cancelable)event.preventDefault();
+},{passive:false});
 host.addEventListener('pointerdown',event => {
-  if(embedded&&!entrance.interactive){pressedTrack=pick(event);entrancePress={x:event.clientX,y:event.clientY};gestureDistance=0;return;}
+  if(!event.isPrimary||event.button!==0)return;
+  spin.set(0,0);
+  if(embedded&&!entrance.interactive){pressedTrack=event.pointerType==='touch'?null:pick(event);entrancePress={x:event.clientX,y:event.clientY};gestureDistance=0;return;}
   // An explicit click may choose another visible title; proximity alone may not.
-  pressedTrack=pick(event)||trackAtPointer(event);
+  pressedTrack=event.pointerType==='touch'?null:trackAtPointer(event);
   handoff.track=null;
   explore.target=null;
   steerGoal.copy(constellation.quaternion);groupSteering.reset();
-  drag={x:event.clientX,y:event.clientY,id:event.pointerId};
+  drag={x:event.clientX,y:event.clientY,startX:event.clientX,startY:event.clientY,id:event.pointerId,axis:null,startedAt:performance.now(),lastMoveAt:0};
   gestureDistance=0;
-  if(event.isTrusted)host.setPointerCapture(event.pointerId);
+  if(event.isTrusted&&event.pointerType!=='touch')host.setPointerCapture(event.pointerId);
   if(event.pointerType==='touch')lastTouchTime=performance.now();
 });
 host.addEventListener('pointermove',event=>{
-  if(embedded&&!entrance.interactive){if(entrancePress)gestureDistance=Math.max(gestureDistance,Math.hypot(event.clientX-entrancePress.x,event.clientY-entrancePress.y));host.style.cursor=pick(event)?'pointer':'default';return;}
+  if(embedded&&!entrance.interactive){if(entrancePress)gestureDistance=Math.max(gestureDistance,Math.hypot(event.clientX-entrancePress.x,event.clientY-entrancePress.y));if(event.pointerType!=='touch')host.style.cursor=pick(event)?'pointer':'default';return;}
   cursorEvent.clientX=event.clientX;cursorEvent.clientY=event.clientY;
   pointer.set(event.clientX/innerWidth*2-1,event.clientY/innerHeight*2-1);
   if(drag) {
+    if(event.pointerId!==drag.id)return;
     const dx=event.clientX-drag.x,dy=event.clientY-drag.y;
-    gestureDistance+=Math.hypot(dx,dy);
-    orbit.x=THREE.MathUtils.clamp(orbit.x-dx*.0035,-.72,.72);
-    orbit.y=THREE.MathUtils.clamp(orbit.y+dy*.002,-.15,.2);
+    const totalX=event.clientX-drag.startX,totalY=event.clientY-drag.startY;
+    const touch=event.pointerType==='touch';
+    gestureDistance=Math.max(gestureDistance,Math.hypot(totalX,totalY));
+    if(touch)lastTouchTime=performance.now();
+    if(!drag.axis){
+      if(gestureDistance<orbitDragThreshold)return;
+      const quickTouch=touch&&performance.now()-drag.startedAt<touchOrbitHoldMs;
+      drag.axis=quickTouch&&Math.abs(totalY)>=Math.abs(totalX)?'vertical':'orbit';
+      if(touch&&drag.axis==='orbit'&&event.isTrusted&&!host.hasPointerCapture(event.pointerId))host.setPointerCapture(event.pointerId);
+    }
+    if(drag.axis==='orbit'){
+      const now=performance.now();
+      const seconds=Math.max(16,now-(drag.lastMoveAt||drag.startedAt))/1000;
+      const oldPitch=orbit.y;
+      orbit.x-=dx*.0035;
+      orbit.y=THREE.MathUtils.clamp(orbit.y+dy*.0035,-.65,.65);
+      spin.set(-dx*.0035/seconds,(orbit.y-oldPitch)/seconds).clampLength(0,3);
+      drag.lastMoveAt=now;
+    }
     drag.x=event.clientX;drag.y=event.clientY;hovered=null;
   } else if(event.pointerType!=='touch') {
     const dx=pointerInside?event.clientX-lastPointerX:0;
@@ -489,13 +527,15 @@ host.addEventListener('pointermove',event=>{
   }
 });
 host.addEventListener('pointerup',event => {
+  if(!event.isPrimary||(!entrancePress&&drag?.id!==event.pointerId))return;
   entrancePress=null;
-  if(gestureDistance<7){const track=pressedTrack;if(track)selectTrack(track);}
+  if(drag?.axis!=='orbit'||performance.now()-drag.lastMoveAt>100||reducedMotion.matches)spin.set(0,0);
+  if(!drag?.axis&&gestureDistance<7){const track=event.pointerType==='touch'?pick(event):pressedTrack;if(track)selectTrack(track);}
   pressedTrack=null;
   drag=null;
   if(host.hasPointerCapture(event.pointerId))host.releasePointerCapture(event.pointerId);
 });
-host.addEventListener('pointercancel',() => {drag=null;pressedTrack=null;entrancePress=null;});
+host.addEventListener('pointercancel',() => {spin.set(0,0);drag=null;pressedTrack=null;entrancePress=null;});
 host.addEventListener('pointerleave',()=>{pointerInside=false;explore.intent=null;explore.docked=false;explore.target=null;lastPointerMove=-Infinity;steerGoal.copy(constellation.quaternion);groupSteering.reset();if(!drag){pointer.set(0,0);hovered=null;}});
 function spacingOptions(){return {camera,parentRotation:constellation.quaternion,scale:compact()?.73:1,width:innerWidth,height:innerHeight,owner:explore.target,protectedTracks:[handoff.track,(!explore.target||Math.hypot(cursorEvent.clientX-explore.captureX,cursorEvent.clientY-explore.captureY)>18)?hovered:null],paused:driftPaused||reducedMotion.matches||!!drag||!entrance.interactive,settled:groupSteering.speed()<.4&&!handoff.track};}
 function arrangeTitles(delta=0) {
@@ -666,16 +706,40 @@ function render() {
   previousFrame=now;
   if(!driftPaused && !drag && entrance.interactive)driftTime+=delta;
   const ease=1-Math.exp(-delta*5);
-  const allowPointer=!reducedMotion.matches && performance.now()-lastTouchTime>1500;
+  const orbitDragging=drag?.axis==='orbit';
+  if(reducedMotion.matches)spin.set(0,0);
+  const coasting=!drag&&spin.lengthSq()>.0016;
+  if(coasting){
+    const decay=Math.exp(-delta*7);
+    const travel=(1-decay)/7;
+    orbit.x+=spin.x*travel;
+    orbit.y=THREE.MathUtils.clamp(orbit.y+spin.y*travel,-.65,.65);
+    spin.multiplyScalar(decay);
+  }
+  const allowPointer=!orbitDragging&&!coasting&&!reducedMotion.matches&&now-lastTouchTime>1500;
   const yaw=orbit.x+(allowPointer?pointer.x*.035:0);
   const distance=radius();
   // Camera and all title planes share the same perspective projection.
-  cameraGoal.set(Math.sin(yaw)*distance,.25+orbit.y*7+(allowPointer?-pointer.y*.18:0),Math.cos(yaw)*distance);
+  const horizontalDistance=Math.cos(orbit.y)*distance;
+  cameraGoal.set(Math.sin(yaw)*horizontalDistance,.25+Math.sin(orbit.y)*distance+(allowPointer?-pointer.y*.18:0),Math.cos(yaw)*horizontalDistance);
   lookGoal.set(0,0,0);
-  camera.position.lerp(cameraGoal,reducedMotion.matches?1:ease);
-  currentLook.lerp(lookGoal,reducedMotion.matches?1:ease);
+  const cameraEase=orbitDragging||coasting||reducedMotion.matches?1:ease;
+  camera.position.lerp(cameraGoal,cameraEase);
+  currentLook.lerp(lookGoal,cameraEase);
   camera.lookAt(currentLook);
   camera.updateMatrixWorld();
+  // Orbit the labels and debris in world space. Keep the character's authored
+  // pose camera-facing, with its own idle and attention motions layered inside.
+  const facingWeight=embedded?entrance.arrival:1;
+  // Follow the drag-driven camera position only. Its small cursor offset
+  // still changes the view of the character, just as it did before.
+  orbitFacingGoal.set(Math.sin(orbit.x)*horizontalDistance,.25+Math.sin(orbit.y)*distance,Math.cos(orbit.x)*horizontalDistance);
+  orbitFacingPosition.lerp(orbitFacingGoal,cameraEase);
+  const cameraRadius=Math.hypot(orbitFacingPosition.x,orbitFacingPosition.z);
+  const facingPitch=Math.atan2(.25,distance)-Math.atan2(orbitFacingPosition.y,cameraRadius);
+  const facingYaw=Math.atan2(orbitFacingPosition.x,orbitFacingPosition.z);
+  characterFacing.rotation.set(facingPitch*facingWeight,facingYaw*facingWeight,0);
+  characterFacing.updateMatrixWorld(true);
   updateExploration(delta,now,Math.min(elapsed,.15));
   if(!drag) {
     arrangeTitles(delta);
@@ -723,6 +787,9 @@ function render() {
   const viewDistance=camera.position.length();
   scene.fog.near=THREE.MathUtils.lerp(16,viewDistance+.8,depthMix);
   scene.fog.far=THREE.MathUtils.lerp(40,viewDistance+14,depthMix);
+  // The lights and casters barely move during a held drag. Reuse the
+  // shadow map on touch devices instead of drawing those meshes twice.
+  renderer.shadowMap.autoUpdate=!(touchDevice&&orbitDragging);
   renderer.render(scene,camera);
   performanceReview?.record(now,elapsed);
   if(embedded){renderCount++;document.body.dataset.renderFrames=String(renderCount);document.body.dataset.arrival=entrance.arrival.toFixed(3);if(renderCount===1)parent.postMessage({type:'bc:painted'},location.origin);if(renderCount%120===0)parent.postMessage({type:'bc:render-state',frames:renderCount,running:true},location.origin);}
@@ -754,14 +821,15 @@ if(embedded){
  document.body.classList.add('embedded','entering');
  addEventListener('message',event=>{if(event.origin!==location.origin||event.source!==parent||event.data?.type!=='bc:playback-reaction')return;if(event.data.start&&entrance.interactive&&!reducedMotion.matches&&!driftPaused)debris.react(performance.now());else debris.stopReaction();});
  let releaseChromeTimer=0;
- addEventListener('message',event=>{if(event.origin===location.origin&&event.source===parent&&event.data?.type==='bc:player-view'){clearTimeout(releaseChromeTimer);if(event.data.expanded)document.body.classList.add('release-expanded');else releaseChromeTimer=setTimeout(()=>document.body.classList.remove('release-expanded'),reducedMotion.matches?0:620);document.body.classList.toggle('compact-playing',!event.data.expanded);}});
+ addEventListener('message',event=>{if(event.origin===location.origin&&event.source===parent&&event.data?.type==='bc:player-view'){clearTimeout(releaseChromeTimer);if(event.data.expanded)document.body.classList.add('release-expanded');else releaseChromeTimer=setTimeout(()=>document.body.classList.remove('release-expanded'),reducedMotion.matches?0:620);document.body.classList.toggle('compact-playing',event.data.compact??!event.data.expanded);}});
  addEventListener('message',event=>{if(event.origin===location.origin&&event.source===parent&&event.data?.type==='bc:release-closed'){host.tabIndex=-1;(selectionFromKeyboard?menu:host).focus({preventScroll:true});pointerInside=false;explore.target=null;}});
  document.querySelector('.brand').innerHTML='<button id="back-to-film">← Film</button>';
  document.querySelector('#back-to-film').onclick=()=>parent.postMessage({type:'bc:back'},location.origin);
- document.querySelector('#hint').textContent=matchMedia('(pointer:coarse)').matches?'Tap a sleeve or title · Swipe to continue':'Drag to explore · Select a sleeve or title';
+ document.querySelector('#hint').textContent=matchMedia('(pointer:coarse)').matches?'Hold and drag to explore · Tap a sleeve':'Drag to explore · Select a sleeve or title';
  addEventListener('message',event=>{if(event.origin!==location.origin||event.source!==parent||event.data?.type!=='bc:journey')return;
   const d=event.data,wasInteractive=entrance.interactive;entrance.visible=!!d.visible;entrance.arrival=THREE.MathUtils.clamp(Number(d.arrival)||0,0,1);entrance.orbit=THREE.MathUtils.clamp(Number(d.orbit)||0,0,1);entrance.street=THREE.MathUtils.clamp(Number(d.street)||0,0,1);entrance.interactive=!!d.interactive;
   if(!entrance.interactive&&wasInteractive){pointerInside=false;explore.target=null;explore.intent=null;explore.docked=false;hovered=null;drag=null;groupSteering.reset();}
+  if(!entrance.visible)spin.set(0,0);
   if(!entrance.visible&&renderFrame){cancelAnimationFrame(renderFrame);renderFrame=0;}parent.postMessage({type:'bc:render-state',frames:renderCount,running:entrance.visible},location.origin);wake();
  });
  document.addEventListener('visibilitychange',wake);

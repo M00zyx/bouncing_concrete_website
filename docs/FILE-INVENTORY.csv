@@ -26,7 +26,7 @@ Documentation,docs/makeover-verification.md,2028
 Documentation,docs/quiet-tension-verification.md,4277
 Documentation,docs/reference-correction-verification.md,3802
 Documentation,docs/releases/site-1.0.md,1821
-"Build, hosting or configuration",index.html,1593
+"Build, hosting or configuration",index.html,1903
 "Build, hosting or configuration",package-lock.json,57290
 "Build, hosting or configuration",package.json,556
 Shared or historical media,public/assets/bouncing-concrete-film-share.jpg,158305
@@ -119,8 +119,8 @@ Shared or historical media,public/assets/wordmark-gritty.png,2031553
 Shared or historical media,public/assets/wordmark-gritty.webp,314608
 Shared or historical media,public/assets/wordmark.png,2840384
 "Build, hosting or configuration",public/qa.html,572
-"Build, hosting or configuration",releases/concreto-incarnat.html,1368
-"Build, hosting or configuration",releases/funkacaine.html,1333
+"Build, hosting or configuration",releases/concreto-incarnat.html,1402
+"Build, hosting or configuration",releases/funkacaine.html,1367
 "Build, hosting or configuration",scripts/build-concrete-atlas.mjs,1749
 "Build, hosting or configuration",scripts/index-files.py,1217
 "Build, hosting or configuration",scripts/prepare-sites-build.mjs,910
@@ -135,17 +135,29 @@ Legacy source retained,src/RecordArt.jsx,323
 Legacy source retained,src/construction-mark.css,813
 Legacy source retained,src/content.js,1147
 Current runtime and retained media,src/experience/assets/empty-street.jpg,554088
+Current runtime and retained media,src/experience/assets/film-opening-web.webp,219546
 Current runtime and retained media,src/experience/assets/film-opening.png,3202679
 Current runtime and retained media,src/experience/assets/grounded-concrete-photoreal.webp,396562
 Current runtime and retained media,src/experience/assets/grounded-slab.png,509310
 Current runtime and retained media,src/experience/assets/interface.ttf,48280
 Current runtime and retained media,src/experience/assets/scene-web.mp4,5693954
+Current runtime and retained media,src/experience/assets/scroll-frames/00.webp,305760
+Current runtime and retained media,src/experience/assets/scroll-frames/01.webp,263884
+Current runtime and retained media,src/experience/assets/scroll-frames/02.webp,282624
+Current runtime and retained media,src/experience/assets/scroll-frames/03.webp,301936
+Current runtime and retained media,src/experience/assets/scroll-frames/04.webp,323236
+Current runtime and retained media,src/experience/assets/scroll-frames/05.webp,346778
+Current runtime and retained media,src/experience/assets/scroll-frames/06.webp,370950
+Current runtime and retained media,src/experience/assets/scroll-frames/07.webp,339574
+Current runtime and retained media,src/experience/assets/scroll-frames/08.webp,269866
+Current runtime and retained media,src/experience/assets/scroll-frames/09.webp,256710
+Current runtime and retained media,src/experience/assets/scroll-frames/10.webp,24012
 Current runtime and retained media,src/experience/assets/wordmark-gritty.webp,314608
 Current runtime and retained media,src/experience/catalogue.js,2589
 Current runtime and retained media,src/experience/journey-state.js,487
-Current runtime and retained media,src/experience/journey.js,9405
-Current runtime and retained media,src/experience/listening-view.js,9621
-Current runtime and retained media,src/experience/listening.css,8605
+Current runtime and retained media,src/experience/journey.js,9889
+Current runtime and retained media,src/experience/listening-view.js,10022
+Current runtime and retained media,src/experience/listening.css,9680
 Current runtime and retained media,src/experience/orbit/README.md,36278
 Current runtime and retained media,src/experience/orbit/assets/audio/funkacaine.mp3,6071946
 Current runtime and retained media,src/experience/orbit/assets/concrete-blob-rounded-budget.json,296
@@ -165,14 +177,14 @@ Current runtime and retained media,src/experience/orbit/debris-entrance.js,5825
 Current runtime and retained media,src/experience/orbit/entry-sequence.js,586
 Current runtime and retained media,src/experience/orbit/focus-layout.js,7296
 Current runtime and retained media,src/experience/orbit/group-steering.js,2625
-Current runtime and retained media,src/experience/orbit/index.html,2387
+Current runtime and retained media,src/experience/orbit/index.html,2385
 Current runtime and retained media,src/experience/orbit/orbital-debris.js,3679
 Current runtime and retained media,src/experience/orbit/performance-review.js,1775
 Current runtime and retained media,src/experience/orbit/raycast-grid.js,2779
-Current runtime and retained media,src/experience/orbit/scene.js,46930
+Current runtime and retained media,src/experience/orbit/scene.js,50973
 Current runtime and retained media,src/experience/orbit/spacing.js,1746
 Current runtime and retained media,src/experience/orbit/sphere-spacing.js,6340
-Current runtime and retained media,src/experience/orbit/style.css,4731
+Current runtime and retained media,src/experience/orbit/style.css,5002
 Current runtime and retained media,src/experience/orbit/track-targeting.js,2003
 Current runtime and retained media,src/experience/orbit/typography.js,1017
 Current runtime and retained media,src/experience/orbit/vendor/three/LICENSE,1081
@@ -183,21 +195,22 @@ Current runtime and retained media,src/experience/orbit/vendor/three/examples/js
 Current runtime and retained media,src/experience/orbit/vendor/three/examples/jsm/utils/BufferGeometryUtils.js,37621
 Current runtime and retained media,src/experience/orbit/vendor/three/examples/jsm/utils/SkeletonUtils.js,11535
 Current runtime and retained media,src/experience/playback.js,5659
+Current runtime and retained media,src/experience/scroll-film.js,1584
 Current runtime and retained media,src/experience/seismograph-trace.js,1680
 Current runtime and retained media,src/experience/seismograph.js,4023
-Current runtime and retained media,src/experience/shell.html,5628
+Current runtime and retained media,src/experience/shell.html,5787
 Current runtime and retained media,src/experience/street-handover.js,364
-Current runtime and retained media,src/experience/style.css,9848
+Current runtime and retained media,src/experience/style.css,10053
 Legacy source retained,src/film.js,446
 Legacy source retained,src/fonts.css,970
 Legacy source retained,src/layers.css,19696
-Current entry and signup,src/main.js,974
+Current entry and signup,src/main.js,995
 Legacy source retained,src/main.jsx,663
 Legacy source retained,src/makeover.css,19289
 Legacy source retained,src/quiet-tension.css,10910
 Legacy source retained,src/refinements.css,8918
-Current entry and signup,src/signup-study.css,9567
-Current entry and signup,src/signup-study.js,6188
+Current entry and signup,src/signup-study.css,9525
+Current entry and signup,src/signup-study.js,7210
 Legacy source retained,src/soundcloud-widget-api.js,5541
 Legacy source retained,src/styles.css,4063
 Legacy source retained,src/waveform.css,2747

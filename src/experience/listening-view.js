@@ -2,11 +2,11 @@ import {createPlayback} from './playback.js';
 import {createSeismograph} from './seismograph.js?v=fixed-pen-1';
 import {releases,sampleSleeveCanvas} from './catalogue.js';
 export {releases};
-export function createListeningView({onOpen=()=>{},onClose=()=>{}}={}){
- document.body.insertAdjacentHTML('beforeend',`<dialog id="release-dialog" aria-labelledby="release-title" tabindex="-1"><div class="release-sheet"><button class="release-close" aria-label="Back to orbit">Back to orbit <span aria-hidden="true">×</span></button><div class="release-art"><img id="release-sleeve" alt="" width="345" height="360"></div><div class="release-content"><div class="release-info"><h2 id="release-title"></h2><p class="release-artist">BOUNCING CONCRETE</p></div><div class="release-signal"><canvas id="release-wave" aria-label="Live audio seismograph"></canvas><span id="signal-note" hidden>Audio visualization available for Funkacaine</span></div><div class="release-playback"><div class="release-transport"><output class="release-time">0:00</output><button class="transport-play" aria-label="Play"><span aria-hidden="true"></span></button><span class="release-duration">4:12</span></div><input class="release-seek" aria-label="Seek in track" type="range" min="0" max="1000" step="1" value="0"></div><a class="release-source" target="_blank" rel="noopener">Listen on SoundCloud <span aria-hidden="true">↗</span></a><p class="release-status" role="status"></p></div></div></dialog><section id="mini-player" hidden aria-label="Now playing"><button class="mini-open" aria-label="Open current release"><img id="mini-sleeve" alt="" width="46" height="48"><span><small>BOUNCING CONCRETE</small><strong id="mini-title"></strong></span></button><canvas id="mini-wave" aria-label="Live audio seismograph"></canvas><div class="mini-transport"><output class="release-time">0:00</output><button class="transport-play" aria-label="Play"><span aria-hidden="true"></span></button><button class="mini-expand" aria-label="Expand player">↗</button></div><input class="release-seek" aria-label="Seek in current track" type="range" min="0" max="1000" step="1" value="0"><p class="mini-status" role="status"></p></section><audio id="release-audio" preload="metadata"></audio><iframe id="release-cloud" title="SoundCloud audio player" allow="autoplay" aria-hidden="true" tabindex="-1"></iframe>`);
+export function createListeningView({onOpen=()=>{},onClose=()=>{},onDismiss=()=>{}}={}){
+ document.body.insertAdjacentHTML('beforeend',`<dialog id="release-dialog" aria-labelledby="release-title" tabindex="-1"><div class="release-sheet"><button class="release-close" aria-label="Back to orbit">Back to orbit <span aria-hidden="true">×</span></button><div class="release-art"><img id="release-sleeve" alt="" width="345" height="360"></div><div class="release-content"><div class="release-info"><h2 id="release-title"></h2><p class="release-artist">BOUNCING CONCRETE</p></div><div class="release-signal"><canvas id="release-wave" aria-label="Live audio seismograph"></canvas><span id="signal-note" hidden>Audio visualization available for Funkacaine</span></div><div class="release-playback"><div class="release-transport"><output class="release-time">0:00</output><button class="transport-play" aria-label="Play"><span aria-hidden="true"></span></button><span class="release-duration">4:12</span></div><input class="release-seek" aria-label="Seek in track" type="range" min="0" max="1000" step="1" value="0"></div><a class="release-source" target="_blank" rel="noopener">Listen on SoundCloud <span aria-hidden="true">↗</span></a><p class="release-status" role="status"></p></div></div></dialog><section id="mini-player" hidden aria-label="Now playing"><button class="mini-open" aria-label="Open current release"><img id="mini-sleeve" alt="" width="46" height="48"><span><small>BOUNCING CONCRETE</small><strong id="mini-title"></strong></span></button><canvas id="mini-wave" aria-label="Live audio seismograph"></canvas><div class="mini-transport"><output class="release-time">0:00</output><button class="transport-play" aria-label="Play"><span aria-hidden="true"></span></button><button class="mini-expand" aria-label="Expand player">↗</button><button class="mini-dismiss" aria-label="Close mini player">×</button></div><input class="release-seek" aria-label="Seek in current track" type="range" min="0" max="1000" step="1" value="0"><p class="mini-status" role="status"></p></section><audio id="release-audio" preload="metadata"></audio><iframe id="release-cloud" title="SoundCloud audio player" allow="autoplay" aria-hidden="true" tabindex="-1"></iframe>`);
  const dialog=document.querySelector('#release-dialog'),mini=document.querySelector('#mini-player'),close=document.querySelector('.release-close'),art=document.querySelector('#release-sleeve'),wave=document.querySelector('#release-wave'),miniWave=document.querySelector('#mini-wave');
  const sheetObserver=new ResizeObserver(()=>{if(dialog.open)document.body.style.setProperty('--listening-height',`${dialog.getBoundingClientRect().height}px`);});sheetObserver.observe(dialog);
- let signal=null,shown=null,returnFocus=null,animation=null,seekDrag=null;
+ let signal=null,shown=null,returnFocus=null,animation=null,seekDrag=null,miniDismissed=false;
  let keyboardOpen=false;document.addEventListener('keydown',()=>{keyboardOpen=true;},true);document.addEventListener('pointerdown',()=>{keyboardOpen=false;},true);
  document.fonts.load('17px "DM Mono"');document.fonts.load('66px Anton');
  const lessMotion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -27,11 +27,12 @@ export function createListeningView({onOpen=()=>{},onClose=()=>{}}={}){
   for(const button of document.querySelectorAll('.transport-play'))button.setAttribute('aria-busy',String(state.status==='loading'||state.status==='buffering'));
   document.querySelector('#signal-note').hidden=state.mode!=='cloud';
   wave.setAttribute('aria-label',state.mode==='native'?'Live audio seismograph':state.mode==='sample'?'Sample track — no audio':'Audio visualization unavailable for this stream');miniWave.setAttribute('aria-label',wave.getAttribute('aria-label'));
-  mini.hidden=dialog.open;document.body.classList.toggle('has-player',!dialog.open);dialog.dataset.playback=state.status;mini.dataset.playback=state.status;
+  mini.hidden=dialog.open||miniDismissed;document.body.classList.toggle('has-player',!mini.hidden);dialog.dataset.playback=state.status;mini.dataset.playback=state.status;
  }
  function open(slug,origin=null,fromKeyboard=false){
   const reopening=slug===undefined;slug??=playback.state.track?.slug;
   const track=releases[slug];if(!track)return;
+  miniDismissed=false;
   const wasOpen=dialog.open;
   if(!wasOpen){returnFocus=document.activeElement;onOpen();dialog.show();document.body.classList.add('listening-open');mini.hidden=true;document.body.classList.remove('has-player');}
   if(!reopening)playback.select(track);render(playback.state);signal.resize();
@@ -46,6 +47,14 @@ export function createListeningView({onOpen=()=>{},onClose=()=>{}}={}){
  // Nonmodal: the exposed orbit remains interactive; Escape also works within this document.
  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&dialog.open){event.preventDefault();collapse();}});
  close.addEventListener('click',collapse);dialog.addEventListener('cancel',e=>{e.preventDefault();collapse();});
+ document.querySelector('.mini-dismiss').addEventListener('click',()=>{
+  miniDismissed=true;
+  mini.hidden=true;
+  document.body.classList.remove('has-player');
+  if(playback.state.mode!=='sample')playback.pause();
+  signal.resize();
+  onDismiss();
+ });
  document.querySelector('.mini-open').addEventListener('click',()=>open());document.querySelector('.mini-expand').addEventListener('click',()=>open());
  for(const button of document.querySelectorAll('.transport-play'))button.addEventListener('click',()=>playback.state.status==='error'?playback.retry():playback.toggle());
  for(const input of document.querySelectorAll('.release-seek')){

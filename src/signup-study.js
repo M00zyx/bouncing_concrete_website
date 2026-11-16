@@ -27,7 +27,31 @@ export function setupSignupStudy() {
     controls.querySelector('a:last-child').href='?signup=original#about';
     document.body.append(controls);
   }
-  function impact() {
+  const slab = closing.querySelector('.grounded-fragment');
+  const slabImage = slab.querySelector('img');
+  function joltSlab() {
+    const running = slabImage.getAnimations().find(animation => animation.animationName === 'stone-impulse');
+    if (running) { running.currentTime = 0; running.play(); }
+    else slab.classList.add('slab-impact');
+  }
+  slabImage.addEventListener('animationend', event => {
+    if (event.animationName === 'stone-impulse') slab.classList.remove('slab-impact');
+  });
+  // Observe the fixed figure box, so the animation never triggers itself.
+  let slabArmed = true;
+  if (option === 'combined') {
+    new IntersectionObserver(entries => {
+      for (const { intersectionRatio } of entries) {
+        if (intersectionRatio <= .1) slabArmed = true;
+        if (intersectionRatio >= .35 && slabArmed) {
+          slabArmed = false;
+          joltSlab();
+        }
+      }
+    }, { threshold: [.1, .35] }).observe(slab);
+  }
+  function impact({ stone = true } = {}) {
+    if (stone) joltSlab();
     closing.classList.add('signup-impact');
     setTimeout(() => { closing.classList.remove('signup-impact'); section.classList.add('is-settled'); }, 1100);
   }
@@ -38,9 +62,9 @@ export function setupSignupStudy() {
   }
   section.addEventListener('pointerenter', pulse);
   section.addEventListener('focusin', pulse);
-  // A single entrance response, only when this part of the page is visible.
+  // Keep the signup notice's entrance separate from the repeating slab impulse.
   const observer = new IntersectionObserver(entries => {
-    if (entries.some(entry => entry.isIntersecting)) { if (option === 'combined') impact(); else pulse(); observer.disconnect(); }
+    if (entries.some(entry => entry.isIntersecting)) { if (option === 'combined') impact({ stone: false }); else pulse(); observer.disconnect(); }
   }, { threshold: .5 });
   observer.observe(section);
   // Local-only design previews never submit data or claim a real subscription.

@@ -2,6 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+        history.scrollRestoration = 'manual';
+        history.replaceState(history.state, '', location.pathname + location.search);
+        window.scrollTo(0, 0);
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1736df" />
     <title>Bouncing Concrete — Music & Releases</title>
@@ -16,8 +23,8 @@
     <meta name="twitter:image" content="https://bouncing-concrete.pages.dev/assets/bouncing-concrete-film-share.jpg" />
     <meta property="og:image:alt" content="The Bouncing Concrete wordmark above a night-time street in the opening film" />
     <link rel="icon" href="/assets/bouncing-concrete-photo-icon.png" type="image/png" sizes="64x64" />
-      <link rel="stylesheet" href="/experience/style.css">
-    <link rel="stylesheet" href="/experience/listening.css">
+      <link rel="stylesheet" href="/experience/style.css?v=music-scroll-2">
+    <link rel="stylesheet" href="/experience/listening.css?v=mini-dismiss-1">
     <script src="/experience/orbit/assets/soundcloud-widget-api.js" defer></script>
   </head>
   <body>

@@ -30,7 +30,7 @@
 .signup-combined.is-pulsing{animation:none}
 .signup-combined.is-settled,.signup-combined:focus-within{transform:none}
 .signup-combined.is-pulsing .trace-signal{animation:signal-draw .6s ease-out both}
-.signup-impact .grounded-fragment img{animation:stone-impulse .38s ease-out both}
+.slab-impact img{animation:stone-impulse .38s ease-out both}
 .signup-impact .signup-combined{animation:notice-lock .55s .16s ease-out both}
 .signup-impact .signup-combined .trace-signal{animation:signal-draw .7s .2s ease-out both}
 .signup-combined .formkit-alert-success{margin:0;padding:0}
@@ -38,7 +38,7 @@
 .signup-combined .signup-stamp{margin-top:4px!important}
 @media(min-width:761px){.closing-combined .closing-aftermath .contact{margin-bottom:48px}}
 @keyframes stone-impulse{0%,100%{transform:translate(0,0) rotate(0)}12%{transform:translate(-3px,-2px) rotate(-.25deg)}30%{transform:translate(1px,0) rotate(.08deg)}60%{transform:translate(-.4px,0)}}
-@media(prefers-reduced-motion:reduce){.signup-impact .grounded-fragment img{animation:none!important}.signup-combined{transform:none!important}}
+@media(prefers-reduced-motion:reduce){.slab-impact img{animation:none!important}.signup-combined{transform:none!important}}
 
 .signup-preview-label{font:11px/1.4 'DM Sans',sans-serif!important;border-bottom:1px solid #20231e66;padding-bottom:8px;margin:0 0 20px!important}
 .preview-active input{outline:2px solid #1736df;outline-offset:4px}

@@ -28,3 +28,10 @@ html:has(body.embedded),body.embedded{background:transparent}
 .release-expanded header{visibility:visible}.release-expanded header .brand,.release-expanded #records-heading,.release-expanded #reset{visibility:hidden}
 
 @media(pointer:coarse){#menu,#list-close,#motion,#back-to-film{min-height:44px;min-width:44px}}
+
+@media(pointer:coarse){
+ #tracks{touch-action:pan-y;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+ #menu,#list-close,.track-choice{touch-action:manipulation}
+}
+
+#space,#space canvas{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}

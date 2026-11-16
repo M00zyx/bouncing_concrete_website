@@ -6,7 +6,7 @@ import './signup-study.css';
 // src/experience into public/experience; this is the only canonical app source.
 document.getElementById('root').outerHTML = shell;
 setupSignupStudy();
-const runtime = new URL('/experience/journey.js', window.location.origin);
+const runtime = new URL('/experience/journey.js?v=character-facing-2', window.location.origin);
 import(/* @vite-ignore */ runtime.href).catch(() => {
   const error=document.querySelector('.scene-error');
   error.hidden=false;
