@@ -38,17 +38,18 @@ export function setupSignupStudy() {
     if (event.animationName === 'stone-impulse') slab.classList.remove('slab-impact');
   });
   // Observe the fixed figure box, so the animation never triggers itself.
+  const slabReplayThreshold = .98;
   let slabArmed = true;
   if (option === 'combined') {
     new IntersectionObserver(entries => {
       for (const { intersectionRatio } of entries) {
         if (intersectionRatio <= .1) slabArmed = true;
-        if (intersectionRatio >= .35 && slabArmed) {
+        if (intersectionRatio >= slabReplayThreshold && slabArmed) {
           slabArmed = false;
           joltSlab();
         }
       }
-    }, { threshold: [.1, .35] }).observe(slab);
+    }, { threshold: [.1, slabReplayThreshold] }).observe(slab);
   }
   function impact({ stone = true } = {}) {
     if (stone) joltSlab();
